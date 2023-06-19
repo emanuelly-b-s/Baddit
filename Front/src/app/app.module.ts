@@ -14,8 +14,7 @@ import { HttpClientModule } from '@angular/common/http'; // Added for use HttpCl
 import { ReactiveFormsModule } from '@angular/forms'; // Added for use ReactiveForms
 import {Component} from '@angular/core';
 import {MatDividerModule} from '@angular/material/divider';
-
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -33,6 +32,7 @@ import {MatDividerModule} from '@angular/material/divider';
     FormsModule, // Adicionado para poder usar o ngModel
     HttpClientModule, // Added for use HttpClient
     ReactiveFormsModule, BrowserAnimationsModule,// Added for use ReactiveForms
+    MatCardModule
  ],
 
   providers: [],
