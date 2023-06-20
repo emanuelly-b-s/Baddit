@@ -1,6 +1,29 @@
-.card{
-    width: 80%;
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap");
+
+
+.mat-mdc-card {
+    position: relative;
+    width: 65%;
+}
+
+
+.container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
     justify-content: center;
+    align-items: center;
+}
+
+.mdc-card__actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 52px;
+    padding: 8px;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
 }
