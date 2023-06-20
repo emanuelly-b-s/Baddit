@@ -1,0 +1,23 @@
+<div style="display: flex; align-items: center; flex-direction: column; justify-content: center; gap: 20px; height: 100%;">
+
+    <div>
+        <mat-label>Adicionar nova localização</mat-label>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Titulo</mat-label>
+            <input type="text" matInput [formControl]="emailFormControl" placeholder="Lugar bonito..." [(ngModel)]="title">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <app-uploader (onUploadFinished)="onImageUpdate($event)"></app-uploader>
+    </div>
+
+    <div>    
+        <button mat-raised-button color="primary" (click)="add()">Salvar</button>
+    </div>
+    
+</div>
+
