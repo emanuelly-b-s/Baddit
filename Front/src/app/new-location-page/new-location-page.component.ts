@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UploaderComponent } from '../uploader/uploader.component';
+// import { UploaderComponent } from '../uploader/uploader.component';
 
 
 
@@ -15,16 +15,7 @@ import { UploaderComponent } from '../uploader/uploader.component';
 @Component({
   selector: 'app-new-location-page',
   templateUrl: './new-location-page.component.html',
-  styleUrls: ['./new-location-page.component.css'],
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule,
-
-  ],
+  styleUrls: ['./new-location-page.component.css']
 })
 export class NewLocationPageComponent {
   constructor(private service: LocationService, private route: Router) {}

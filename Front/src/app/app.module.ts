@@ -17,7 +17,7 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LocationCardComponent } from './location-card/location-card.component';
-// import { NewLocationPageComponent } from './new-location-page/new-location-page.component';
+import { NewLocationPageComponent } from './new-location-page/new-location-page.component';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { LocationCardComponent } from './location-card/location-card.component';
     HomePageComponent,
     UploaderComponent,
     AppComponent,
-    LocationCardComponent
+    LocationCardComponent,
+    NewLocationPageComponent
   ],
 
   imports: [
@@ -44,8 +45,7 @@ import { LocationCardComponent } from './location-card/location-card.component';
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    MatButtonModule,
-
+    MatButtonModule
  ],
 
   providers: [],
