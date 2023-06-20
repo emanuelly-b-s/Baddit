@@ -5,8 +5,8 @@ using Model;
 
 public class ImageRepository : IRepository<ImageDatum>
 {
-    private FullExampleContext ctx;
-    public ImageRepository(FullExampleContext ctx)
+    private ProjRedditContext ctx;
+    public ImageRepository(ProjRedditContext ctx)
         => this.ctx = ctx;
 
     public async Task Add(ImageDatum obj)

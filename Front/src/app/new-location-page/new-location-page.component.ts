@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LocationService } from '../location.service';
 import { Router } from '@angular/router';
@@ -8,6 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploaderComponent } from '../uploader/uploader.component';
+
+
+
 
 @Component({
   selector: 'app-new-location-page',
@@ -20,7 +23,7 @@ import { UploaderComponent } from '../uploader/uploader.component';
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    UploaderComponent
+
   ],
 })
 export class NewLocationPageComponent {

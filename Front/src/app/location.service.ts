@@ -11,17 +11,17 @@ export class LocationService {
 
   add(location: Location)
   {
-    return this.http.post("$initialCatalog = "FullExample"/location", location)
+    return this.http.post("$http://localhost:5066/location", location)
   }
 
   all()
   {
-    return this.http.get<Location[]>("$initialCatalog = "FullExample"/location")
+    return this.http.get<Location[]>("$http://localhost:5066/location")
   }
 
   seach(query: string)
   {
-    return this.http.get<Location[]>("$initialCatalog = "FullExample"/location?search=" + query)
+    return this.http.get<Location[]>("$http://localhost:5066/location?search=" + query)
   }
 }
 

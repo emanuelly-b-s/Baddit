@@ -13,8 +13,7 @@ builder.Services.AddCors(opt =>
    });
 });
 
-builder.Services.AddScoped<FullExampleContext>();
-builder.Services.AddTransient<IRepository<Location>, LocationRepository>();
+builder.Services.AddScoped<ProjRedditContext>();
 builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
 
 builder.Services.AddControllers();
