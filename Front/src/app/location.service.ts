@@ -13,12 +13,12 @@ export class LocationService {
   {
     return this.http.post("$initialCatalog = "FullExample"/location", location)
   }
-  
+
   all()
   {
     return this.http.get<Location[]>("$initialCatalog = "FullExample"/location")
   }
-  
+
   seach(query: string)
   {
     return this.http.get<Location[]>("$initialCatalog = "FullExample"/location?search=" + query)

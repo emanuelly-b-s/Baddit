@@ -5,7 +5,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http'; // Added for use HttpClient
 
 const routes: Routes = [
-  
+
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
 ];
