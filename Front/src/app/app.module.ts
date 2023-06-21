@@ -21,10 +21,16 @@ import { NewLocationPageComponent } from './new-location-page/new-location-page.
 import { LocationsPageComponent } from './locations-page/locations-page.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {FormControl, Validators} from '@angular/forms';
-import {NgIf} from '@angular/common';
+import {
+  FormControl,
+  Validators,
+  FormGroup,
+  FormBuilder,
+} from '@angular/forms';
+import { NgIf } from '@angular/common';
 import { NewaccountComponent } from './newaccount/newaccount.component';
-
+import { CreatePasswordComponent } from './create-password/create-password.component';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +42,8 @@ import { NewaccountComponent } from './newaccount/newaccount.component';
     NewLocationPageComponent,
     LocationsPageComponent,
     NewaccountComponent,
+    CreatePasswordComponent,
+    PasswordComponent,
   ],
 
   imports: [
@@ -61,6 +69,10 @@ import { NewaccountComponent } from './newaccount/newaccount.component';
     FormsModule,
     ReactiveFormsModule,
     NgIf,
+    FormControl,
+    Validators,
+    FormGroup,
+    FormBuilder,
   ],
 
   providers: [],
