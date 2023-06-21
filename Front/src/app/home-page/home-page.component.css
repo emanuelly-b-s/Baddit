@@ -1,11 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap");
 
+.btn{
+    background: none;
+    border: none;
+}
 
 .mat-mdc-card {
     position: relative;
     width: 65%;
 }
 
+.mat-drawer {
+    position: relative;
+    z-index: 4;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    outline: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    transform: translate3d(-100%, 0, 0);
+    width: 15%;
+}
+
+.center {
+    display: flex;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: center;
+}
 
 .container {
     display: flex;
@@ -14,6 +39,7 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+    columns: 2;
 }
 
 .mdc-card__actions {
@@ -26,4 +52,38 @@
     flex-wrap: nowrap;
     align-content: center;
     justify-content: space-evenly;
+}
+
+mat-toolbar {
+    background: #004a9f;
+    color: white;
+}
+
+mat-sidenav {
+    margin: 16px;
+    width: 200px;
+    border-right: none;
+    background: #002b5c;
+    color: white;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.content {
+    height: calc(100vh - 98px);
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+    color: lightgray;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
 }

@@ -1,29 +1,36 @@
-<!-- <p>Não possui conta? <a routerLink="newaccount">Crie uma agora mesmo!</a></p>
-
+<!-- 
 <p>
   Esqueceu sua senha? <a href="{{ '/recover/' + email }}">Recupere agora!</a>
-</p> -->
+</p> --> 
 
 <div class="container">
   <div class="card">
     <div class="card-body">
       <div class="card-title col-12">Login</div>
-      <div class="form-card">
-        <form action="/" method="get" class="row g-3">
-          <div class="col-12">
-            <input type="text" class="form-control" [(ngModel)]="email" placeholder="E-mail">
-          </div>
-          <div class="col-12">
-            <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" required>
-          </div>
+      <div class="example-container">
+        <mat-form-field style="width: 170%;">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" [(ngModel)]="email" required>
+          </mat-form-field>
+      <div class="example-container">
+        <mat-form-field style="width: 170%;">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
 
-          <div class="col-12">
-            <button type="submit" mat-stroked-button (click)="login()">Logar</button>
-          </div>
-        </form>
+        <div class="col-12">
+          <button type="submit" mat-stroked-button (click)="login()">Logar</button>
+        </div>
+
       </div>
+
+
     </div>
   </div>
 </div>
 
-
+<p>Não possui conta? <a routerLink="newaccount">Crie uma agora mesmo!</a>

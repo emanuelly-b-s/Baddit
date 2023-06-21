@@ -13,11 +13,17 @@ import { HttpClientModule } from '@angular/common/http'; // Added for use HttpCl
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { UploaderComponent } from './uploader/uploader.component';
-import { MatSelectModule} from '@angular/material/select';
-import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LocationCardComponent } from './location-card/location-card.component';
 import { NewLocationPageComponent } from './new-location-page/new-location-page.component';
+import { LocationsPageComponent } from './locations-page/locations-page.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import {FormControl, Validators} from '@angular/forms';
+import {NgIf} from '@angular/common';
+import { NewaccountComponent } from './newaccount/newaccount.component';
 
 
 @NgModule({
@@ -27,7 +33,9 @@ import { NewLocationPageComponent } from './new-location-page/new-location-page.
     UploaderComponent,
     AppComponent,
     LocationCardComponent,
-    NewLocationPageComponent
+    NewLocationPageComponent,
+    LocationsPageComponent,
+    NewaccountComponent,
   ],
 
   imports: [
@@ -39,14 +47,21 @@ import { NewLocationPageComponent } from './new-location-page/new-location-page.
     FormsModule, // Adicionado para poder usar o ngModel
     HttpClientModule, // Added for use HttpClient
     ReactiveFormsModule,
-    BrowserAnimationsModule,// Added for use ReactiveForms
+    BrowserAnimationsModule, // Added for use ReactiveForms
     MatCardModule,
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    MatButtonModule
- ],
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf,
+  ],
 
   providers: [],
   bootstrap: [AppComponent],
