@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { LocationService } from '../location.service';
+import { LocationService } from '../../services/location.service';
 import { Router } from '@angular/router';
 
 
