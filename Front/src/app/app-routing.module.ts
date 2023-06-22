@@ -6,9 +6,8 @@ import { HttpClientModule } from '@angular/common/http'; // Added for use HttpCl
 
 const routes: Routes = [
 
-  // { path: '', component: '' },
-  { path: 'login', component: LoginComponent },
-  { path : 'home', component: HomePageComponent}
+  { path: '', component: HomePageComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({

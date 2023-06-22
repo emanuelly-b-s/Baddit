@@ -2,13 +2,6 @@ import { Component, NgModule } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LocationService } from '../location.service';
 import { Router } from '@angular/router';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
-// import { UploaderComponent } from '../uploader/uploader.component';
-
 
 
 
