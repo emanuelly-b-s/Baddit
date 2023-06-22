@@ -1,4 +1,5 @@
-using Model;
+using Back.Model;
+// using Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ builder.Services.AddCors(opt =>
    });
 });
 
-builder.Services.AddScoped<ProjRedditContext>();
+builder.Services.AddScoped<BadditContext>();
 builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
 
 builder.Services.AddControllers();
