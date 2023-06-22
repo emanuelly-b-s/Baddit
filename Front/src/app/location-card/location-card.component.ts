@@ -1,6 +1,6 @@
 
 import { Component, Input } from '@angular/core';
-import { Location } from '../Location';
+import { Location } from '../../interfaces/Location';
 
 
 @Component({
