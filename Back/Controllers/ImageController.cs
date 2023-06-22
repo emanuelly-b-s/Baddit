@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Model;
+using Back.Model;
 
 [ApiController]
 [Route("img")]
