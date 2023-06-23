@@ -1,14 +1,21 @@
 using System.Linq.Expressions;
 using Back.Model;
 using Microsoft.EntityFrameworkCore;
+using Back.Repositories.User;
 
-using Back.Model;
-
-public class UserRepository : IRepository<UserBaddit>
+public class UserRepository : IUserRepository
 {
     private BadditContext ctx;
 
     public UserRepository(BadditContext ctx) => this.ctx = ctx;
+
+    public async Task<bool> ExistingEmail(string userNickName)
+        => await ctx.UserBaddits
+                    .AnyAsync(u => u.NickUser == userNickName);
+
+    public async Task<bool> ExistingNickName(string userEmail)
+    => await ctx.UserBaddits
+                .AnyAsync(u => u.Email == userEmail);
 
     public async Task Add(UserBaddit obj)
     {
@@ -32,6 +39,7 @@ public class UserRepository : IRepository<UserBaddit>
     public void Update(UserBaddit obj)
     {
         ctx.UserBaddits.Update(obj);
+        ctx.SaveChangesAsync();
     }
 
 }
