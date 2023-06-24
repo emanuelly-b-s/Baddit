@@ -25,11 +25,4 @@ export class NewaccountComponent {
     Validators.minLength(8)
   ]);
 
-  // constructor(private newAccount: NewAccountService) {}
-  // newAccountAdded() {
-  //   this.cep.getStreet(this.cepvalue).subscribe((x) => {
-  //     (this.ruavalue = x.logradouro),
-  //       (this.ufValue = x.uf),
-  //       (this.bairroValue = x.bairro);
-  //   });
 }

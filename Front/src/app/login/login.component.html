@@ -10,6 +10,7 @@
 <div class="container">
   <div class="containerLogin">
     <h1>Login</h1>
+    
     <mat-form-field>
       <input matInput placeholder="Enter your email" [formControl]="email" required>
       <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
@@ -31,7 +32,7 @@
         <div class="colum">Esqueceu sua senha?</div>
       </div>
       <div class="row">
-        <div class="colum"><a routerLink="newaccount">Crie uma agora mesmo!</a></div>
+        <div class="colum"><a routerLink="/createnewaccount">Crie uma agora mesmo!</a></div>
         <div class="colum"><a routerLink="newaccount">blabla</a></div>
       </div>
 
