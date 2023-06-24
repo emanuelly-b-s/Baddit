@@ -1,8 +1,47 @@
-<!--
-<p>
-  Esqueceu sua senha? <a href="{{ '/recover/' + email }}">Recupere agora!</a>
-</p> -->
+<nav class="navbar navbar-light bg-light" style="background-color: #223237;">
+  <a class="navbar-brand" href="#">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbdpVDLLnVzG78DnNgcm7gJJwrvh_joWOmw&usqp=CAU"
+      width="40" height="40" alt="" style="border-radius: 55%;" />
+    Baddit
+  </a>
+</nav>
 
+
+<div class="container">
+  <div class="containerLogin">
+    <h1>Login</h1>
+    <mat-form-field>
+      <input matInput placeholder="Enter your email" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-raised-button routerLink="." (click)="login()"
+      style="background-color: #343a4014!important; height: 12%; color: #343a40; font-weight: 500; border: 0.5px solid #343a40;">Entrar</button>
+    <hr style="border: 0.01rempx solid #223237; width: 80%;">
+    <div class="footerLogin">
+      <div class="row">
+        <div class="colum">Não possui uma conta?
+        </div>
+        <div class="colum">Esqueceu sua senha?</div>
+      </div>
+      <div class="row">
+        <div class="colum"><a routerLink="newaccount">Crie uma agora mesmo!</a></div>
+        <div class="colum"><a routerLink="newaccount">blabla</a></div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- <!--
+<p>
+3
 <div class="container">
   <div class="card">
     <div class="card-body">
@@ -12,15 +51,15 @@
         <mat-form-field style="width: 170%;">
             <mat-label>Enter your email</mat-label>
             <input matInput placeholder="pat@example.com">
-          </mat-form-field>
-      <div class="example-container">
+          </mat-form-field> -->
+<!-- <div class="example-container">
         <mat-form-field style="width: 170%;">
           <mat-label>Enter your password</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+<!-- </button>
         </mat-form-field>
 
         <div class="col-12">
@@ -32,6 +71,4 @@
 
     </div>
   </div>
-</div>
-
-<p>Não possui conta? <a routerLink="newaccount">Crie uma agora mesmo!</a>
+</div> -->

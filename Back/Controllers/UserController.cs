@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using 
 
 using Back.Model;
 using Microsoft.AspNetCore.Authorization;

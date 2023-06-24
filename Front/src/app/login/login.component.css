@@ -1,15 +1,126 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap");
 
-.container{
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-container>* {
+    width: 100%;
+}
+
+hr {
+    color: #223237;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.footerLogin {
+    width: 90%;
+    margin-bottom: 2%;
+}
+
+.colum {
+    width: 50%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: center;
     justify-content: center;
     align-items: center;
+    text-align: center;
+
 }
 
-.example-container{
+a:link {
+    transition: all 0.5s;
+    color: #223237;
+    text-decoration: none;
+}
+
+a:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+button {
+    width: 30%;
+    height: 30%;
+    overflow: hidden;
+    margin: 1px 0;
+    border-radius: 12px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+    margin: 10% auto;
+
+}
+
+.containerLogin {
+    padding: 2px;
+    display: flex;
+    height: 45%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    border-radius: 30px;
+    -webkit-box-shadow: 0px 0px 31px -16px #00000069;
+    -moz-box-shadow: 0px 0px 31px -16px #00000069;
+    box-shadow: 0px 0px 31px -16px #00000069;
+}
+
+.mat-mdc-form-field {
+    --mat-mdc-form-field-floating-label-scale: 0.75;
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 0;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    overflow: hidden;
+}
+
+
+h1 {
+    font-size: 22px;
+    font-weight: 400;
+    font-family: Roboto, sans-serif;
+    letter-spacing: normal;
+    margin: 2% 0 2% 0;
+    color: #343a40;
+    overflow: hidden;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    margin-right: 18%;
+}
+
+a {
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar-light .navbar-brand {
+    color: rgb(255 255 255 / 90%);
+}
+
+.example-container {
     display: grid;
     align-content: center;
     justify-content: center;
@@ -17,6 +128,22 @@
     justify-items: center;
 }
 
+.navbar {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.5rem 3rem;
+}
+
+.bg-light {
+    background-color: #343a40 !important;
+}
 
 
 .card-body {
@@ -32,18 +159,18 @@
     text-align: center;
 }
 
-.card{
+.card {
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.card-title{
+.card-title {
     color: #448379;
-    font-family:'Raleway' 'sans-serif';
+    font-family: 'Raleway' 'sans-serif';
     font-weight: 500;
     margin: 2%;
     font-size: x-large;
-    
-  }
+
+}
