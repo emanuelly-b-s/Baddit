@@ -9,7 +9,6 @@
 
 <div class="container">
   <div class="containerLogin">
-    <h1>Login</h1>
     <input class="form-control" placeholder="Enter your email" [formControl]="email" required email="true" />
     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     <mat-form-field>
