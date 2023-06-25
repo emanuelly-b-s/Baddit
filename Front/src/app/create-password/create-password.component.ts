@@ -1,4 +1,39 @@
+// import { Component, OnChanges, SimpleChanges } from '@angular/core';
+// import { FormControl, Validators } from '@angular/forms';
+
+// @Component({
+//   selector: 'app-create-password',
+//   templateUrl: './create-password.component.html',
+//   styleUrls: ['./create-password.component.css'],
+// })
+// export class CreatePasswordComponent {
+
+//   protected password = new FormControl('', [
+//     Validators.required,
+//     Validators.pattern(
+//       "(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+//     )
+//   ]);
+
+//   getErrorMessage() {
+//     return this.password.hasError('required')
+//       ? 'You must enter a password'
+//       : this.password.hasError('pattern')
+//       ? 'Not a valid password'
+//       : '';
+//   }
+// }
+
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-create-password',
@@ -6,42 +41,19 @@ import { Component, OnChanges, SimpleChanges } from '@angular/core';
   styleUrls: ['./create-password.component.css'],
 })
 export class CreatePasswordComponent {
-  protected passStrong = Array(1);
-  protected password = '';
-  protected repeat = '';
-  protected passClassify = '';
-  protected repeatEqualToPass = true;
 
-  protected updateStrongBar() {
+  password = '';
+  passwordsMatching = '' ;
+  match = true;
 
-    let finalStrong = 1;
-    if (this.password.length > 3) finalStrong++;
-    if (this.password.length > 5) finalStrong++;
-    if (this.password.length > 7) finalStrong++;
-    if (this.password.length > 9) finalStrong++;
-    if (this.password.match('[a-z]') != null) finalStrong++;
-    if (this.password.match('[A-Z]') != null) finalStrong++;
-    if (this.password.match('[0-9]') != null) finalStrong++;
-    if (this.password.match('[W]') != null) finalStrong++;
-    this.passStrong = Array(finalStrong);
-    if (finalStrong < 3) {
-      this.passClassify = 'Senha muito fraca';
-    } else if (finalStrong < 5) {
-      this.passClassify = 'Senha fraca';
-    } else if (finalStrong < 7) {
-      this.passClassify = 'Senha mediana';
-    } else if (finalStrong < 9) {
-      this.passClassify = 'Senha forte';
-    } else {
-      this.passClassify = 'Senha muito forte';
-    }
+  protected matchPassword()
+  {
+    this.match = this.passwordsMatching === this.password;
   }
-  protected updateRepeatCondition() {
-    this.repeatEqualToPass = this.password === this.repeat;
-  }
+
   protected passwordChanged(event: any) {
     this.password = event;
-    this.updateStrongBar();
-    this.updateRepeatCondition();
+    this.matchPassword();
   }
+
 }

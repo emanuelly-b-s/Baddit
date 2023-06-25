@@ -7,60 +7,50 @@
 </nav>
 
 <div class="container">
-  <div class="containerRegister">
+  <div class="input-group mb-3">
     <form class="p-1">
       <div class="pb-2 d-block d-md-none">
-        <h3 class="border-bottom">Cadastro de Usuário</h3>
+        <h3 class="border-bottom">User Registrion</h3>
       </div>
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <label>Primeiro Nome</label>
-          <input type="text" class="form-control" placeholder="Insira o Primeiro nome" />
+          <label>First name</label>
+          <input type="text" class="form-control" placeholder="James" />
         </div>
         <div class="form-group col-sm-6">
-          <label>Último nome</label>
-          <input type="text" class="form-control" placeholder="Insira o Último nome" />
+          <label>Last name</label>
+          <input type="text" class="form-control" placeholder="Daves" />
         </div>
       </div>
       <div class="form-group">
         <label for="">Email:</label>
-        <input type="text" [formControl]="email" email="true" />
-
-        <div *ngIf="email.invalid" style="color: red">
-          <div *ngIf="email.errors?.['pattern']">
-            Please enter valid email address.
-          </div>
-
-        </div>
+        <input class="form-control" placeholder="Enter your email" [formControl]="email" required email="true" />
       </div>
       <div class="form-group">
-        <label for="">Usuario:</label>
-        <input class="form-control" type="text" placeholder="Insira o nome de Usuário" />
+        <label for="">Nick UserName:</label>
+        <input class="form-control" type="text" placeholder="DaviJ" />
       </div>
-      <div class="form-row">
-        <div class="form-group col-sm-6">
-          <label for="">Senha:</label>
-          <input class="form-control" type="password" placeholder="Digite uma Senha" />
-        </div>
-        <div class="form-group col-sm-6">
-          <label for="">Confirmar Senha:</label>
-          <input class="form-control" type="password" placeholder="Confirme a Senha" />
-        </div>
-      </div>
-      <div class="form-row p-1 mb-3">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck1" />
-          <label class="custom-control-label">Eu concordo com os <a href="#">Termos de Uso</a>.</label>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-12">
-          <button class="btn btn-lg btn-success btn-block px-5">Registar</button>
+      <app-create-password></app-create-password>
+      <div class="form-row" style="display: flex;
+          align-items: center;
+          align-content: center;
+          justify-content: center;
+          height: 20%;
+      ">
+        <div class="btnCon">
+          <button class="btn px-5">Sign up</button>
+          <div class="form-row ">
+            <div class="custom-control">
+              <input type="checkbox" class="custom-control-input" id="customCheck1" />
+              <label class="custom-control-label" style="display: flex;">Eu concordo com os <a href="#" style="margin-left: 5px;"> termos de Uso</a></label>
+            </div>
+          </div>
         </div>
       </div>
+      <hr>
       <div class="form-row">
         <div class="form-group col-12">
-          <a class="btn btn-link btn-block"> Já sou Cadastrado </a>
+          <a class="register">Already registered</a>
         </div>
       </div>
     </form>
