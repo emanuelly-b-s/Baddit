@@ -28,6 +28,14 @@ export class PasswordComponent {
     ),
   ]);
 
+  getErrorMessage() {
+    return this.password.hasError('required')
+      ? 'You must enter a value'
+      : this.password.hasError('pattern')
+      ? 'The password needs to have at least 8 characters \n including one lowercase letter \n one uppercase letter, \n one number, \n and one special character.'
+      : '';
+  }
+
   
 
   // Implmentamos OnInit para executar algum comportamento quando o componente inicializa

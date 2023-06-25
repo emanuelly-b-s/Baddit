@@ -43,6 +43,7 @@ import { NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { EmailComponent } from './email/email.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     NewaccountComponent,
     CreatePasswordComponent,
     PasswordComponent,
-    NavComponent
+    NavComponent,
+    EmailComponent
   ],
 
   imports: [

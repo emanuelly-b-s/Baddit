@@ -8,20 +8,22 @@
 
 
 <div class="container">
-  <div class="containerLogin">
-    <input class="form-control" placeholder="Enter your email" [formControl]="email" required email="true" />
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-    <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-    <button mat-raised-button routerLink="." (click)="login()"
-      style="background-color: #343a4014!important; height: 12%; color: #343a40; font-weight: 500; border: 0.5px solid #343a40;">Entrar</button>
-    <hr style="border: 0.01rempx solid #223237; width: 80%;">
-    <div class="footerLogin">
+  <div class="input-group mb-3">
+    <h2 class="border-bottom">Login</h2>
+    <form class="p-1">
+      <div class="form-group">
+        <app-email></app-email>
+      </div>
+      <div class="form-group">
+        <app-password></app-password>
+      </div>
+      <div class="btnCon">
+
+        <button class="btn px-5" routerLink="." (click)="login()">Log in
+        </button>
+      </div>
+
+      <hr>
       <div class="row">
         <div class="colum">Não possui uma conta?
         </div>
@@ -32,40 +34,7 @@
         <div class="colum"><a routerLink="newaccount">blabla</a></div>
       </div>
 
-    </div>
 
+    </form>
   </div>
 </div>
-<!-- <!--
-<p>
-3
-<div class="container">
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title col-12">Login</div>
-
-      <div class="example-container">
-        <mat-form-field style="width: 170%;">
-            <mat-label>Enter your email</mat-label>
-            <input matInput placeholder="pat@example.com">
-          </mat-form-field> -->
-<!-- <div class="example-container">
-        <mat-form-field style="width: 170%;">
-          <mat-label>Enter your password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
-<!-- </button>
-        </mat-form-field>
-
-        <div class="col-12">
-          <button type="submit" mat-stroked-button (click)="login()">Logar</button>
-        </div>
-
-      </div>
-
-
-    </div>
-  </div>
-</div> -->

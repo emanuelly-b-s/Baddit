@@ -20,7 +20,7 @@ export class NewaccountComponent {
     Validators.minLength(5),
   ]);
 
-  paswword = new FormControl('', [
+  password = new FormControl('', [
     Validators.required,
     Validators.minLength(8)
   ]);
