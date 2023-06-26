@@ -21,7 +21,7 @@ public partial class UserBaddit
 
     public string SaldPassword { get; set; } = null!;
 
-    public byte[] UserPhoto { get; set; } = null!;
+    public int? PhotoUser { get; set; }
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
@@ -30,6 +30,8 @@ public partial class UserBaddit
     public virtual ICollection<LocationPhoto> LocationPhotos { get; set; } = new List<LocationPhoto>();
 
     public virtual ICollection<ParticipantForum> ParticipantForums { get; set; } = new List<ParticipantForum>();
+
+    public virtual ImageDatum? PhotoUserNavigation { get; set; }
 
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 

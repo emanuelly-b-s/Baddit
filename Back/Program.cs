@@ -20,10 +20,6 @@ builder.Services.AddCors(opt =>
     });
 });
 
-builder.Services.AddScoped<BadditContext>();
-builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
-builder.Services.AddTransient<IRepository<UserBaddit>, UserRepository>();
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

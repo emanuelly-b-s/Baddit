@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '../interfaces/Location';
 import { LocationService } from '../services/location.service';
+import { ConfigService } from '../services/config.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { LocationService } from '../services/location.service';
 export class LocationsPageComponent implements OnInit {
   locations: Location[] = [];
 
-  constructor (private service: LocationService) {}
+  constructor (private service: LocationService, private config : ConfigService) {}
 
   ngOnInit(): void {
     this.service.all()
@@ -22,7 +23,7 @@ export class LocationsPageComponent implements OnInit {
         list.forEach(element => {
           newList.push({
             name: element.name,
-            imgPath: "$http://localhost:5066/img/" + element.imgPath
+            imgPath: this.config.backEnd + "/img/" + element.imgPath
           })
         });
         this.locations = newList

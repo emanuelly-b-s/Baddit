@@ -38,14 +38,14 @@ public partial class BadditContext : DbContext
     public virtual DbSet<UserBaddit> UserBaddits { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=Baddit;Integrated Security=True;TrustServerCertificate=true");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=CT-C-0013M\\SQLEXPRESS;Initial Catalog=Baddit;Integrated Security=True;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Comment>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Comment__3214EC277D2B8C02");
+            entity.HasKey(e => e.Id).HasName("PK__Comment__3214EC27440EB62B");
 
             entity.ToTable("Comment");
 
@@ -63,11 +63,11 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<Forum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Forum__3214EC277CDD8188");
+            entity.HasKey(e => e.Id).HasName("PK__Forum__3214EC27D3431474");
 
             entity.ToTable("Forum");
 
-            entity.HasIndex(e => e.ForumName, "UQ__Forum__F372648A7D1A216D").IsUnique();
+            entity.HasIndex(e => e.ForumName, "UQ__Forum__F372648AB1FB0728").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Creator)
@@ -88,14 +88,14 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<ImageDatum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ImageDat__3214EC277923D883");
+            entity.HasKey(e => e.Id).HasName("PK__ImageDat__3214EC27BD7358FF");
 
             entity.Property(e => e.Id).HasColumnName("ID");
         });
 
         modelBuilder.Entity<LocationPhoto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Location__3214EC279DB241FB");
+            entity.HasKey(e => e.Id).HasName("PK__Location__3214EC27BCD870A6");
 
             entity.ToTable("LocationPhoto");
 
@@ -115,7 +115,7 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<ParticipantForum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Particip__3214EC279D3DA500");
+            entity.HasKey(e => e.Id).HasName("PK__Particip__3214EC27A3E7EFBA");
 
             entity.ToTable("ParticipantForum");
 
@@ -133,7 +133,7 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<Permission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Permissi__3214EC27BDD37E14");
+            entity.HasKey(e => e.Id).HasName("PK__Permissi__3214EC27A48D572B");
 
             entity.ToTable("Permission");
 
@@ -145,7 +145,7 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Post__3214EC27CF9C7D4F");
+            entity.HasKey(e => e.Id).HasName("PK__Post__3214EC27015B5F73");
 
             entity.ToTable("Post");
 
@@ -167,7 +167,7 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC27D2DACCAD");
+            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC276BBC3519");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.RoleName)
@@ -181,7 +181,7 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<RolePermission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__RolePerm__3214EC27CAAA1533");
+            entity.HasKey(e => e.Id).HasName("PK__RolePerm__3214EC27CCF24C13");
 
             entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -196,7 +196,7 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<UpvoteDownvote>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__UpvoteDo__3214EC271A83F89A");
+            entity.HasKey(e => e.Id).HasName("PK__UpvoteDo__3214EC27A4E2A545");
 
             entity.ToTable("UpvoteDownvote");
 
@@ -213,13 +213,13 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<UserBaddit>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__User_Bad__3214EC272CB8B2AF");
+            entity.HasKey(e => e.Id).HasName("PK__User_Bad__3214EC277B61DBBD");
 
             entity.ToTable("User_Baddit");
 
-            entity.HasIndex(e => e.NickUser, "UQ__User_Bad__7B84F30D21423166").IsUnique();
+            entity.HasIndex(e => e.NickUser, "UQ__User_Bad__7B84F30DC0035A5E").IsUnique();
 
-            entity.HasIndex(e => e.Email, "UQ__User_Bad__A9D105341DE584BB").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__User_Bad__A9D105346DC4DEFC").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.DateBirth).HasColumnType("date");
@@ -236,6 +236,10 @@ public partial class BadditContext : DbContext
             entity.Property(e => e.UserName)
                 .HasMaxLength(55)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.PhotoUserNavigation).WithMany(p => p.UserBaddits)
+                .HasForeignKey(d => d.PhotoUser)
+                .HasConstraintName("FK_ImgUser");
         });
 
         OnModelCreatingPartial(modelBuilder);

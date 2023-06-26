@@ -1,4 +1,4 @@
-$strconn = "Data Source=CT-C-0013M\SQLEXPRESS" + $args[0] + ";Initial Catalog=Baddit" + $args[1] + ";Integrated Security=True;TrustServerCertificate=true"
+$strconn = "Data Source=" + $args[0] + ";Initial Catalog=" + $args[1] + ";Integrated Security=True;TrustServerCertificate=true"
 
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
