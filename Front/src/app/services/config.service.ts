@@ -7,5 +7,5 @@ export class ConfigService {
 
   constructor() { }
 
-  backEnd = 'http://localhost:5066'
+  readonly backEnd = 'http://localhost:5066'
 }
