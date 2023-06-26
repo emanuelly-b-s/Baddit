@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ImageService } from '../services/image.service';
 
 
 @Component({
@@ -12,20 +13,18 @@ export class UploaderComponent implements OnInit {
   message: string = '';
   @Output() public onUploadFinished = new EventEmitter<any>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private service: ImageService) {}
   ngOnInit() {}
-  uploadFile = (files: any) => {
-    if (files.length === 0) {
-      return;
-    }
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
 
-    this.http
-      .post('$http://localhost:5066/img', formData)
-      .subscribe((result) => {
-        this.onUploadFinished.emit(result);
-      });
-  };
+  uploadFile(files: any)
+  {
+    if (files.length === 0)
+      return;
+
+    let fileToUpload = <File>files[0];
+    this.service.upload(fileToUpload, (result : any) =>
+    {
+      this.onUploadFinished.emit(result)
+    })
+  }
 }

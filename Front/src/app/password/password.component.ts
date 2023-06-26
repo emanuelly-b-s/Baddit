@@ -24,19 +24,19 @@ export class PasswordComponent {
     Validators.required,
     Validators.minLength(8),
     Validators.pattern(
-      '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
-    ),
+      '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&]).*'
+    )
   ]);
 
   getErrorMessage() {
     return this.password.hasError('required')
       ? 'You must enter a value'
-      : this.password.hasError('pattern')
+      : this.password.hasError('pattern') || this.password.hasError('minlength')
       ? 'The password needs to have at least 8 characters \n including one lowercase letter \n one uppercase letter, \n one number, \n and one special character.'
       : '';
   }
 
-  
+
 
   // Implmentamos OnInit para executar algum comportamento quando o componente inicializa
 }
