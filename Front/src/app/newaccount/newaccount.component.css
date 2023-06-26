@@ -1,3 +1,8 @@
+
+*{
+    word-break:keep-all;
+}
+
 a:link {
     transition: all 0.5s;
     color: #223237;
@@ -14,6 +19,10 @@ a:hover {
     
 }
 
+.imgRegister{
+    height: 30%;
+}
+
 .mb-3,
 .my-3 {
     margin-bottom: 1rem !important;
@@ -23,11 +32,12 @@ a:hover {
     align-content: center;
     justify-content: center;
     align-items: center;
-
+    height: 100%;
 }
 
 form {
     width: 100%;
+    height: max-content;
 }
 
 
@@ -36,7 +46,6 @@ form {
     flex-direction: row;
     align-content: center;
     justify-content: center;
-    height: max-content;
     width: 60%;
     margin: 3% auto;
     padding: 2% 5%;
@@ -141,13 +150,7 @@ a {
     color: rgb(255 255 255 / 90%);
 }
 
-.example-container {
-    display: grid;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-}
+
 
 .navbar {
     position: relative;
@@ -167,34 +170,6 @@ a {
 }
 
 
-.card-body {
-    flex: 1 1 auto;
-    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-    color: var(--bs-card-color);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.card {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card-title {
-    color: #448379;
-    font-family: 'Raleway' 'sans-serif';
-    font-weight: 500;
-    margin: 2%;
-    font-size: x-large;
-
-}
 
 .btnCon {
     display: flex;
