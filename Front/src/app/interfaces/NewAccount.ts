@@ -1,3 +1,4 @@
+
 export interface NewAccount
 {
     id : string;
@@ -8,4 +9,5 @@ export interface NewAccount
     nickuser: string;
     passworduser: string;
     saldpassword: string;
+    photouser : string;
 }
