@@ -4,18 +4,15 @@ import { ConfigService } from './config.service';
 import { NewAccount } from '../interfaces/NewAccount';
 import { User } from '../interfaces/User';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserRegisterService {
+  constructor(private http: HttpClient, private config: ConfigService) {}
 
-  constructor(private http: HttpClient, private config: ConfigService) { }
-
-  // register()
-  // {
-  //   this.http
-  //     .post(this.config.backEnd + '/newUser', user)
-  //     .subscribe();
-  // }
+  register(user: User) {
+    {
+      this.http.post(this.config.backEnd + '/newUser', user);
+    }
+  }
 }

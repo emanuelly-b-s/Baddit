@@ -25,12 +25,14 @@ import { User } from '../interfaces/User';
   providedIn: 'root'
 })
 export class UserService {
+  config: any;
 
   constructor(private http: HttpClient) { }
   
   add(newUser: User)
   {
-    return this.http.post("$http://localhost:5066/newaccount", newUser)
+    // this.http.post(this.config.backEnd + '/newUser', user);
+    return this.http.post(this.config.backEnd + '/newUser', newUser);
   }
 
   // all()
