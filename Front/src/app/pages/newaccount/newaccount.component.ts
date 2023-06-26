@@ -2,8 +2,8 @@
 // import { NewAccountService } from './../../services/new-account.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
-import { UserRegisterService } from '../services/user-register.service';
-import { User } from '../interfaces/User';
+import { UserService } from '../../services/users.service';
+import { User } from '../../interfaces/User';
 
 
 @Component({

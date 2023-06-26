@@ -23,6 +23,7 @@ a {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 3rem;
+  margin-bottom: 2%
 }
 
 .bg-light {

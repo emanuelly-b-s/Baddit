@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { NewaccountComponent } from './newaccount/newaccount.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { NewaccountComponent } from './pages/newaccount/newaccount.component';
 import { HttpClientModule } from '@angular/common/http'; // Added for use HttpClient
 import { AppComponent } from './app.component';
 

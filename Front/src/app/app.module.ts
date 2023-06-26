@@ -5,16 +5,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NavComponent } from './nav/nav.component';
-import { LoginComponent } from './login/login.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { UploaderComponent } from './uploader/uploader.component';
-import { LocationCardComponent } from './location-card/location-card.component';
-import { NewLocationPageComponent } from './new-location-page/new-location-page.component';
-import { LocationsPageComponent } from './locations-page/locations-page.component';
-import { NewaccountComponent } from './newaccount/newaccount.component';
-import { CreatePasswordComponent } from './create-password/create-password.component';
-import { PasswordComponent } from './password/password.component';
+import { NavComponent } from './pages/nav/nav.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { UploaderComponent } from './pages/uploader/uploader.component';
+import { LocationCardComponent } from './pages/location-card/location-card.component';
+import { NewLocationPageComponent } from './pages/new-location-page/new-location-page.component';
+import { LocationsPageComponent } from './pages/locations-page/locations-page.component';
+import { NewaccountComponent } from './pages/newaccount/newaccount.component';
+import { CreatePasswordComponent } from './pages/create-password/create-password.component';
+import { PasswordComponent } from './pages/password/password.component';
+import { EmailComponent } from './pages/email/email.component';
 
 //material aaaaaaaaaaa
 
@@ -43,7 +44,6 @@ import { NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { EmailComponent } from './email/email.component';
 
 @NgModule({
   declarations: [

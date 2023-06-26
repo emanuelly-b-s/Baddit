@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ImageService } from '../services/image.service';
+import { ImageService } from '../../services/image.service';
 
 
 @Component({
