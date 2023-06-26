@@ -29,13 +29,6 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { HttpClientModule } from '@angular/common/http'; // Added for use HttpClient
 
-import {
-  FormControl,
-  Validators,
-  FormGroup,
-  FormBuilder,
-} from '@angular/forms';
-
 import { NgIf } from '@angular/common';
 
 
@@ -72,11 +65,6 @@ import { EmailComponent } from './email/email.component';
     FormsModule,
     ReactiveFormsModule,
     NgIf,
-    // FormControl,
-    // Validators,
-    // FormGroup,
-    // FormBuilder,
-    RouterModule,
 
     MatCardModule,
     MatSidenavModule,
