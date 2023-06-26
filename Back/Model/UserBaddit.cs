@@ -21,6 +21,8 @@ public partial class UserBaddit
 
     public string SaldPassword { get; set; } = null!;
 
+    public byte[] UserPhoto { get; set; } = null!;
+
     public int? PhotoUser { get; set; }
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();

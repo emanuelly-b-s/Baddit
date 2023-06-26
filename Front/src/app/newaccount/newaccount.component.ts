@@ -13,7 +13,7 @@ import { User } from '../interfaces/User';
 })
 export class NewaccountComponent {
 
-  constructor(private user: User) { }
+  constructor(private userService: UserRegisterService) { }
 
   email = new FormControl('', [
     Validators.required,
@@ -32,23 +32,24 @@ export class NewaccountComponent {
     Validators.minLength(8)
   ]);
 
-  registerUser(user: User)
+  userRegister : User =
   {
+    email : "",
+    username : "",
+    lastname : "",
+    datebirth : new Date(),
+    nickuser : "",
+    passworduser : "",
+    saldpassword: "",
+    photouser : ""
+  }
 
-    userRegister : user =
-    {
-      email : "",
-      username : "",
-      lastname : "",
-      datebirth : new Date(),
-      nickuser : "",
-      passworduser : "",
-      saldpassword: "",
-      photouser : ""
-    }
+  registerUser()
+  {
+   this.userService.register();
+  }
 
 
-    .add(this.)
   }
 
   // @Output() public onUploadFinished = new EventEmitter<any>();
@@ -68,4 +69,4 @@ export class NewaccountComponent {
   //   })
   // }
 
-}
+

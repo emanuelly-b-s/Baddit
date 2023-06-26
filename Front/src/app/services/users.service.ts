@@ -19,6 +19,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NewAccount } from '../interfaces/NewAccount';
+import { User } from '../interfaces/User';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   
-  add(newUser: NewAccount)
+  add(newUser: User)
   {
     return this.http.post("$http://localhost:5066/newaccount", newUser)
   }
