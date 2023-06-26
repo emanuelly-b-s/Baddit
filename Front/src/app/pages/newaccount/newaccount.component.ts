@@ -13,7 +13,7 @@ import { User } from '../interfaces/User';
 })
 export class NewaccountComponent {
 
-  constructor(private user: User) { }
+  constructor() { }
 
   email = new FormControl('', [
     Validators.required,
@@ -48,7 +48,7 @@ export class NewaccountComponent {
     }
 
 
-    .add(this.)
+    // .add(this.)
   }
 
   // @Output() public onUploadFinished = new EventEmitter<any>();
