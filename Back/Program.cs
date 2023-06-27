@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-using Back.Repositories.User;
 
 // using Model;
 
@@ -20,8 +19,10 @@ builder.Services.AddCors(opt =>
     });
 });
 
-builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
 builder.Services.AddScoped<BadditContext>();
+builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
+builder.Services.AddTransient<IRepository<UserBaddit>, UserRepository>();
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

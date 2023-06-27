@@ -3,7 +3,7 @@ using Back.Model;
 using Microsoft.EntityFrameworkCore;
 using Back.Repositories.User;
 
-public class UserRepository : IUserRepository
+public class UserRepository : IRepository<UserBaddit>
 {
     private BadditContext ctx;
 
