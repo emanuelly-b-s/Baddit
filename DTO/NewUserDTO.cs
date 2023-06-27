@@ -16,5 +16,5 @@ public class NewUserDTO
 
     public string SaldPassword { get; set; } = null!;
 
-    // public int? PhotoUser { get; set; }
+    public int? PhotoUser { get; set; }
 }

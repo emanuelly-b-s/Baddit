@@ -14,7 +14,7 @@
 <div class="container">
   <div class="input-group mb-3">
     <h5 class="border-bottom">User Registrion</h5>
-    <form class="p-1">
+    <form class="p-1" [formGroup]="form" >
       <div
         class="form-group"
         style="
@@ -35,6 +35,7 @@
             class="form-control"
             placeholder="James"
             z="user"
+            formControlName="firstname"
           />
         </div>
         <div class="form-group col-sm-6">
@@ -43,7 +44,7 @@
             type="text"
             class="form-control"
             placeholder="Daves"
-            id="lastname"
+            formControlName="lastname"
           />
         </div>
       </div>
@@ -53,11 +54,13 @@
       <div class="form-row">
         <div class="form-group col-sm-6">
           <label for="">Nick UserName:</label>
-          <input class="form-control" type="text" placeholder="DaviJ" id="nickuser"/>
+          <input class="form-control" type="text" placeholder="DaviJ" 
+          formControlName="nickusername"/>
         </div>
         <div class="form-group col-sm-6">
           <label for="">Date of birth</label>
-          <input class="form-control" type="date"/>
+          <input class="form-control" type="date"
+          formControlName="datebirth" />
         </div>
       </div>
       <app-create-password
@@ -89,7 +92,7 @@
               >
             </div>
           </div>
-          <button (click)="register()"
+          <button (click)="register()" 
             class="btn px-5"
             style="display: flex; justify-content: center"
           >

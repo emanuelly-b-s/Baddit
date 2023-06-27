@@ -42,7 +42,7 @@ public class UserController : ControllerBase
             NickUser = userData.NickUser,
             PasswordUser = userData.PasswordUser,
             SaldPassword = "",
-            // PhotoUser = null,
+            PhotoUser = userData.PhotoUser,
         };
 
         await userRep.Add(u);

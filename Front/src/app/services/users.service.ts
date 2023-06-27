@@ -32,7 +32,7 @@ export class UserService {
   add(newUser: User)
   {
     // this.http.post(this.config.backEnd + '/newUser', user);
-    return this.http.post(this.config.backEnd + '/newUser', newUser);
+    return this.http.post("http://localhost:5066" + '/newaccountuser', newUser);
   }
 
   // all()
