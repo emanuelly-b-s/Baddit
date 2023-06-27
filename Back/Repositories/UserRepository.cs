@@ -1,7 +1,6 @@
 using System.Linq.Expressions;
 using Back.Model;
 using Microsoft.EntityFrameworkCore;
-using Back.Repositories.User;
 
 public class UserRepository : IRepository<UserBaddit>
 {

@@ -4,7 +4,6 @@ namespace Baddit.Controllers;
 
 using DTO;
 using Back.Model;
-using Back.Repositories.User;
 using Microsoft.AspNetCore.Cors;
 
 
@@ -16,7 +15,7 @@ public class UserController : ControllerBase
     [HttpGet]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<List<UserBaddit>>> GetAll(
-        [FromServices] IUserRepository userRepository
+        [FromServices] UserRepository userRepository
     )
     {
         var query = await userRepository.Filter(u => true);
@@ -26,8 +25,8 @@ public class UserController : ControllerBase
     [HttpPost("/newaccountuser")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
-        [FromServices] IUserRepository userRep,
-        // [FromServices] IPasswordHasher psh,
+        [FromServices] UserRepository userRep,
+
         [FromBody]  NewUserDTO userData)
     {
         if (await userRep.ExistingNickName(userData.NickUser) || await userRep.ExistingEmail(userData.Email))
@@ -43,8 +42,8 @@ public class UserController : ControllerBase
             DateBirth = userData.DateBirth,
             NickUser = userData.NickUser,
             PasswordUser = userData.PasswordUser,
-            SaldPassword = "",
-            PhotoUser = null,
+            // SaldPassword = "",
+            // PhotoUser = null,
         };
 
         await userRep.Add(u);
@@ -58,7 +57,7 @@ public class UserController : ControllerBase
     // public async Task<ActionResult> Login('                                      
     //     [FromBody] UserLogin loginData,
     //     [FromServices] IPasswordHasher psh,
-    //     [FromServices] IUserRepository userRep
+    //     [FromServices] UserRepository userRep
     // )
     // {
     //     var userList = await userRep.Filter(u => u.Email == loginData.Email);

@@ -4,8 +4,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 
-// using Model;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(opt =>
