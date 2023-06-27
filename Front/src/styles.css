@@ -10,4 +10,8 @@ body {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.mat-drawer-content{
+  background-color: white;
+}
+
 

@@ -3,14 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NewaccountComponent } from './pages/newaccount/newaccount.component';
+import { ForumPageComponent } from './pages/forum-page/forum-page.component';
 import { HttpClientModule } from '@angular/common/http'; // Added for use HttpClient
 
 
 const routes: Routes = [
 
-  { path: '', component: NewaccountComponent },
+  { path: '', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'createnewaccount', component: NewaccountComponent }
+  { path: 'createnewaccount', component: NewaccountComponent },
+  { path: 'forum-home', component	: ForumPageComponent}
 ];
 
 @NgModule({

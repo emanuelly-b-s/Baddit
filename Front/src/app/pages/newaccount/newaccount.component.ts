@@ -4,6 +4,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { UserService } from '../../services/users.service';
 import { User } from '../../interfaces/User';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { User } from '../../interfaces/User';
 })
 export class NewaccountComponent {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   email = new FormControl('', [
     Validators.required,
@@ -32,18 +33,18 @@ export class NewaccountComponent {
     Validators.minLength(8)
   ]);
 
-  registerUser(user: User)
-  {
-    userRegister : user =
-    {
-      email : "",
-      username : "",
-      lastname : "",
-      datebirth : new Date(),
-      nickuser : "",
-      passworduser : "",
-      saldpassword: "",
-      photouser : ""
-    }
-  }
+  // registerUser(user: User)
+  // {
+  //   userRegister : user =
+  //   {
+  //     email : "",
+  //     username : "",
+  //     lastname : "",
+  //     datebirth : new Date(),
+  //     nickuser : "",
+  //     passworduser : "",
+  //     saldpassword: "",
+  //     photouser : ""
+  //   }
+  // }
 }
