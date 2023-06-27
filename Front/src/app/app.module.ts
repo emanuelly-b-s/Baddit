@@ -19,6 +19,13 @@ import { EmailComponent } from './pages/email/email.component';
 
 //material aaaaaaaaaaa
 
+import {
+  FormControl,
+  Validators,
+  FormGroup,
+  FormBuilder,
+} from '@angular/forms';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
@@ -32,11 +39,9 @@ import { HttpClientModule } from '@angular/common/http'; // Added for use HttpCl
 
 import { NgIf } from '@angular/common';
 
-
 //router desgraçado
 import { RouterModule } from '@angular/router';
 
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -65,7 +70,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     FormsModule,
     ReactiveFormsModule,
     NgIf,
-
     MatCardModule,
     MatSidenavModule,
     MatSelectModule,
@@ -78,8 +82,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   exports: [],
 
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 
 })
 export class AppModule {}

@@ -4,11 +4,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NewaccountComponent } from './pages/newaccount/newaccount.component';
 import { HttpClientModule } from '@angular/common/http'; // Added for use HttpClient
-import { AppComponent } from './app.component';
+
 
 const routes: Routes = [
 
-  { path: '', component: HomePageComponent },
+  { path: '', component: NewaccountComponent },
   { path: 'login', component: LoginComponent },
   { path: 'createnewaccount', component: NewaccountComponent }
 ];

@@ -34,7 +34,6 @@ export class NewaccountComponent {
 
   registerUser(user: User)
   {
-
     userRegister : user =
     {
       email : "",
@@ -46,26 +45,5 @@ export class NewaccountComponent {
       saldpassword: "",
       photouser : ""
     }
-
-
-    // .add(this.)
   }
-
-  // @Output() public onUploadFinished = new EventEmitter<any>();
-
-  // constructor(private service: UserRegister) {}
-  // ngOnInit() {}
-
-  // registerUser(us: any)
-  // {
-  //   if (files.length === 0)
-  //     return;
-
-  //   let fileToUpload = <File>files[0];
-  //   this.service.upload(fileToUpload, (result : any) =>
-  //   {
-  //     this.onUploadFinished.emit(result)
-  //   })
-  // }
-
 }
