@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '../interfaces/Location';
-import { LocationService } from '../services/location.service';
-import { ConfigService } from '../services/config.service';
+import { Location } from '../../interfaces/Location';
+import { LocationService } from '../../services/location.service';
+import { ConfigService } from '../../services/config.service';
 
 
 @Component({

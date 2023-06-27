@@ -1,5 +1,4 @@
 <app-nav></app-nav>
-<a href="/createnewaccount">Create new account</a>
 <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened>Seus grupos
         <mat-list role="list">
@@ -8,15 +7,16 @@
             <mat-list-item role="listitem">Item 3</mat-list-item>
         </mat-list>
     </mat-drawer>
-    <mat-drawer-content class="center"><mat-card class="example-card">
+    <mat-drawer-content class="center">
+        <mat-card class="example-card">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>Shiba Inu</mat-card-title>
                 <mat-card-subtitle>Dog Breed</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
-            <mat-card-content>
+            <img class="borda" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                alt="Photo of a Shiba Inu" >
+            <mat-card-content style="margin-bottom: 2%;">
                 <p>
                     The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
                     A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -26,10 +26,9 @@
             <mat-card-actions>
                 <!-- <button (click)="likeButtonClick()" [ngClass]="chooseclassl ? 'like-button' : 'liked'"> Like | {{numberOfLikes}} </button>
 <button (click)="dislikeButtonClick()" [ngClass]="chooseclassd ? 'dislike-button' : 'disliked'"> Dislike | {{numberOfDislike}} </button> -->
-                <button class="btn" style="color: green;"><mat-icon>thumb_up_alt</mat-icon></button>
-                <button class="btn"><mat-icon>thumb_down_alt</mat-icon></button>
-                <button class="btn"><mat-icon>comment</mat-icon></button>
+                <button class="btn"><i class="gg-chevron-up-o"></i></button>
+                <button class="btn"><i class="gg-chevron-down-o"></i></button>
+                <button class="btn"><i class="gg-feed"></i></button>
             </mat-card-actions>
         </mat-card></mat-drawer-content>
 </mat-drawer-container>
-

@@ -2,8 +2,8 @@
 // import { NewAccountService } from './../../services/new-account.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
-import { UserRegisterService } from '../services/user-register.service';
-import { User } from '../interfaces/User';
+import { UserService } from '../../services/users.service';
+import { User } from '../../interfaces/User';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { User } from '../interfaces/User';
 })
 export class NewaccountComponent {
 
-  constructor(private userService: UserRegisterService) { }
+  constructor() { }
 
   email = new FormControl('', [
     Validators.required,
@@ -32,24 +32,23 @@ export class NewaccountComponent {
     Validators.minLength(8)
   ]);
 
-  userRegister : User =
+  registerUser(user: User)
   {
-    email : "",
-    username : "",
-    lastname : "",
-    datebirth : new Date(),
-    nickuser : "",
-    passworduser : "",
-    saldpassword: "",
-    photouser : ""
-  }
 
-  registerUser()
-  {
-  //  this.userService.register();
-  }
+    userRegister : user =
+    {
+      email : "",
+      username : "",
+      lastname : "",
+      datebirth : new Date(),
+      nickuser : "",
+      passworduser : "",
+      saldpassword: "",
+      photouser : ""
+    }
 
 
+    // .add(this.)
   }
 
   // @Output() public onUploadFinished = new EventEmitter<any>();
@@ -69,4 +68,4 @@ export class NewaccountComponent {
   //   })
   // }
 
-
+}
