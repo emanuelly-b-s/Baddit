@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
 })
 export class NewaccountComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router : Router, private userService : UserService) { }
+
 
   email = new FormControl('', [
     Validators.required,
@@ -50,4 +51,17 @@ export class NewaccountComponent {
       this.userRegister.passworduser = newPass;
     }
 
+    emailChanged(newEmail: string)
+    {
+      this.userRegister.email = newEmail;
+    }
+
+
+
+    register()
+    {
+      this.userService.add(this.userRegister)
+        .subscribe(res => {this.router.navigate([""])});
+
+    }
 }

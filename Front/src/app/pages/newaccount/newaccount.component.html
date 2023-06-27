@@ -1,6 +1,12 @@
 <nav class="navbar navbar-light bg-light" style="background-color: #223237">
   <a class="navbar-brand" href="#">
-    <img src="../../assets/Image/test.jfif" width="40" height="40" alt="" style="border-radius: 55%" />
+    <img
+      src="../../assets/Image/test.jfif"
+      width="40"
+      height="40"
+      alt=""
+      style="border-radius: 55%"
+    />
     Baddit
   </a>
 </nav>
@@ -9,64 +15,91 @@
   <div class="input-group mb-3">
     <h5 class="border-bottom">User Registrion</h5>
     <form class="p-1">
-      <div class="form-group" style="
+      <div
+        class="form-group"
+        style="
           display: flex;
           align-items: center;
           align-content: center;
           justify-content: center;
           height: 20%;
-        ">
+        "
+      >
         <app-uploader></app-uploader>
       </div>
       <div class="form-row">
         <div class="form-group col-sm-6">
           <label>First name</label>
-          <input type="text" class="form-control" placeholder="James"  />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="James"
+            id="user"
+          />
         </div>
         <div class="form-group col-sm-6">
           <label>Last name</label>
-          <input type="text" class="form-control" placeholder="Daves" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Daves"
+            id="lastname"
+          />
         </div>
       </div>
       <div class="form-group">
-        <app-email></app-email>
+        <app-email (onEmailChanged)="emailChanged($event)"></app-email>
       </div>
       <div class="form-row">
         <div class="form-group col-sm-6">
           <label for="">Nick UserName:</label>
-          <input class="form-control" type="text" placeholder="DaviJ" />
+          <input class="form-control" type="text" placeholder="DaviJ" id="nickuser"/>
         </div>
         <div class="form-group col-sm-6">
           <label for="">Date of birth</label>
-          <input class="form-control" type="date" />
+          <input class="form-control" type="date"/>
         </div>
       </div>
-      <app-create-password (onPasswordChanged)="passwordChanged($event)"></app-create-password>
-      <div class="form-group" style="
+      <app-create-password
+        (onPasswordChanged)="passwordChanged($event)"
+      ></app-create-password>
+      <div
+        class="form-group"
+        style="
           display: flex;
           align-items: center;
           align-content: center;
           justify-content: center;
           height: 20%;
-        ">
+        "
+      >
         <div class="btnCon">
           <div class="form-group">
             <div class="custom-control">
-              <input type="checkbox" class="custom-control-input" id="customCheck1" />
-              <label class="custom-control-label" style="display: flex">Eu concordo com os
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck1"
+              />
+              <label class="custom-control-label" style="display: flex"
+                >Eu concordo com os
                 <a class="register" href="#" style="margin-left: 5px">
-                  termos de Uso</a></label>
+                  termos de Uso</a
+                ></label
+              >
             </div>
           </div>
-          <button class="btn px-5" style="display: flex; justify-content: center"
-            >
+          <button (click)="register()"
+            class="btn px-5"
+            style="display: flex; justify-content: center"
+          >
             Sign up
           </button>
         </div>
       </div>
       <hr />
       <div class="form-group">
-       <!-- ; <a routerLink="/login" class="register">Already registered</a> -->
+        <!-- ; <a routerLink="/login" class="register">Already registered</a> -->
       </div>
     </form>
   </div>

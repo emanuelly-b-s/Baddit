@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -7,15 +7,22 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./email.component.css'],
 })
 export class EmailComponent {
-  email = new FormControl('', [
-    Validators.required, 
-    Validators.email]);
+  @Output() onEmailChanged = new EventEmitter<string>();
 
-    getErrorMessage() {
-      return this.email.hasError('required')
-        ? 'You must enter a value'
-        : this.email.hasError('email')
-        ? 'Not a valid email'
-        : '';
-    }
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  emailA = '';
+
+  protected emailChanged(event: any) {
+    this.email = event;
+    this.onEmailChanged.emit(this.emailA);
+  }
+
+  getErrorMessage() {
+    return this.email.hasError('required')
+      ? 'You must enter a value'
+      : this.email.hasError('email')
+      ? 'Not a valid email'
+      : '';
+  }
 }
