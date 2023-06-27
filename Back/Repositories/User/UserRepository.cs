@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using Back.Model;
 using Microsoft.EntityFrameworkCore;
 
-public class UserRepository : IRepository<UserBaddit>
+public class UserRepository : IUserRepository
 {
     private BadditContext ctx;
 
