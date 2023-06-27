@@ -5,7 +5,7 @@ namespace Baddit.Controllers;
 using DTO;
 using Back.Model;
 using Microsoft.AspNetCore.Cors;
-
+using Back.Repositories.User;
 
 [ApiController]
 [Route("")]
@@ -15,7 +15,7 @@ public class UserController : ControllerBase
     [HttpGet]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<List<UserBaddit>>> GetAll(
-        [FromServices] UserRepository userRepository
+        [FromServices] IUserRepository<UserBaddit> userRepository
     )
     {
         var query = await userRepository.Filter(u => true);
@@ -25,8 +25,7 @@ public class UserController : ControllerBase
     [HttpPost("/newaccountuser")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
-        [FromServices] UserRepository userRep,
-
+        [FromServices] IUserRepository<UserBaddit> userRep,
         [FromBody]  NewUserDTO userData)
     {
         if (await userRep.ExistingNickName(userData.NickUser) || await userRep.ExistingEmail(userData.Email))
@@ -42,7 +41,7 @@ public class UserController : ControllerBase
             DateBirth = userData.DateBirth,
             NickUser = userData.NickUser,
             PasswordUser = userData.PasswordUser,
-            // SaldPassword = "",
+            SaldPassword = "",
             // PhotoUser = null,
         };
 

@@ -1,8 +1,11 @@
 using System.Linq.Expressions;
 using Back.Model;
 using Microsoft.EntityFrameworkCore;
+using Back.Repositories;
 
-public class UserRepository : IUserRepository
+namespace Back.Repositories.User;
+
+public class UserRepository : IUserRepository<UserBaddit>
 {
     private BadditContext ctx;
 
@@ -42,3 +45,4 @@ public class UserRepository : IUserRepository
     }
 
 }
+

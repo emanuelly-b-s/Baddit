@@ -17,11 +17,9 @@ public partial class UserBaddit
 
     public string NickUser { get; set; } = null!;
 
-    public string PasswordUser { get; set; } = null!;
+    public string? PasswordUser { get; set; }
 
     public string SaldPassword { get; set; } = null!;
-
-    public byte[] UserPhoto { get; set; } = null!;
 
     public int? PhotoUser { get; set; }
 

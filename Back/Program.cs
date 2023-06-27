@@ -1,9 +1,9 @@
 using Back.Model;
+using Back.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-using Back.Repositories.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +19,7 @@ builder.Services.AddCors(opt =>
 });
 
 builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
+builder.Services.AddTransient<IUserRepository<UserBaddit>, UserRepository>();
 builder.Services.AddScoped<BadditContext>();
 
 builder.Services.AddControllers();
