@@ -10,9 +10,9 @@ import { User } from '../interfaces/User';
 export class UserRegisterService {
   constructor(private http: HttpClient, private config: ConfigService) {}
 
-  // register(user: User) {
-  //   {
-  //     this.http.post(this.config.backEnd + '/newUser', user);
-  //   }
-  // }
+  register(user: User) {
+    {
+      this.http.post(this.config.backEnd + '/newUser', user);
+    }
+  }
 }

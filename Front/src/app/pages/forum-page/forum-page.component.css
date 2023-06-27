@@ -1,0 +1,33 @@
+
+.forumName{
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+.container{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+
+main{
+  height: 100%;
+}
+
+hr{
+  border: 8px solid black;
+}
+
+.row{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: start;
+  align-items: center;
+  padding: 1% 5%;
+}

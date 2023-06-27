@@ -33,18 +33,21 @@ export class NewaccountComponent {
     Validators.minLength(8)
   ]);
 
-  // registerUser(user: User)
-  // {
-  //   userRegister : user =
-  //   {
-  //     email : "",
-  //     username : "",
-  //     lastname : "",
-  //     datebirth : new Date(),
-  //     nickuser : "",
-  //     passworduser : "",
-  //     saldpassword: "",
-  //     photouser : ""
-  //   }
-  // }
+    userRegister : User =
+    {
+      email : "",
+      username : "",
+      lastname : "",
+      datebirth : new Date(),
+      nickuser : "",
+      passworduser : "",
+      saldpassword: "",
+      photouser : ""
+    }
+
+    passwordChanged(newPass: string)
+    {
+      this.userRegister.passworduser = newPass;
+    }
+
 }

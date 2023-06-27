@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NewaccountComponent } from './pages/newaccount/newaccount.component';
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
+import { CardsComponent } from './pages/cards/cards.component';
 import { HttpClientModule } from '@angular/common/http'; // Added for use HttpClient
 
 

@@ -42,6 +42,8 @@ import { NgIf } from '@angular/common';
 //router desgraçado
 import { RouterModule } from '@angular/router';
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
+import { CardsComponent } from './pages/cards/cards.component';
+import { PostComponent } from './pages/post/post.component';
 
 
 @NgModule({
@@ -58,7 +60,9 @@ import { ForumPageComponent } from './pages/forum-page/forum-page.component';
     PasswordComponent,
     NavComponent,
     EmailComponent,
-    ForumPageComponent
+    ForumPageComponent,
+    CardsComponent,
+    PostComponent
   ],
 
   imports: [

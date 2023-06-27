@@ -1,3 +1,4 @@
+import { EventEmitter } from '@angular/core';
 // import { Component, OnChanges, SimpleChanges } from '@angular/core';
 // import { FormControl, Validators } from '@angular/forms';
 
@@ -24,7 +25,7 @@
 //   }
 // }
 
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, Output, SimpleChanges } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -46,6 +47,8 @@ export class CreatePasswordComponent {
   passwordsMatching = '' ;
   match = true;
 
+  @Output() onPasswordChanged = new EventEmitter<string>();
+
   protected matchPassword()
   {
     this.match = this.passwordsMatching === this.password;
@@ -54,6 +57,7 @@ export class CreatePasswordComponent {
   protected passwordChanged(event: any) {
     this.password = event;
     this.matchPassword();
+    this.onPasswordChanged.emit(this.password)
   }
 
 }

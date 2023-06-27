@@ -21,11 +21,11 @@
       <div class="form-row">
         <div class="form-group col-sm-6">
           <label>First name</label>
-          <input type="text" class="form-control" placeholder="James" formControlName="username" />
+          <input type="text" class="form-control" placeholder="James"  />
         </div>
         <div class="form-group col-sm-6">
           <label>Last name</label>
-          <input type="text" class="form-control" placeholder="Daves" formControlName="lastname" />
+          <input type="text" class="form-control" placeholder="Daves" />
         </div>
       </div>
       <div class="form-group">
@@ -34,14 +34,14 @@
       <div class="form-row">
         <div class="form-group col-sm-6">
           <label for="">Nick UserName:</label>
-          <input class="form-control" type="text" placeholder="DaviJ" formControlName´="nickusername" />
+          <input class="form-control" type="text" placeholder="DaviJ" />
         </div>
         <div class="form-group col-sm-6">
           <label for="">Date of birth</label>
-          <input class="form-control" type="date" formControlName="datebirth"/>
+          <input class="form-control" type="date" />
         </div>
       </div>
-      <app-create-password></app-create-password>
+      <app-create-password (onPasswordChanged)="passwordChanged($event)"></app-create-password>
       <div class="form-group" style="
           display: flex;
           align-items: center;

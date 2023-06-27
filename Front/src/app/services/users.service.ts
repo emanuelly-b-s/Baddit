@@ -29,11 +29,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  // add(newUser: User)
-  // {
-  //   // this.http.post(this.config.backEnd + '/newUser', user);
-  //   return this.http.post(this.config.backEnd + '/newUser', newUser);
-  // }
+  add(newUser: User)
+  {
+    // this.http.post(this.config.backEnd + '/newUser', user);
+    return this.http.post(this.config.backEnd + '/newUser', newUser);
+  }
 
   // all()
   // {
