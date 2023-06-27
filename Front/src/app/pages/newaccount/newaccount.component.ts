@@ -34,6 +34,23 @@ export class NewaccountComponent {
     Validators.minLength(8)
   ]);
 
+
+  // this.myGroup(
+
+  // )
+
+
+
+  // <div [formGroup]="myGroup">
+  //   <input formControlName="firstName">
+  // </div>
+
+  // In your class:
+
+  // this.myGroup = new FormGroup({
+  //     firstName: new FormControl()
+  // });
+
     userRegister : User =
     {
       email : "",
@@ -60,6 +77,7 @@ export class NewaccountComponent {
 
     register()
     {
+      console.log("a")
       this.userService.add(this.userRegister)
         .subscribe(res => {this.router.navigate([""])});
 
