@@ -51,7 +51,7 @@ public class UserController : ControllerBase
 
     }
 
-    [HttpGet("/login/")]
+    [HttpPost("/login/")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Login(
         [FromBody] LoginUserDTO loginData,
