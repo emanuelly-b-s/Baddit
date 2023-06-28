@@ -32,6 +32,7 @@ export class ForumRegisterComponent {
   {
     this.forumRegister = {...this.form.value};
     console.log(this.forumRegister);
+    console.log(this.form.value);
 
     this.forum.add(this.forumRegister).subscribe(res =>
       {

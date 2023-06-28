@@ -18,6 +18,7 @@
       <div class="form-group">
         <label>Forum name</label>
         <input
+          formControlName="forumName"
           type="text"
           class="form-control"
           placeholder="CodeSpace"
@@ -27,6 +28,7 @@
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Description</label>
         <textarea
+        formControlName="descriptionForum"
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
@@ -47,6 +49,7 @@
       >
         <div class="btnCon">
           <button
+          (click)="register()"
             class="btn px-5"
             style="display: flex; justify-content: center"
           >
