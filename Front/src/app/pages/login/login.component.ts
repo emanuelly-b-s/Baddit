@@ -35,11 +35,11 @@ export class LoginComponent {
     this.loginUser.passworduser = this.password;
     this.loginUser.email = this.emailuser;
 
-    this.userService.login(this.loginUser)
-      .subscribe(res =>
-        {
-          this.router.navigate(["/home/user"])
-        })
+    // this.userService.login(this.loginUser)
+    //   .subscribe(res =>
+    //     {
+    //       this.router.navigate(["/home/user"])
+    //     })
 
   }
 

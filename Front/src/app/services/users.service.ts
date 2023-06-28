@@ -20,7 +20,7 @@ export class UserService {
 
   login(loginUser : UserLogin)
   {
-    return this.http.get("$http://localhost:5066/" + '/login', loginUser);
+    // return this.http.get<User>("$http://localhost:5066/" + '/login', loginUser);
   }
 
   // getUserForum(idUser : number, idForum : number)
