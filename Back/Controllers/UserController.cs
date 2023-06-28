@@ -26,7 +26,7 @@ public class UserController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
         [FromServices] IUserRepository<UserBaddit> userRep,
-        [FromBody]  NewUserDTO userData)
+        [FromBody] NewUserDTO userData)
     {
         if (await userRep.ExistingNickName(userData.NickUser) || await userRep.ExistingEmail(userData.Email))
             return BadRequest("User ja existe");
@@ -51,24 +51,26 @@ public class UserController : ControllerBase
 
     }
 
-    // [HttpPost("/login")]
-    // [EnableCors("MainPolicy")]
-    // public async Task<ActionResult> Login('                                      
-    //     [FromBody] UserLogin loginData,
-    //     [FromServices] IPasswordHasher psh,
-    //     [FromServices] UserRepository userRep
-    // )
-    // {
-    //     var userList = await userRep.Filter(u => u.Email == loginData.Email);
+    [HttpGet("/login/")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult> Login(
+        [FromBody] LoginUserDTO loginData,
+        [FromServices] IUserRepository<UserBaddit> userRep
+    )
+    {
 
-    //     if (userList.Count() == 0)
-    //         return BadRequest();
+        string pass = loginData.PasswordUser;
+        string email = loginData.Email;
+    
+        var userList = await userRep.Filter(u => u.Email.Equals(email) && 
+                                                u.PasswordUser.Equals(pass));
 
-    //     User target = userList.First();
+        if (userList.Count == 0)
+            return BadRequest("email ou senha incorreto");
+        
+        UserBaddit userLogin = userList.First();
 
-    //     if (psh.Validate(loginData.Password, target.Salt, target.Password))
-    //         return Ok();
+        return Ok(userLogin);
 
-    //     return BadRequest();
-    // }
+    }
 }

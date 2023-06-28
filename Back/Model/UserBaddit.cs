@@ -36,4 +36,9 @@ public partial class UserBaddit
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 
     public virtual ICollection<UpvoteDownvote> UpvoteDownvotes { get; set; } = new List<UpvoteDownvote>();
+
+    public static implicit operator UserBaddit?(string? v)
+    {
+        throw new NotImplementedException();
+    }
 }

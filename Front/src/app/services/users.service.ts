@@ -1,25 +1,8 @@
-// import { NewAccount } from './../interfaces/NewAccount';
-// import { HttpClient } from '@angular/common/http';
-// import { Injectable } from '@angular/core';
-// import { NewAccount } from '../interfaces/NewAccount';
-// import { ConfigService } from './config.service';
-
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class NewAccountService {
-//   constructor(private http: HttpClient, private config: ConfigService) {}
-
-//   addUser(newAccount: NewAccount) {
-//     return this.http.post(this.config.backEnd + '/new-user', newAccount);
-
-//   }
-// }
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NewAccount } from '../interfaces/NewAccount';
 import { User } from '../interfaces/User';
+import { UserLogin } from '../interfaces/UserLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -35,10 +18,10 @@ export class UserService {
     return this.http.post("http://localhost:5066" + '/newaccountuser', newUser);
   }
 
-  // all()
-  // {
-  //   return this.http.get<Location[]>("$http://localhost:5066/location")
-  // }
+  login(loginUser : UserLogin)
+  {
+    return this.http.get("$http://localhost:5066/" + '/login', loginUser);
+  }
 
   // getUserForum(idUser : number, idForum : number)
   // {

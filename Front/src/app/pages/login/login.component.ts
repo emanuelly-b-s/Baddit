@@ -1,6 +1,9 @@
+import { User } from './../../interfaces/User';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/users.service';
+import { UserLogin } from 'src/app/interfaces/UserLogin';
 
 @Component({
   selector: 'app-login',
@@ -13,18 +16,31 @@ export class LoginComponent {
   hide = true;
   password = '';
 
-  constructor(private router: Router) {}
-  passwordChanged(event: any) {
-    this.password = event;
+  constructor(private router: Router, private userService: UserService) {}
+
+  passwordChanged(pass: string) {
+    this.password = pass;
+  }
+
+  emailChanged(email: string) {
+    this.emailuser = email;
+  }
+
+  loginUser : UserLogin = {
+    email: '',
+    passworduser: ''
   }
 
   login() {
-    // Aqui precisariamos fazer essa verificação no banco de dados
-    if (this.emailuser == '' && this.password == '123') {
-      // Isso evidentemente não é seguro, mas a ideia é bom e será melhorada no futuro
-      sessionStorage.setItem(this.emailuser, this.password);
-      this.router.navigate(['/homepage']);
-    }
+    this.loginUser.passworduser = this.password;
+    this.loginUser.email = this.emailuser;
+
+    this.userService.login(this.loginUser)
+      .subscribe(res =>
+        {
+          this.router.navigate(["/home/user"])
+        })
+
   }
 
   getErrorMessage() {
