@@ -19,9 +19,8 @@ import { Router } from '@angular/router';
 export class NewaccountComponent {
   constructor(private fb: FormBuilder, private user : UserService) {}
 
-  
-    form : FormGroup  = this.fb.group({
-      email: [
+  form : FormGroup  = this.fb.group({
+      Email: [
         '',
         [
           Validators.required,
@@ -30,59 +29,51 @@ export class NewaccountComponent {
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
         ],
       ],
-      username: ['', [Validators.required, Validators.minLength(5)]],
-      lastname: ['', [Validators.required, Validators.minLength(5)]],
-      datebirth: ['', []],
-      nickusername: ['', [Validators.required, Validators.minLength(8)]],
+      UserName: ['', [Validators.required, Validators.minLength(5)]],
+      LastName: ['', [Validators.required, Validators.minLength(5)]],
+      DateBirth: ['', []],
+      NickUser: ['', [Validators.required, Validators.minLength(8)]],
       passworduser: ['', [Validators.required, Validators.minLength(8)]],
     });
-  
-  
 
   userRegister: User = {
-    email: '',
-    username: '',
-    lastname: '',
-    datebirth: new Date(),
-    nickuser: '',
-    passworduser: '',
+    Email: '',
+    UserName: '',
+    LastName: '',
+    DateBirth: new Date(),
+    NickUser: '',
+    PasswordUser: '',
     saldpassword: '',
-    photouser: '',
+    photouser: 5,
   };
 
-  
+  pass : string = "";
+  email : string = "";
+
   passwordChanged(newPass: string) {
-    this.userRegister.passworduser = newPass;
+    console.log(newPass)
+
+    this.pass  =  newPass;
   }
-  
+
   emailChanged(newEmail: string) {
-    this.userRegister.email = newEmail;
+    console.log(newEmail)
+
+    this.email = newEmail;
   }
-  // email = new FormControl('', [
-  //   Validators.required,
-  //   Validators.email,
-  //   Validators.minLength(4),
-  //   Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-  // ]);
-
-  // username = new FormControl('', [
-  //   Validators.required,
-  //   Validators.minLength(5),
-  // ]);
-
-  // password = new FormControl('', [
-  //   Validators.required,
-  //   Validators.minLength(8),
-  // ]);
 
 
   register() {
-    console.log('a');
-    this.userRegister = {...this.form.value};
-  
-    this.user.add(this.userRegister).subscribe(res =>
-      {
-        console.log('a');
-      });
+    console.log(this.email)
+    // this.userRegister = {...this.form.value};
+    // this.userRegister.PasswordUser = this.pass;
+    // this.userRegister.Email = this.email;
+
+    // console.log(this.userRegister)
+
+    // this.user.add(this.userRegister).subscribe(res =>
+    //   {
+    //     console.log('a');
+    //   });
   }
 }

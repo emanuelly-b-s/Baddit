@@ -40,6 +40,11 @@ export class UserService {
   //   return this.http.get<Location[]>("$http://localhost:5066/location")
   // }
 
+  // getUserForum(idUser : number, idForum : number)
+  // {
+        // return this.http.get<>
+  // }
+
   // seach(query: string)
   // {
   //   return this.http.get<Location[]>("$http://localhost:5066/location?search=" + query)

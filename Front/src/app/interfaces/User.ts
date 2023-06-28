@@ -1,12 +1,10 @@
-
-export interface User
-{
-    email : string;
-    username: string;
-    lastname: string;
-    datebirth : Date;
-    nickuser: string;
-    passworduser: string;
-    saldpassword: string;
-    photouser : string;
+export interface User {
+  Email: string;
+  UserName: string;
+  LastName: string;
+  DateBirth: Date;
+  NickUser: string;
+  PasswordUser: string;
+  saldpassword: string;
+  photouser: number;
 }
