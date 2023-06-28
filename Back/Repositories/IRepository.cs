@@ -7,6 +7,5 @@ public interface IRepository<T>
     void Delete(T obj); //task
     void Update (T obj); //task
 
-    
 
 }
