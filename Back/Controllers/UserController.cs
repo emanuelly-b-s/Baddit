@@ -32,7 +32,7 @@ public class UserController : ControllerBase
             return BadRequest("User ja existe");
 
 
-        UserBaddit u = new UserBaddit()
+        UserBaddit u = new()
         {
 
             Email = userData.Email,
@@ -61,13 +61,13 @@ public class UserController : ControllerBase
 
         string pass = loginData.PasswordUser;
         string email = loginData.Email;
-    
-        var userList = await userRep.Filter(u => u.Email.Equals(email) && 
-                                                u.PasswordUser.Equals(pass));
+
+        var userList = await userRep.Filter(u => u.Email.Equals(email)
+                                                 && u.PasswordUser.Equals(pass));
 
         if (userList.Count == 0)
             return BadRequest("email ou senha incorreto");
-        
+
         UserBaddit userLogin = userList.First();
 
         return Ok(userLogin);

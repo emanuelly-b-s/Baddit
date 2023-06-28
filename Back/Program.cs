@@ -1,4 +1,5 @@
 using Back.Model;
+using Back.Repositories.ForumRep;
 using Back.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -20,6 +21,7 @@ builder.Services.AddCors(opt =>
 
 builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
 builder.Services.AddTransient<IUserRepository<UserBaddit>, UserRepository>();
+builder.Services.AddTransient<IForumRepository<Forum>, ForumRepository>();
 builder.Services.AddScoped<BadditContext>();
 
 builder.Services.AddControllers();
