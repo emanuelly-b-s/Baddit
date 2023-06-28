@@ -7,7 +7,7 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { UserService } from '../../services/users.service';
-import { User } from '../../interfaces/User';
+import { User } from '../../DTO-front/User';
 
 @Component({
   selector: 'app-newaccount',

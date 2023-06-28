@@ -1,9 +1,9 @@
-import { User } from './../../interfaces/User';
+import { User } from '../../DTO-front/User';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/users.service';
-import { UserLogin } from 'src/app/interfaces/UserLogin';
+import { UserLogin } from 'src/app/DTO-front/UserLogin';
 
 @Component({
   selector: 'app-login',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '../../interfaces/Location';
+import { Location } from '../../DTO-front/Location';
 import { LocationService } from '../../services/location.service';
 import { ConfigService } from '../../services/config.service';
 

@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NewAccount } from '../interfaces/NewAccount';
-import { User } from '../interfaces/User';
-import { UserLogin } from '../interfaces/UserLogin';
+import { NewAccount } from '../DTO-front/NewAccount';
+import { User } from '../DTO-front/User';
+import { UserLogin } from '../DTO-front/UserLogin';
 
 @Injectable({
   providedIn: 'root'
