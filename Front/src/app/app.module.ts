@@ -37,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http'; // Added for use HttpClient
 
 import { NgIf } from '@angular/common';
+import { ForumRegisterComponent } from './pages/forum-register/forum-register.component';
 
 
 
@@ -57,7 +58,8 @@ import { NgIf } from '@angular/common';
     ForumPageComponent,
     CardsComponent,
     PostComponent,
-    SideNavComponent
+    SideNavComponent,
+    ForumRegisterComponent
   ],
 
   imports: [
