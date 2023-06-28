@@ -11,8 +11,7 @@ export class ForumService {
 
   add(newForum: Forum)
   {
-    // this.http.post(this.config.backEnd + '/newUser', user);
-    // return this.http.post("http://localhost:5066" + '/newaccountuser', newUser);
+    return this.http.post("http://localhost:5066" + '/new-forum', newForum);
   }
 
 }

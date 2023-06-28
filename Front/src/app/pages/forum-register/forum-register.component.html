@@ -3,7 +3,7 @@
 <div class="container">
   <div class="input-group mb-3">
     <h5 class="border-bottom">Forum Register</h5>
-    <form class="p-1">
+    <form class="p-1" [formGroup]="form">
       <div
         class="form-group"
         style="
@@ -54,10 +54,7 @@
           </button>
         </div>
       </div>
-      <hr />
-      <div class="form-group">
-        <!-- ; <a routerLink="/login" class="register">Already registered</a> -->
-      </div>
+
     </form>
   </div>
 </div>
