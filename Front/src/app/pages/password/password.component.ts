@@ -6,8 +6,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./password.component.css'],
 })
 export class PasswordComponent {
-  // Inputs podem ser acessados de fora do componente como propriedades HTML
-  // Outputs podem ser acessados de fora do componente como eventos no estilo onclick
+
   @Output() valueChanged = new EventEmitter<string>();
   @Input() breakLineOnInput = true;
   @Input() canSeePassword = true;
@@ -37,6 +36,4 @@ export class PasswordComponent {
   }
 
 
-
-  // Implmentamos OnInit para executar algum comportamento quando o componente inicializa
 }

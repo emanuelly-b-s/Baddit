@@ -44,6 +44,7 @@ import { RouterModule } from '@angular/router';
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
 import { CardsComponent } from './pages/cards/cards.component';
 import { PostComponent } from './pages/post/post.component';
+import { SideNavComponent } from './pages/side-nav/side-nav.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { PostComponent } from './pages/post/post.component';
     EmailComponent,
     ForumPageComponent,
     CardsComponent,
-    PostComponent
+    PostComponent,
+    SideNavComponent
   ],
 
   imports: [
