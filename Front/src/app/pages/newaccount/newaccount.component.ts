@@ -3,13 +3,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   Validators,
-  FormControl,
   FormGroup,
   FormBuilder,
 } from '@angular/forms';
 import { UserService } from '../../services/users.service';
 import { User } from '../../interfaces/User';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-newaccount',
@@ -33,7 +31,7 @@ export class NewaccountComponent {
       LastName: ['', [Validators.required, Validators.minLength(5)]],
       DateBirth: ['', []],
       NickUser: ['', [Validators.required, Validators.minLength(8)]],
-      passworduser: ['', [Validators.required, Validators.minLength(8)]],
+      PasswordUser: ['', [Validators.required, Validators.minLength(8)]],
     });
 
   userRegister: User = {
@@ -51,9 +49,7 @@ export class NewaccountComponent {
   email : string = "";
 
   passwordChanged(newPass: string) {
-    console.log(newPass)
-
-    this.pass  =  newPass;
+    this.pass = newPass;
   }
 
   emailChanged(newEmail: string) {
@@ -64,16 +60,15 @@ export class NewaccountComponent {
 
 
   register() {
-    console.log(this.email)
-    // this.userRegister = {...this.form.value};
-    // this.userRegister.PasswordUser = this.pass;
-    // this.userRegister.Email = this.email;
+    this.userRegister = {...this.form.value};
+    this.userRegister.PasswordUser = this.pass;
+    this.userRegister.Email = this.email;
 
-    // console.log(this.userRegister)
+    console.log(this.userRegister)
 
-    // this.user.add(this.userRegister).subscribe(res =>
-    //   {
-    //     console.log('a');
-    //   });
+    this.user.add(this.userRegister).subscribe(res =>
+      {
+        console.log('a');
+      });
   }
 }

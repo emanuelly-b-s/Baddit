@@ -1,3 +1,11 @@
 <label for="">Email</label>
-<input class="form-control" placeholder="Enter your email" formControlName="email" [formControl]="email" required email="true" />
-<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+<input
+  class="form-control"
+  placeholder="Enter your email"
+  [formControl]="email"
+  required
+  email="true"
+  (change)="onEmailChanged"
+/>
+<mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+

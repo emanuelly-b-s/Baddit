@@ -57,7 +57,6 @@ export class CreatePasswordComponent {
   protected passwordChanged(event: any) {
     this.password = event;
     this.matchPassword();
-    console.log(this.password)
     this.onPasswordChanged.emit(this.password)
   }
 

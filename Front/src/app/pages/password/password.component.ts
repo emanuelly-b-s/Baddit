@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
@@ -35,5 +36,8 @@ export class PasswordComponent {
       : '';
   }
 
-
+  passChanged(event: any)
+  {
+    this.valueChanged.emit(this.inputText)
+  }
 }

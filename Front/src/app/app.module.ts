@@ -16,15 +16,14 @@ import { NewaccountComponent } from './pages/newaccount/newaccount.component';
 import { CreatePasswordComponent } from './pages/create-password/create-password.component';
 import { PasswordComponent } from './pages/password/password.component';
 import { EmailComponent } from './pages/email/email.component';
+//router desgraçado
+import { RouterModule } from '@angular/router';
+import { ForumPageComponent } from './pages/forum-page/forum-page.component';
+import { CardsComponent } from './pages/cards/cards.component';
+import { PostComponent } from './pages/post/post.component';
+import { SideNavComponent } from './pages/side-nav/side-nav.component';
 
-//material aaaaaaaaaaa
 
-import {
-  FormControl,
-  Validators,
-  FormGroup,
-  FormBuilder,
-} from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -39,12 +38,6 @@ import { HttpClientModule } from '@angular/common/http'; // Added for use HttpCl
 
 import { NgIf } from '@angular/common';
 
-//router desgraçado
-import { RouterModule } from '@angular/router';
-import { ForumPageComponent } from './pages/forum-page/forum-page.component';
-import { CardsComponent } from './pages/cards/cards.component';
-import { PostComponent } from './pages/post/post.component';
-import { SideNavComponent } from './pages/side-nav/side-nav.component';
 
 
 @NgModule({

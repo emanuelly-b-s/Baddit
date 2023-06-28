@@ -11,11 +11,11 @@ export class EmailComponent {
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  emailA = '';
+
 
   protected emailChanged(event: any) {
     this.email = event;
-    this.onEmailChanged.emit(this.emailA);
+    this.onEmailChanged.emit();
   }
 
   getErrorMessage() {
