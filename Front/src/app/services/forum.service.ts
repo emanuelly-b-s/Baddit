@@ -14,4 +14,9 @@ export class ForumService {
   add(newForum: Forum) {
     return this.http.post(this.back + '/new-forum', newForum);
   }
+
+  all()
+  {
+    return this.http.get<Forum[]>(this.back + "/forums")
+  }
 }

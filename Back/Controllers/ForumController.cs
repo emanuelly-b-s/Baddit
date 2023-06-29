@@ -38,7 +38,6 @@ public class ForumController : ControllerBase
     }
 
 
-
     [HttpGet("{code}")]
     public async Task<ActionResult<Forum>> GetById(
         string code,
@@ -57,8 +56,17 @@ public class ForumController : ControllerBase
         }
 
         return BadRequest("n deu boa");
-
     }
+
+    [HttpGet]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult<List<Forum>>> GetAll(
+        [FromServices] IForumRepository<Forum> forumRepo
+    )
+    {
+        var query = await forumRepo.Filter(f => true);
+        return query;
+    }
+
 }
 
-  
