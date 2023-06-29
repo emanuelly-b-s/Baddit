@@ -28,13 +28,14 @@ public class SecurityServiceJwt : ISecurityServiceJwt
 
         return byteHash;
     }
-    public bool PasswordIsCorrect(string pass, byte[] passHashDTB, string salt)
+    public bool PasswordIsCorrect(string pass, string passHashDTB, string salt)
     {
         var passwordHashed = ApplyHash(pass, salt);
+        var passHashed64 = Convert.ToBase64String(passwordHashed);
 
         for (int i = 0; i < passHashDTB.Length; i++)
         {
-            if (passwordHashed[i] != passHashDTB[i])
+            if (passHashed64[i] != passHashDTB[i])
                 return false;
         }
         return true;

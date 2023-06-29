@@ -45,6 +45,5 @@ public class UserRepository : IUserRepository<UserBaddit>
         ctx.SaveChangesAsync();
     }
 
-   
 }
 

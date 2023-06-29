@@ -35,10 +35,10 @@ public class UserController : ControllerBase
         if (await userRep.ExistingNickName(userData.NickUser) || await userRep.ExistingEmail(userData.Email))
             return BadRequest("User ja existe");
 
-        string salt = passJwt.ApplySalt();
-        byte[] hashPass = passJwt.ApplyHash(userData.PasswordUser, salt);
-        string hashPass64 = Convert.ToBase64String(hashPass);
-        Console.WriteLine(hashPass64);
+        var passUserSalt = passJwt.ApplySalt();
+        var passUserHash = passJwt.ApplyHash(userData.PasswordUser, passUserSalt);
+        var passUserHash64 = Convert.ToBase64String(passUserHash);
+
 
         UserBaddit u = new()
         {
@@ -48,8 +48,8 @@ public class UserController : ControllerBase
             LastName = userData.LastName,
             DateBirth = userData.DateBirth,
             NickUser = userData.NickUser,
-            PasswordUser = hashPass64,
-            SaldPassword = salt,
+            PasswordUser = passUserHash64,
+            SaldPassword = passUserSalt,
             PhotoUser = userData.PhotoUser,
         };
 
@@ -59,22 +59,39 @@ public class UserController : ControllerBase
 
     }
 
-    [HttpPost("{login}")]
+    [HttpPost("/login")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Login([FromBody] LoginUserDTO loginData,
-                                          [FromServices] IUserRepository<UserBaddit> userRep)
+                                          [FromServices] IUserRepository<UserBaddit> userRep,
+                                          [FromServices] ISecurityServiceJwt jwt
+    )
     {
 
-        string pass = loginData.PasswordUser;
-        string email = loginData.Email;
 
-        var userList = await userRep.Filter(u => u.Email.Equals(email)
-                                                 && u.PasswordUser.Equals(pass));
+        var userList = await userRep.Filter(u => u.Email.Equals(loginData.Email));
 
         if (userList.Count == 0)
             return BadRequest("email ou senha incorreto");
 
+
         UserBaddit userLogin = userList.First();
+
+        var hashUserDB = userLogin.PasswordUser;
+        var saltUserDB = userLogin.SaldPassword;
+
+
+        var passUserHash = jwt.PasswordIsCorrect(loginData.PasswordUser,
+                                                 hashUserDB,
+                                                 saltUserDB);
+
+        Console.WriteLine(saltUserDB);
+        Console.WriteLine(hashUserDB);
+        Console.WriteLine(passUserHash);
+
+
+        if (!passUserHash)
+            return BadRequest("email ou senha incorreto");
+
 
         return Ok(userLogin);
 

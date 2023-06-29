@@ -4,5 +4,5 @@ public interface ISecurityServiceJwt
 {
         byte[] ApplyHash(string pass, string salt);
         string ApplySalt();
-        bool PasswordIsCorrect(string pass, byte[] passHashedFromBd, string salt);
+        bool PasswordIsCorrect(string pass, string passHashedFromBd, string salt);
 }
