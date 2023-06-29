@@ -31,12 +31,14 @@ public class UserController : ControllerBase
     )
     {
 
-        string salt = passJwt.ApplySalt();
-        byte[] hashPass = passJwt.ApplyHash(userData.PasswordUser, salt);
 
         if (await userRep.ExistingNickName(userData.NickUser) || await userRep.ExistingEmail(userData.Email))
             return BadRequest("User ja existe");
 
+        string salt = passJwt.ApplySalt();
+        byte[] hashPass = passJwt.ApplyHash(userData.PasswordUser, salt);
+        string hashPass64 = Convert.ToBase64String(hashPass);
+        Console.WriteLine(hashPass64);
 
         UserBaddit u = new()
         {
@@ -46,7 +48,7 @@ public class UserController : ControllerBase
             LastName = userData.LastName,
             DateBirth = userData.DateBirth,
             NickUser = userData.NickUser,
-            PasswordUser = hashPass.ToString(),
+            PasswordUser = hashPass64,
             SaldPassword = salt,
             PhotoUser = userData.PhotoUser,
         };
