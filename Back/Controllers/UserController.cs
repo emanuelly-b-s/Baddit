@@ -84,11 +84,6 @@ public class UserController : ControllerBase
                                                  hashUserDB,
                                                  saltUserDB);
 
-        Console.WriteLine(saltUserDB);
-        Console.WriteLine(hashUserDB);
-        Console.WriteLine(passUserHash);
-
-
         if (!passUserHash)
             return BadRequest("email ou senha incorreto");
 
