@@ -6,6 +6,7 @@ using DTO;
 using Back.Model;
 using Microsoft.AspNetCore.Cors;
 using Back.Repositories.User;
+using SecurityService;
 
 [ApiController]
 [Route("user")]
@@ -25,8 +26,14 @@ public class UserController : ControllerBase
     [HttpPost("/newaccountuser")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register([FromServices] IUserRepository<UserBaddit> userRep,
-                                             [FromBody] NewUserDTO userData)
+                                             [FromBody] NewUserDTO userData,
+                                             [FromServices] ISecurityServiceJwt passJwt
+    )
     {
+
+        string salt = passJwt.ApplySalt();
+        byte[] hashPass = passJwt.ApplyHash(userData.PasswordUser, salt);
+
         if (await userRep.ExistingNickName(userData.NickUser) || await userRep.ExistingEmail(userData.Email))
             return BadRequest("User ja existe");
 
@@ -39,8 +46,8 @@ public class UserController : ControllerBase
             LastName = userData.LastName,
             DateBirth = userData.DateBirth,
             NickUser = userData.NickUser,
-            PasswordUser = userData.PasswordUser,
-            SaldPassword = "",
+            PasswordUser = hashPass.ToString(),
+            SaldPassword = salt,
             PhotoUser = userData.PhotoUser,
         };
 

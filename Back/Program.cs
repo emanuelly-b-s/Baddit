@@ -3,6 +3,7 @@ using Back.Repositories.ForumRep;
 using Back.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using SecurityService;
 using System.Text;
 
 
@@ -22,6 +23,7 @@ builder.Services.AddCors(opt =>
 builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
 builder.Services.AddTransient<IUserRepository<UserBaddit>, UserRepository>();
 builder.Services.AddTransient<IForumRepository<Forum>, ForumRepository>();
+builder.Services.AddTransient<ISecurityServiceJwt, SecurityServiceJwt>();
 builder.Services.AddScoped<BadditContext>();
 
 builder.Services.AddControllers();

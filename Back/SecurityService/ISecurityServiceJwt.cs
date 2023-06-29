@@ -2,7 +2,7 @@ using System;
 namespace SecurityService;
 public interface ISecurityServiceJwt
 {
-        byte[] ApplyHash(string pass);
+        byte[] ApplyHash(string pass, string salt);
         string ApplySalt();
         bool PasswordIsCorrect(string pass, byte[] passHashedFromBd, string salt);
 }

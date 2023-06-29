@@ -22,16 +22,6 @@ public class UserRepository : IUserRepository<UserBaddit>
 
     public async Task Add(UserBaddit obj)
     {
-        SecurityServiceJwt jwt = new();
-
-        var pass = obj.SaldPassword;
-        var salt = jwt.ApplySalt();
-
-        // var passHash = jwt.Hash(pass, salt);
-        
-        // var passHash = jwt.ApplyHash(passHash);
-        
-
         await ctx.UserBaddits.AddAsync(obj);
         await ctx.SaveChangesAsync();
     }
