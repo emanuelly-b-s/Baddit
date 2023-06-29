@@ -12,7 +12,7 @@ import { UploaderComponent } from './pages/uploader/uploader.component';
 import { LocationCardComponent } from './pages/location-card/location-card.component';
 import { NewLocationPageComponent } from './pages/new-location-page/new-location-page.component';
 import { LocationsPageComponent } from './pages/locations-page/locations-page.component';
-import { NewaccountComponent } from './pages/newaccount/newaccount.component';
+import { NewaccountComponent } from './pages/new-account/new-account.component';
 import { CreatePasswordComponent } from './pages/create-password/create-password.component';
 import { PasswordComponent } from './pages/password/password.component';
 import { EmailComponent } from './pages/email/email.component';

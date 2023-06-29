@@ -11,8 +11,8 @@ import { User } from '../../DTO-front/User';
 
 @Component({
   selector: 'app-newaccount',
-  templateUrl: './newaccount.component.html',
-  styleUrls: ['./newaccount.component.css'],
+  templateUrl: './new-account.component.html',
+  styleUrls: ['./new-account.component.css'],
 })
 export class NewaccountComponent {
   constructor(private fb: FormBuilder, private user : UserService) {}

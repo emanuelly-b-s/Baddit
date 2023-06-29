@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Back.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("forum")]
 public class ForumController : ControllerBase
 {
     [HttpPost("/new-forum")]
@@ -39,19 +39,26 @@ public class ForumController : ControllerBase
 
 
 
-    [HttpGet("{id}")]
+    [HttpGet("{code}")]
     public async Task<ActionResult<Forum>> GetById(
-        int code,
+        string code,
         [FromServices] IForumRepository<Forum> forumRep
     )
     {
-        var query = await forumRep.Filter(f => f.Id == code);
-        var forum = query.FirstOrDefault();
+        if (int.TryParse(code, out int id))
+        {
+            var query = await forumRep.Filter(f => f.Id == id);
+            var forum = query.FirstOrDefault();
 
-        if (forum is null)
-            return NotFound();
+            if (forum is null)
+                return NotFound();
 
-        return forum;
+            return forum;
+        }
+
+        return BadRequest("n deu boa");
+
+
     }
 
 
