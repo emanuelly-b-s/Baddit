@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Security.Jwt;
+
 
 namespace Baddit.Controllers;
 
@@ -61,34 +63,69 @@ public class UserController : ControllerBase
 
     [HttpPost("/login")]
     [EnableCors("MainPolicy")]
-    public async Task<ActionResult> Login([FromBody] LoginUserDTO loginData,
+    public async Task<ActionResult<LoginResultDTO>> Login([FromBody] LoginUserDTO loginData,
                                           [FromServices] IUserRepository<UserBaddit> userRep,
-                                          [FromServices] ISecurityServiceJwt jwt
+                                          [FromServices] ISecurityServiceJwt jwt,
+                                          [FromServices] IJwtService jwtService
+
     )
     {
-
+        var result = new LoginResultDTO();
 
         var userList = await userRep.Filter(u => u.Email.Equals(loginData.Email));
 
-        if (userList.Count == 0)
+        if (result.UserExists = userList.Count > 0)
             return BadRequest("email ou senha incorreto");
-
 
         UserBaddit userLogin = userList.First();
 
         var hashUserDB = userLogin.PasswordUser;
         var saltUserDB = userLogin.SaldPassword;
 
-
         var passUserHash = jwt.PasswordIsCorrect(loginData.PasswordUser,
                                                  hashUserDB,
                                                  saltUserDB);
 
+        if (jwt.PasswordIsCorrect(loginData.PasswordUser,
+                                                 hashUserDB,
+                                                 saltUserDB))
+        {
+            string token = jwtService.GetToken(new UserSecurityToken { IDUser = userLogin.Id, Authenticated = true });
+
+            result.Jwt = token;
+            result.Success = true;
+            return Ok(result);
+        }
+
         if (!passUserHash)
             return BadRequest("email ou senha incorreto");
 
-
+        result.Success = false;
         return Ok(userLogin);
 
     }
+
+    [HttpPost("tokenValidate")]
+    public async Task<ActionResult<UserSecurityToken>> ValidateJwt(
+        [FromServices] IJwtService jwtService,
+        [FromBody] JwtDTO jwt
+    )
+    {
+        if(jwt.ValueToken == "" || jwt.ValueToken is null)
+        {
+            return Ok(new UserSecurityToken{ Authenticated = false });
+        }
+
+        try
+        {
+            var result = jwtService.Validate<UserSecurityToken>(jwt.ValueToken);
+            return Ok(result);
+        } catch (Exception)
+        {
+            return Ok(new UserSecurityToken { Authenticated = false });
+        }
+    }
+
+    
+
 }

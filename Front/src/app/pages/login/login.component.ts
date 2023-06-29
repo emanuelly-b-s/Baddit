@@ -19,7 +19,6 @@ export class LoginComponent {
   hide = true;
 
   constructor(
-    private fb: FormBuilder,
     private router: Router,
     private userService: UserService
   ) {}
@@ -38,22 +37,36 @@ export class LoginComponent {
   }
 
   emailChanged(newEmail: string) {
-    console.log(newEmail)
     this.email = newEmail;
   }
 
+  returnLogin: boolean = false;
+
+
   login() {
-    this.loginUser.passworduser = this.pass;
-    this.loginUser.email = this.email;
+//     this.loginUser.passworduser = this.pass;
+//     this.loginUser.email = this.email;
 
-    console.log(this.loginUser)
+//     console.log(this.loginUser)
 
-    this.userService.login(this.loginUser).subscribe(res =>
-      {
-        console.log("deu boa kk")
-      })
+//     this.userService.login(this.loginUser).subscribe(res =>
+//       {
+//         if (!res.sucess) {
+//           this.returnLogin = true;
+//         }
+//       })
 
-  }
+//   }
+
+//   if (!res.success) {
+//     this.loginFailure = true;
+//     return;
+// }
+
+// sessionStorage.setItem('jwtSession', res.jwt);
+// this.router.navigate(['/home']);
+// });
+}
 
   // getErrorMessage() {
   //   return this.form.Email.hasError('required')
