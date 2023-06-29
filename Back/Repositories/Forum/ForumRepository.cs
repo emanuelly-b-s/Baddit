@@ -11,6 +11,10 @@ public class ForumRepository : IForumRepository<Forum>
 
     public ForumRepository(BadditContext ctx) => this.ctx = ctx;
 
+    // public async Task<Forum> GetByName(int id) 
+    //     =>  await ctx.Forums.Where(f => f.Id == id)
+    //                         .FirstOrDefaultAsync();
+
     public async Task<bool> ExistingForum(string forumName)
         => await ctx.Forums
                     .AnyAsync(f => f.ForumName == forumName);

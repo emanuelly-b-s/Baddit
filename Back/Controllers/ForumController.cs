@@ -37,4 +37,22 @@ public class ForumController : ControllerBase
 
     }
 
+
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Forum>> GetById(
+        int code,
+        [FromServices] IForumRepository<Forum> forumRep
+    )
+    {
+        var query = await forumRep.Filter(f => f.Id == code);
+        var forum = query.FirstOrDefault();
+
+        if (forum is null)
+            return NotFound();
+
+        return forum;
+    }
+
+
 }
