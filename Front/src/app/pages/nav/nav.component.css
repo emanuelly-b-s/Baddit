@@ -35,3 +35,7 @@ img {
   border-style: none;
   margin-right: 18%;
 }
+
+input{
+  border-radius: 22px;
+}
