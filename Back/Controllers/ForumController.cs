@@ -58,8 +58,7 @@ public class ForumController : ControllerBase
 
         return BadRequest("n deu boa");
 
-
     }
-
-
 }
+
+  

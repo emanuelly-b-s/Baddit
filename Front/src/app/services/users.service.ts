@@ -18,10 +18,11 @@ export class UserService {
     return this.http.post("http://localhost:5066" + '/newaccountuser', newUser);
   }
 
-  login(loginUser : UserLogin)
+  login(login: UserLogin)
   {
-    // return this.http.get<User>("$http://localhost:5066/" + '/login', loginUser);
+    return this.http.post<UserLogin>("http://localhost:5062/user/login", login)
   }
+
 
   // getUserForum(idUser : number, idForum : number)
   // {

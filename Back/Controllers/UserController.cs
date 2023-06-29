@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Cors;
 using Back.Repositories.User;
 
 [ApiController]
-[Route("")]
+[Route("user")]
 public class UserController : ControllerBase
 {
 
@@ -51,7 +51,7 @@ public class UserController : ControllerBase
 
     }
 
-    [HttpPost("/login/")]
+    [HttpPost("{login}")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Login(
         [FromBody] LoginUserDTO loginData,

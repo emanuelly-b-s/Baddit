@@ -1,7 +1,12 @@
-import { User } from '../../DTO-front/User';
+import { User } from './../../DTO-front/User';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { UserService } from 'src/app/services/users.service';
 import { UserLogin } from 'src/app/DTO-front/UserLogin';
 
@@ -11,43 +16,50 @@ import { UserLogin } from 'src/app/DTO-front/UserLogin';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  emailuser = '';
   hide = true;
-  password = '';
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
-  passwordChanged(pass: string) {
-    this.password = pass;
-  }
 
-  emailChanged(email: string) {
-    this.emailuser = email;
-  }
-
-  loginUser : UserLogin = {
+  loginUser: UserLogin = {
     email: '',
-    passworduser: ''
+    passworduser: '',
+  };
+
+  pass : string = "";
+  email : string = "";
+
+  passwordChanged(newPass: string) {
+    this.pass = newPass;
+  }
+
+  emailChanged(newEmail: string) {
+    console.log(newEmail)
+    this.email = newEmail;
   }
 
   login() {
-    this.loginUser.passworduser = this.password;
-    this.loginUser.email = this.emailuser;
+    this.loginUser.passworduser = this.pass;
+    this.loginUser.email = this.email;
 
-    // this.userService.login(this.loginUser)
-    //   .subscribe(res =>
-    //     {
-    //       this.router.navigate(["/home/user"])
-    //     })
+    console.log(this.loginUser)
+
+    this.userService.login(this.loginUser).subscribe(res =>
+      {
+        console.log("deu boa kk")
+      })
 
   }
 
-  getErrorMessage() {
-    return this.email.hasError('required')
-      ? 'You must enter a value'
-      : this.email.hasError('email')
-      ? 'Not a valid email'
-      : '';
-  }
+  // getErrorMessage() {
+  //   return this.form.Email.hasError('required')
+  //     ? 'You must enter a value'
+  //     : this.email.hasError('email')
+  //     ? 'Not a valid email'
+  //     : '';
+  // }
 }

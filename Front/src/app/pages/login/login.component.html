@@ -1,43 +1,54 @@
-<nav class="navbar navbar-light bg-light" style="background-color: #223237;">
+<nav class="navbar navbar-light bg-light" style="background-color: #223237">
   <a class="navbar-brand" href="#">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbdpVDLLnVzG78DnNgcm7gJJwrvh_joWOmw&usqp=CAU"
-      width="40" height="40" alt="" style="border-radius: 55%;" />
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbdpVDLLnVzG78DnNgcm7gJJwrvh_joWOmw&usqp=CAU"
+      width="40"
+      height="40"
+      alt=""
+      style="border-radius: 55%"
+    />
     Baddit
   </a>
 </nav>
-
 
 <div class="container">
   <div class="input-group mb-3">
     <h5 class="border-bottom">Login</h5>
     <form class="p-1">
       <div class="form-group">
-        <app-email></app-email>
+        <app-email (onEmailChanged)="emailChanged($event)"></app-email>
       </div>
       <div class="form-group">
-        <app-password></app-password>
+        <app-password
+          (onPasswordChanged)="passwordChanged($event)"
+        ></app-password>
       </div>
-      <div class="row" style="display: flex;
-      flex-direction: row;
-      align-content: center;
-      justify-content: center;
-      align-items: center;">
-        <button class="btn px-5" routerLink="." (click)="login()">Log in
+      <div
+        class="row"
+        style="
+          display: flex;
+          flex-direction: row;
+          align-content: center;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <button class="btn px-5" routerLink="." (click)="login()">
+          Log in
         </button>
       </div>
 
-      <hr>
+      <hr />
       <div class="row">
-        <div class="colum">Não possui uma conta?
-        </div>
+        <div class="colum">Não possui uma conta?</div>
         <div class="colum">Esqueceu sua senha?</div>
       </div>
       <div class="row">
-        <div class="colum"><a routerLink="../createnewaccount">Crie uma agora mesmo!</a></div>
+        <div class="colum">
+          <a routerLink="../createnewaccount">Crie uma agora mesmo!</a>
+        </div>
         <div class="colum"><a routerLink="newaccount">blabla</a></div>
       </div>
-
-
     </form>
   </div>
 </div>
