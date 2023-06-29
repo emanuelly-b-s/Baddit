@@ -12,18 +12,18 @@ export class ForumRegisterComponent {
   constructor(private fb: FormBuilder, private forum: ForumService) {}
 
   form: FormGroup = this.fb.group({
-    creator: [''],
-    forumName: ['', Validators.required, Validators.minLength(2)],
+    forumName: ['', [Validators.required, Validators.minLength(2)]],
     descriptionForum: [
       '',
-      Validators.required,
-      Validators.minLength(25),
-      Validators.maxLength(120),
+      [
+        Validators.required,
+        Validators.minLength(25),
+        Validators.maxLength(120),
+      ]
     ],
   });
 
   forumRegister: Forum = {
-    creator: '',
     forumName: '',
     descriptionForum: ''
   };
@@ -31,8 +31,10 @@ export class ForumRegisterComponent {
   register()
   {
     this.forumRegister = {...this.form.value};
+
     console.log(this.forumRegister);
     console.log(this.form.value);
+
 
     this.forum.add(this.forumRegister).subscribe(res =>
       {

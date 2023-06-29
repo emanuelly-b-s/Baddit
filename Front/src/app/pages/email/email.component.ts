@@ -14,8 +14,7 @@ export class EmailComponent {
 
 
   protected emailChanged(event: any) {
-    this.email = event;
-    this.onEmailChanged.emit();
+    this.onEmailChanged.emit(this.email.value ?? "");
   }
 
   getErrorMessage() {

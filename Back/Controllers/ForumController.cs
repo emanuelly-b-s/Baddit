@@ -26,7 +26,6 @@ public class ForumController : ControllerBase
 
         Forum f = new()
         {
-            Creator = forumData.Creator,
             ForumName = forumData.ForumName,
             DescriptionForum = forumData.DescriptionForum,
 

@@ -5,7 +5,7 @@
   [formControl]="email"
   required
   email="true"
-  (change)="onEmailChanged"
+  (change)="emailChanged($event)"
 />
 <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
 
