@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using Back.Model;
 using Microsoft.EntityFrameworkCore;
 using Back.Repositories;
+using SecurityService;
 
 namespace Back.Repositories.User;
 
@@ -21,6 +22,16 @@ public class UserRepository : IUserRepository<UserBaddit>
 
     public async Task Add(UserBaddit obj)
     {
+        SecurityServiceJwt jwt = new();
+
+        var pass = obj.SaldPassword;
+        var salt = jwt.ApplySalt();
+
+        // var passHash = jwt.Hash(pass, salt);
+        
+        // var passHash = jwt.ApplyHash(passHash);
+        
+
         await ctx.UserBaddits.AddAsync(obj);
         await ctx.SaveChangesAsync();
     }
@@ -44,5 +55,6 @@ public class UserRepository : IUserRepository<UserBaddit>
         ctx.SaveChangesAsync();
     }
 
+   
 }
 
