@@ -24,9 +24,8 @@ public class UserController : ControllerBase
 
     [HttpPost("/newaccountuser")]
     [EnableCors("MainPolicy")]
-    public async Task<ActionResult> Register(
-        [FromServices] IUserRepository<UserBaddit> userRep,
-        [FromBody] NewUserDTO userData)
+    public async Task<ActionResult> Register([FromServices] IUserRepository<UserBaddit> userRep,
+                                             [FromBody] NewUserDTO userData)
     {
         if (await userRep.ExistingNickName(userData.NickUser) || await userRep.ExistingEmail(userData.Email))
             return BadRequest("User ja existe");
@@ -53,10 +52,8 @@ public class UserController : ControllerBase
 
     [HttpPost("{login}")]
     [EnableCors("MainPolicy")]
-    public async Task<ActionResult> Login(
-        [FromBody] LoginUserDTO loginData,
-        [FromServices] IUserRepository<UserBaddit> userRep
-    )
+    public async Task<ActionResult> Login([FromBody] LoginUserDTO loginData,
+                                          [FromServices] IUserRepository<UserBaddit> userRep)
     {
 
         string pass = loginData.PasswordUser;
