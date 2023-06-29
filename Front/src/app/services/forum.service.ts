@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Forum } from '../DTO-front/Forum';
+import { ConfigService } from './config.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ForumService {
+  constructor(private http: HttpClient, private config: ConfigService) {}
 
-  constructor(private http: HttpClient) { }
+  back = this.config.backEnd;
 
-  add(newForum: Forum)
-  {
-    return this.http.post("http://localhost:5066" + '/new-forum', newForum);
+  add(newForum: Forum) {
+    return this.http.post(this.back + '/new-forum', newForum);
   }
-
 }

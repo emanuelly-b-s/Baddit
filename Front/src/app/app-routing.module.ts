@@ -13,7 +13,7 @@ const routes: Routes = [
 
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'createnewaccount', component: NewaccountComponent },
+  { path: 'new-account', component: NewaccountComponent },
   { path: 'forum-home', component	: ForumPageComponent},
   { path : 'forum-register', component : ForumRegisterComponent }
 ];

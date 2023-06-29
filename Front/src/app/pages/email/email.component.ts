@@ -12,7 +12,6 @@ export class EmailComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
 
 
-
   protected emailChanged(event: any) {
     this.onEmailChanged.emit(this.email.value ?? "");
   }
