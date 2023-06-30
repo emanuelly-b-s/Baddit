@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  padding: 5rem 5rem;
+}
+
+.input-group {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: stretch;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  align-content: center;
+}
+
+form{
+  width: 100%;
+}

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../DTO-front/User';
+import { UserRegister } from '../DTO-front/UserRegister';
 import { UserLogin } from '../DTO-front/UserLogin';
 import { ConfigService } from './config.service';
 import { Jwt } from '../DTO-front/Jwt';
@@ -15,7 +16,7 @@ export class UserService {
 
   back = this.config.backEnd;
 
-  add(newUser: User) {
+  add(newUser: UserRegister) {
     return this.http.post(this.back + '/newaccountuser', newUser);
   }
 

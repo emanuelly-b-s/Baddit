@@ -1,4 +1,4 @@
-import { User } from './../../DTO-front/User';
+import { User } from '../../DTO-front/UserRegister';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {
@@ -39,7 +39,7 @@ export class LoginComponent {
   returnLogin: boolean = false;
 
   login() {
-    
+
     this.loginUser.passworduser = this.pass;
     this.loginUser.email = this.email;
 
@@ -51,7 +51,7 @@ export class LoginComponent {
       }
 
       sessionStorage.setItem('jwtSession', res.jwt);
-      this.router.navigate(['/home-page']);
+      this.router.navigate(['']);
     });
   }
 }

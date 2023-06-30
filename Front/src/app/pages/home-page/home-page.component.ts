@@ -1,4 +1,7 @@
 import {Component} from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/DTO-front/User';
+import { UserService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-home-page',
@@ -6,6 +9,34 @@ import {Component} from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+  constructor(private userService: UserService, private router: Router) {}
+
+  authenticated: boolean = true;
+
+  user: User = {
+      id: 0,
+      UserName: '',
+      Email: '',
+      photouser: 0,
+      // groups: [],
+      // posts: [],
+  };
+
+  ngOnInit(): void {
+      let jwt = sessionStorage.getItem('jwtSession') ?? '';
+
+      this.userService.getUser({ Value: jwt }).subscribe({
+          next: (res: User) => {
+              this.user = res;
+
+              console.log(this.user);
+          },
+          error: (error: any) => {
+              this.router.navigate(['/']);
+          },
+      });
+  }
+}
 
 }
 

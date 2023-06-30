@@ -95,7 +95,6 @@ public class UserController : ControllerBase
 
             result.Jwt = token;
             result.SucessOnSession = true;
-            Console.WriteLine(result);
             return Ok(result);
         }
 

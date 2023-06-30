@@ -1,10 +1,11 @@
+// import { Group } from './Group';
+// import { Post } from './Post';
+
 export interface User {
-  Email: string;
-  UserName: string;
-  LastName: string;
-  DateBirth: Date;
-  NickUser: string;
-  PasswordUser: string;
-  saldpassword: string;
-  photouser: number;
+    id: number;
+    UserName: string;
+    Email: string;
+    photouser: number;
+    // groups: Group[];
+    // posts: Post[];
 }

@@ -7,7 +7,8 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { UserService } from '../../services/users.service';
-import { User } from '../../DTO-front/User';
+import { UserRegister } from '../../DTO-front/UserRegister';
+// import { User } from '../../DTO-front/UserRegister';
 
 @Component({
   selector: 'app-newaccount',
@@ -34,14 +35,13 @@ export class NewaccountComponent {
       PasswordUser: ['', [Validators.required, Validators.minLength(8)]],
     });
 
-  userRegister: User = {
+  userRegister: UserRegister = {
     Email: '',
     UserName: '',
     LastName: '',
     DateBirth: new Date(),
     NickUser: '',
     PasswordUser: '',
-    saldpassword: '',
     photouser: 5,
   };
 
