@@ -38,7 +38,8 @@ export class UserService {
   }
 
   getUserForLogin(jwtSession: Jwt) {
-    return this.http.post<User>(this.back + 'user/get', jwtSession);
+    console.log('chegou aq')
+    return this.http.post<User>(this.back + 'user/getUser', jwtSession);
   }
 
 }

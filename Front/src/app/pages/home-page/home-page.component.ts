@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/DTO-front/User';
 import { UserService } from 'src/app/services/users.service';
@@ -6,7 +6,7 @@ import { UserService } from 'src/app/services/users.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent {
   constructor(private userService: UserService, private router: Router) {}
@@ -14,31 +14,41 @@ export class HomePageComponent {
   authenticated: boolean = true;
 
   user: User = {
-      id: 0,
-      UserName: '',
-      Email: '',
-      photouser: 0,
-      // groups: [],
-      // posts: [],
+    id: 0,
+    UserName: '',
+    Email: '',
+    photouser: 0,
+    // groups: [],
+    // posts: [],
   };
 
   ngOnInit(): void {
-      let jwt = sessionStorage.getItem('jwtSession') ?? '';
+    let jwt = sessionStorage.getItem('jwtSession') ?? '';
+    console.log('entro na pag kk')
 
-      this.userService.getUserForLogin({ Value: jwt }).subscribe({
-          next: (res: User) => {
-              this.user = res;
+    let teste = { value: jwt };
+    console.log(teste)
 
-              console.log(this.user);
-          },
-          error: (error: any) => {
-              this.router.navigate(['/']);
-          },
-      });
+    this.userService.getUserForLogin({ value: jwt }).subscribe({
+
+      next: (res: User) => {
+
+        console.log({value : jwt})
+        this.user = res;
+        console.log(this.user);
+      },
+      error: (error: any) => {
+        this.router.navigate(['/']);
+      },
+    });
+
+    console.log(this.user.UserName)
+  }
+
+  logoff() {
+      sessionStorage.setItem('jwtSession', '');
   }
 }
-
-
 
 // import { Component} from "@angular/core";
 // @Component({
