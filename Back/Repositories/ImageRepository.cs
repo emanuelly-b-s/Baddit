@@ -31,6 +31,11 @@ public class ImageRepository : IRepository<ImageDatum>
         return await query.ToListAsync();
     }
 
+    public Task<List<ImageDatum>> GetAll(ImageDatum ctx)
+    {
+        throw new NotImplementedException();
+    }
+
     // public Task Update(ImageDatum obj)
     // {
     //     throw new NotImplementedException();

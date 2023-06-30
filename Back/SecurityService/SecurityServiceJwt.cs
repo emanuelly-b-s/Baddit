@@ -33,9 +33,6 @@ public class SecurityServiceJwt : ISecurityServiceJwt
         var passwordHashed = ApplyHash(pass, salt);
         var passHashed64 = Convert.ToBase64String(passwordHashed);
 
-        Console.WriteLine(passHashDTB);
-        Console.WriteLine(passHashed64);
-
         if (passHashDTB == passHashed64)
             return true;
 

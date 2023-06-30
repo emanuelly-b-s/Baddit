@@ -1,11 +1,8 @@
 using Back.Model;
 using Back.Repositories.ForumRep;
 using Back.Repositories.User;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using SecurityService;
-using System.Text;
-
+using Security.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +21,12 @@ builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
 builder.Services.AddTransient<IUserRepository<UserBaddit>, UserRepository>();
 builder.Services.AddTransient<IForumRepository<Forum>, ForumRepository>();
 builder.Services.AddTransient<ISecurityServiceJwt, SecurityServiceJwt>();
+builder.Services.AddTransient<IJwtService, JwtService>();
 builder.Services.AddScoped<BadditContext>();
+
+builder.Services.AddTransient<IPasswordProvider>(p =>{
+    return new PasswordProvider("passwordForJWT");
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

@@ -3,6 +3,7 @@ using Back.Model;
 using Microsoft.EntityFrameworkCore;
 using Back.Repositories;
 using SecurityService;
+using Microsoft.Identity.Client.Extensibility;
 
 namespace Back.Repositories.User;
 
@@ -26,10 +27,10 @@ public class UserRepository : IUserRepository<UserBaddit>
         await ctx.SaveChangesAsync();
     }
 
-    public void Delete(UserBaddit obj)
+    public async void Delete(UserBaddit obj)
     {
         ctx.UserBaddits.Remove(obj);
-        ctx.SaveChangesAsync();
+        await ctx.SaveChangesAsync();
     }
 
     public async Task<List<UserBaddit>> Filter(Expression<Func<UserBaddit, bool>> condition)
@@ -39,11 +40,13 @@ public class UserRepository : IUserRepository<UserBaddit>
             .ToListAsync();
     }
 
-    public void Update(UserBaddit obj)
+    public async void Update(UserBaddit obj)
     {
         ctx.UserBaddits.Update(obj);
-        ctx.SaveChangesAsync();
+        await ctx.SaveChangesAsync();
     }
 
+    public async Task<List<UserBaddit>> GetAll(UserBaddit obj) => await ctx.UserBaddits
+        .ToListAsync();
 }
 

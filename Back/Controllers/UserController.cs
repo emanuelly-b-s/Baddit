@@ -72,10 +72,11 @@ public class UserController : ControllerBase
     {
         var result = new LoginResultDTO();
 
-        var userList = await userRep.Filter(u => u.Email.Equals(loginData.Email));
+        var userList = await userRep.Filter(u => u.Email == loginData.Email);
 
-        if (result.UserExists = userList.Count > 0)
-            return BadRequest("email ou senha incorreto");
+        result.User = userList.Count > 0;
+        if (!result.User)
+            return BadRequest("email incorreto");
 
         UserBaddit userLogin = userList.First();
 
@@ -93,14 +94,15 @@ public class UserController : ControllerBase
             string token = jwtService.GetToken(new UserSecurityToken { IDUser = userLogin.Id, Authenticated = true });
 
             result.Jwt = token;
-            result.Success = true;
+            result.SucessOnSession = true;
+            Console.WriteLine(result);
             return Ok(result);
         }
 
         if (!passUserHash)
-            return BadRequest("email ou senha incorreto");
+            return BadRequest("senha incorreto");
 
-        result.Success = false;
+        result.SucessOnSession = false;
         return Ok(userLogin);
 
     }

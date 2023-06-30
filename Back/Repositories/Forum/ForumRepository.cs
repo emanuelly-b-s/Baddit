@@ -41,4 +41,9 @@ public class ForumRepository : IForumRepository<Forum>
     {
         throw new NotImplementedException();
     }
+
+    public Task<List<Forum>> GetAll(Forum ctx)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -18,19 +18,15 @@ import { UserLogin } from 'src/app/DTO-front/UserLogin';
 export class LoginComponent {
   hide = true;
 
-  constructor(
-    private router: Router,
-    private userService: UserService
-  ) {}
-
+  constructor(private router: Router, private userService: UserService) {}
 
   loginUser: UserLogin = {
     email: '',
     passworduser: '',
   };
 
-  pass : string = "";
-  email : string = "";
+  pass: string = '';
+  email: string = '';
 
   passwordChanged(newPass: string) {
     this.pass = newPass;
@@ -42,37 +38,20 @@ export class LoginComponent {
 
   returnLogin: boolean = false;
 
-
   login() {
-//     this.loginUser.passworduser = this.pass;
-//     this.loginUser.email = this.email;
+    
+    this.loginUser.passworduser = this.pass;
+    this.loginUser.email = this.email;
 
-//     console.log(this.loginUser)
+    this.userService.login(this.loginUser).subscribe((res) => {
+      if (!res.sucessOnSession) {
+        console.log(res.sucessOnSession)
+        this.returnLogin = true;
+        return;
+      }
 
-//     this.userService.login(this.loginUser).subscribe(res =>
-//       {
-//         if (!res.sucess) {
-//           this.returnLogin = true;
-//         }
-//       })
-
-//   }
-
-//   if (!res.success) {
-//     this.loginFailure = true;
-//     return;
-// }
-
-// sessionStorage.setItem('jwtSession', res.jwt);
-// this.router.navigate(['/home']);
-// });
-}
-
-  // getErrorMessage() {
-  //   return this.form.Email.hasError('required')
-  //     ? 'You must enter a value'
-  //     : this.email.hasError('email')
-  //     ? 'Not a valid email'
-  //     : '';
-  // }
+      sessionStorage.setItem('jwtSession', res.jwt);
+      this.router.navigate(['/home-page']);
+    });
+  }
 }
