@@ -41,8 +41,9 @@ export class UserService {
     return this.http.post<User>(this.back + 'user/get', jwtSession);
   }
 
+}
+
   // seach(query: string)
   // {
   //   return this.http.get<Location[]>("$http://localhost:5066/location?search=" + query)
   // }
-}

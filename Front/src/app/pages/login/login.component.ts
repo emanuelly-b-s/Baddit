@@ -1,4 +1,3 @@
-import { User } from '../../DTO-front/UserRegister';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {

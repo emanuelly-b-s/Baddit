@@ -112,21 +112,29 @@ public class UserController : ControllerBase
         [FromBody] JwtDTO jwt
     )
     {
-        if(jwt.ValueToken == "" || jwt.ValueToken is null)
+        if (jwt.ValueToken == "" || jwt.ValueToken is null)
         {
-            return Ok(new UserSecurityToken{ Authenticated = false });
+            return Ok(new UserSecurityToken { Authenticated = false });
         }
 
         try
         {
             var result = jwtService.Validate<UserSecurityToken>(jwt.ValueToken);
             return Ok(result);
-        } catch (Exception)
+        }
+        catch (Exception)
         {
             return Ok(new UserSecurityToken { Authenticated = false });
         }
     }
 
-    
+    [HttpPost("getUser")]
+    public async Task<ActionResult<UserBaddit>> GetUserByID(
+                        [FromServices] IUserRepository<UserBaddit> userRep,
+                        [FromBody] int id
+    )
+    {
+        return await userRep.GetUserByID(id);
+    }
 
 }

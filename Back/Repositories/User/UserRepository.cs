@@ -46,7 +46,10 @@ public class UserRepository : IUserRepository<UserBaddit>
         await ctx.SaveChangesAsync();
     }
 
-    public async Task<List<UserBaddit>> GetAll(UserBaddit obj) => await ctx.UserBaddits
-        .ToListAsync();
+    public async Task<UserBaddit> GetUserByID(int id) => await ctx.UserBaddits.Where(u => u.Id == id)
+                                                                               .FirstOrDefaultAsync();
+
+
+
 }
 

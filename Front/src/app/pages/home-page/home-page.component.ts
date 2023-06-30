@@ -25,7 +25,7 @@ export class HomePageComponent {
   ngOnInit(): void {
       let jwt = sessionStorage.getItem('jwtSession') ?? '';
 
-      this.userService.getUser({ Value: jwt }).subscribe({
+      this.userService.getUserForLogin({ Value: jwt }).subscribe({
           next: (res: User) => {
               this.user = res;
 
@@ -38,7 +38,7 @@ export class HomePageComponent {
   }
 }
 
-}
+
 
 // import { Component} from "@angular/core";
 // @Component({
