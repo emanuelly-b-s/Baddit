@@ -14,18 +14,19 @@ export class HomePageComponent {
   authenticated: boolean = true;
 
   user: User = {
-      UserName: '',
-    Email: '',
+    username: '',
+    email: '',
     photouser: 0,
   };
 
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
 
-    this.userService.getUserLoggedIn({ value: jwt }).subscribe({
+    this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
         console.log({value: jwt});
+        console.log(this.user);
       },
       error: (error: any) => {
         console.log(error);
