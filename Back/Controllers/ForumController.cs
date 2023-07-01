@@ -22,12 +22,9 @@ public class ForumController : ControllerBase
         if (await forumRep.ExistingForum(forumData.ForumName))
             return BadRequest("Forum ja existe");
 
-        var ownerForum = forumData.Owner;
-    
-
         Forum f = new()
         {
-            // CreatorNavigation = ownerForum.UserId,
+            Creator = forumData.Owner,
             ForumName = forumData.ForumName,
             DescriptionForum = forumData.DescriptionForum,
 

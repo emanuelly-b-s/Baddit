@@ -32,8 +32,7 @@ export class UserService {
     let session = sessionStorage.getItem('jwtSession') ?? '';
 
     return this.http.post<UserSecurityToken>(
-      this.back + '/user/tokenValidate',
-        { Value: session }
+      this.back + '/user/tokenValidate', { valueToken: session }
     );
   }
 

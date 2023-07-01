@@ -44,17 +44,17 @@ export class ForumRegisterComponent {
       if (!res.authenticated) {
         this.router.navigate(['/']);
       }
-      this.idOwner = res.iduser;
+      this.idOwner = res.idUser;
+      console.log(res);
     });
   }
 
   register() {
     this.forumRegister = { ...this.form.value };
     this.forumRegister.IDOwner = this.idOwner;
-    console.log(this.forumRegister);
-    
-    // this.forum.add(this.forumRegister).subscribe((res) => {
-    //   console.log(res);
-    // });
+        
+    this.forum.add(this.forumRegister).subscribe((res) => {
+      console.log(res);
+    });
   }
 }

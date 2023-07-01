@@ -12,12 +12,9 @@ export class ForumService {
 
   back = this.config.backEnd;
 
-  add(newForum: ForumRegister, userInfo : User) {
+  add(newForum: ForumRegister) {
     return this.http.post(this.back + '/new-forum', newForum);
   }
 
-  all()
-  {
-    // return this.http.get<Forum[]>(this.back + "/forums")
-  }
+
 }

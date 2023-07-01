@@ -1,4 +1,4 @@
 export interface UserSecurityToken {
-    iduser: number;
+    idUser: number;
     authenticated : boolean;
 }

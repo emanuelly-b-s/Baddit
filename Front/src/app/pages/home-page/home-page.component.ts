@@ -14,6 +14,7 @@ export class HomePageComponent {
   authenticated: boolean = true;
 
   user: User = {
+    id: 0,
     username: '',
     email: '',
     photouser: 0,
@@ -25,8 +26,6 @@ export class HomePageComponent {
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
-        console.log({value: jwt});
-        console.log(this.user);
       },
       error: (error: any) => {
         console.log(error);
