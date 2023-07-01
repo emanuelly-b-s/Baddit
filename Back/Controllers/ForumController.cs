@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Back.Model;
 using Back.Repositories.ForumRep;
+using Back.Repositories.User;
 using DTO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using UserServices;
 
 namespace Back.Controllers;
 
@@ -18,14 +16,20 @@ public class ForumController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
         [FromServices] IForumRepository<Forum> forumRep,
+        [FromServices] IUserRepository<UserBaddit> userRep,
         [FromBody] NewForumDTO forumData)
+
+        
     {
         if (await forumRep.ExistingForum(forumData.ForumName))
             return BadRequest("Forum ja existe");
 
+        var ownerForum = forumData.Owner;
+    
 
         Forum f = new()
         {
+            // CreatorNavigation = ownerForum.UserId,
             ForumName = forumData.ForumName,
             DescriptionForum = forumData.DescriptionForum,
 

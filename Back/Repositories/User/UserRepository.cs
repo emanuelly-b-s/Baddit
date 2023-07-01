@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Back.Repositories;
 using SecurityService;
 using Microsoft.Identity.Client.Extensibility;
+using DTO;
 
 namespace Back.Repositories.User;
 
 public class UserRepository : IUserRepository<UserBaddit>
 {
-    private BadditContext ctx;
+    private readonly BadditContext ctx;
 
     public UserRepository(BadditContext ctx) => this.ctx = ctx;
 
@@ -46,11 +47,16 @@ public class UserRepository : IUserRepository<UserBaddit>
         await ctx.SaveChangesAsync();
     }
 
-    public async Task<UserBaddit> GetUserByID(int id) 
+    public async Task<UserBaddit> GetUserByID(int id)
     {
         var user = await ctx.FindAsync<UserBaddit>(id);
         return user;
     }
 
+    public async Task<InfoUser> GetUserByName(string userName)
+    {
+        var user = await ctx.FindAsync<InfoUser>(userName);
+        return user;
+    }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DTO;
 
 namespace Back.Model;
 
@@ -42,4 +43,8 @@ public partial class UserBaddit
         throw new NotImplementedException();
     }
 
+    public static implicit operator UserBaddit(Task<InfoUser> v)
+    {
+        throw new NotImplementedException();
+    }
 }

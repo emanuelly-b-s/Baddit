@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Forum } from 'src/app/DTO-front/Forum';
+import { Router } from '@angular/router';
+import { ForumRegister } from 'src/app/DTO-front/ForumRegister';
 import { ForumService } from 'src/app/services/forum.service';
+import { UserService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-forum-register',
@@ -9,9 +11,15 @@ import { ForumService } from 'src/app/services/forum.service';
   styleUrls: ['./forum-register.component.css'],
 })
 export class ForumRegisterComponent {
-  constructor(private fb: FormBuilder, private forum: ForumService) {}
+  constructor(
+    private fb: FormBuilder,
+    private forum: ForumService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   form: FormGroup = this.fb.group({
+    
     forumName: ['', [Validators.required, Validators.minLength(2)]],
     descriptionForum: [
       '',
@@ -19,28 +27,34 @@ export class ForumRegisterComponent {
         Validators.required,
         Validators.minLength(25),
         Validators.maxLength(120),
-      ]
+      ],
     ],
   });
 
-  forumRegister: Forum = {
+  forumRegister: ForumRegister = {
+    IDOwner: 0,
     forumName: '',
-    descriptionForum: ''
+    descriptionForum: '',
   };
-
-  register()
-  {
-    this.forumRegister = {...this.form.value};
-
-    console.log(this.forumRegister);
-    console.log(this.form.value);
+  idOwner: number = 0;
 
 
-    this.forum.add(this.forumRegister).subscribe(res =>
-      {
-        console.log('a');
-      });
-
+  ngOnInit(): void {
+    this.userService.validateUser().subscribe((res) => {
+      if (!res.authenticated) {
+        this.router.navigate(['/']);
+      }
+      this.idOwner = res.iduser;
+    });
   }
 
+  register() {
+    this.forumRegister = { ...this.form.value };
+    this.forumRegister.IDOwner = this.idOwner;
+    console.log(this.forumRegister);
+    
+    // this.forum.add(this.forumRegister).subscribe((res) => {
+    //   console.log(res);
+    // });
+  }
 }

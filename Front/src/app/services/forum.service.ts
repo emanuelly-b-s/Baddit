@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Forum } from '../DTO-front/Forum';
+import { ForumRegister } from '../DTO-front/ForumRegister';
 import { ConfigService } from './config.service';
+import { User } from '../DTO-front/User';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +12,12 @@ export class ForumService {
 
   back = this.config.backEnd;
 
-  add(newForum: Forum) {
+  add(newForum: ForumRegister, userInfo : User) {
     return this.http.post(this.back + '/new-forum', newForum);
   }
 
   all()
   {
-    return this.http.get<Forum[]>(this.back + "/forums")
+    // return this.http.get<Forum[]>(this.back + "/forums")
   }
 }
