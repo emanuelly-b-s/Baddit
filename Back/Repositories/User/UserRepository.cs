@@ -46,10 +46,11 @@ public class UserRepository : IUserRepository<UserBaddit>
         await ctx.SaveChangesAsync();
     }
 
-    public async Task<UserBaddit> GetUserByID(int id) => await ctx.UserBaddits.Where(u => u.Id == id)
-                                                                               .FirstOrDefaultAsync();
-
-
+    public async Task<UserBaddit> GetUserByID(int id) 
+    {
+        var user = await ctx.FindAsync<UserBaddit>(id);
+        return user;
+    }
 
 }
 

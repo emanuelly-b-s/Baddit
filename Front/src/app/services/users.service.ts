@@ -17,34 +17,29 @@ export class UserService {
   back = this.config.backEnd;
 
   add(newUser: UserRegister) {
-    return this.http.post(this.back + '/newaccountuser', newUser);
+    return this.http.post(this.back + '/user/new-account', newUser);
   }
 
   login(login: UserLogin) {
-    return this.http.post<SessionLogin>(this.back + '/login', login);
+    return this.http.post<SessionLogin>(this.back + '/user/login', login);
   }
 
   validateToken(session: Jwt) {
-    return this.http.post<Jwt>(this.back + 'user/tokenValidate', session);
+    return this.http.post<Jwt>(this.back + '/user/tokenValidate', session);
   }
 
   validateUser() {
     let session = sessionStorage.getItem('jwtSession') ?? '';
 
     return this.http.post<UserSecurityToken>(
-      this.back + 'user/tokenValidate',
+      this.back + '/user/tokenValidate',
         { Value: session }
     );
   }
 
-  getUserForLogin(jwtSession: Jwt) {
-    console.log('chegou aq')
-    return this.http.post<User>(this.back + 'user/getUser', jwtSession);
+  getUserLoggedIn(jwtSession: Jwt) {
+    console.log(jwtSession);  
+    return this.http.post<User>(this.back + '/user/userLoggedIn', jwtSession);
   }
 
 }
-
-  // seach(query: string)
-  // {
-  //   return this.http.get<Location[]>("$http://localhost:5066/location?search=" + query)
-  // }

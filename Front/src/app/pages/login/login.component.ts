@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 import { UserService } from 'src/app/services/users.service';
 import { UserLogin } from 'src/app/DTO-front/UserLogin';
 
@@ -44,13 +38,12 @@ export class LoginComponent {
 
     this.userService.login(this.loginUser).subscribe((res) => {
       if (!res.sucessOnSession) {
-        console.log(res.sucessOnSession)
         this.returnLogin = true;
         return;
       }
 
       sessionStorage.setItem('jwtSession', res.jwt);
-      this.router.navigate(['']);
+      this.router.navigate(['/home-page']);
     });
   }
 }

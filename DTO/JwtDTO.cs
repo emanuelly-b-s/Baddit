@@ -1,5 +1,5 @@
 namespace DTO;
 
 public class JwtDTO{
-    public required string ValueToken { get; set; }
+    public string ValueToken { get; set; }
 }

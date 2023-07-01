@@ -9,6 +9,7 @@ using Back.Model;
 using Microsoft.AspNetCore.Cors;
 using Back.Repositories.User;
 using SecurityService;
+using UserServices;
 
 [ApiController]
 [Route("user")]
@@ -25,7 +26,7 @@ public class UserController : ControllerBase
         return query;
     }
 
-    [HttpPost("/newaccountuser")]
+    [HttpPost("new-account")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register([FromServices] IUserRepository<UserBaddit> userRep,
                                              [FromBody] NewUserDTO userData,
@@ -61,7 +62,7 @@ public class UserController : ControllerBase
 
     }
 
-    [HttpPost("/login")]
+    [HttpPost("login")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<LoginResultDTO>> Login([FromBody] LoginUserDTO loginData,
                                           [FromServices] IUserRepository<UserBaddit> userRep,
@@ -107,6 +108,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("tokenValidate")]
+    [EnableCors("MainPolicy")]
     public async Task<ActionResult<UserSecurityToken>> ValidateJwt(
         [FromServices] IJwtService jwtService,
         [FromBody] JwtDTO jwt
@@ -128,13 +130,45 @@ public class UserController : ControllerBase
         }
     }
 
-    [HttpPost("getUser")]
-    public async Task<ActionResult<UserBaddit>> GetUserByID(
-                        [FromServices] IUserRepository<UserBaddit> userRep,
-                        [FromBody] int id
+    // [HttpPost("getUser")]
+    // [EnableCors("MainPolicy")]
+    // public async Task<ActionResult<UserBaddit>> GetUserByID(
+    //                     [FromServices] IUserRepository<UserBaddit> userRep,
+    //                     [FromBody] int id
+    // )
+    // {
+    //     return await userRep.GetUserByID(id);
+    // }
+
+    [HttpPost("userLoggedIn")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult<UserBaddit>> Get(
+        [FromServices] IUserService userService,
+        [FromBody] JwtDTO jwt
     )
     {
-        return await userRep.GetUserByID(id);
+        UserBaddit user;
+        try
+        {
+            user = await userService.UserAuthenticationToken(jwt);
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+
+        if (user is null)
+            return BadRequest("n deu");
+
+
+        InfoUser result = new()
+        {
+            Username = user.UserName,
+            Email = user.Email,
+            PhotoUser = user.PhotoUser,
+        };
+
+        return Ok(result);
     }
 
 }

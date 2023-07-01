@@ -14,39 +14,24 @@ export class HomePageComponent {
   authenticated: boolean = true;
 
   user: User = {
-    id: 0,
-    UserName: '',
+      UserName: '',
     Email: '',
     photouser: 0,
-    // groups: [],
-    // posts: [],
   };
 
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
-    console.log('entro na pag kk')
 
-    let teste = { value: jwt };
-    console.log(teste)
-
-    this.userService.getUserForLogin({ value: jwt }).subscribe({
-
+    this.userService.getUserLoggedIn({ value: jwt }).subscribe({
       next: (res: User) => {
-
-        console.log({value : jwt})
         this.user = res;
-        console.log(this.user);
+        console.log({value: jwt});
       },
       error: (error: any) => {
-        this.router.navigate(['/']);
+        console.log(error);
+        this.router.navigate(['']);
       },
     });
-
-    console.log(this.user.UserName)
-  }
-
-  logoff() {
-      sessionStorage.setItem('jwtSession', '');
   }
 }
 

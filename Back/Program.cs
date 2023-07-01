@@ -3,6 +3,7 @@ using Back.Repositories.ForumRep;
 using Back.Repositories.User;
 using SecurityService;
 using Security.Jwt;
+using UserServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddCors(opt =>
 
 builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
 builder.Services.AddTransient<IUserRepository<UserBaddit>, UserRepository>();
+builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IForumRepository<Forum>, ForumRepository>();
 builder.Services.AddTransient<ISecurityServiceJwt, SecurityServiceJwt>();
 builder.Services.AddTransient<IJwtService, JwtService>();
