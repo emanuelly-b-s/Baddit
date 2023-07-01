@@ -1,6 +1,4 @@
-// import { UserService } from './../services/users.service';
-// import { NewAccountService } from './../../services/new-account.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   Validators,
   FormGroup,
@@ -8,7 +6,7 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../services/users.service';
 import { UserRegister } from '../../DTO-front/UserRegister';
-// import { User } from '../../DTO-front/UserRegister';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-newaccount',
@@ -16,7 +14,7 @@ import { UserRegister } from '../../DTO-front/UserRegister';
   styleUrls: ['./new-account.component.css'],
 })
 export class NewaccountComponent {
-  constructor(private fb: FormBuilder, private user : UserService) {}
+  constructor(private fb: FormBuilder, private user : UserService, private router: Router) {}
 
   form : FormGroup  = this.fb.group({
       Email: [
@@ -47,28 +45,28 @@ export class NewaccountComponent {
 
   pass : string = "";
   email : string = "";
+  photouser: number = 0;
 
   passwordChanged(newPass: string) {
     this.pass = newPass;
-  }
+  };
+
+  // photoChanged(newPhoto: number) {
+  //   this.photouser = newPhoto;
+  // }
 
   emailChanged(newEmail: string) {
-    console.log(newEmail)
-
     this.email = newEmail;
-  }
-
+  };
 
   register() {
     this.userRegister = {...this.form.value};
     this.userRegister.PasswordUser = this.pass;
     this.userRegister.Email = this.email;
 
-    console.log(this.userRegister)
-
     this.user.add(this.userRegister).subscribe(res =>
       {
-        console.log('a');
+        this.router.navigate(['']);
       });
   }
 }
