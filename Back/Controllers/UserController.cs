@@ -52,8 +52,8 @@ public class UserController : ControllerBase
             DateBirth = userData.DateBirth,
             NickUser = userData.NickUser,
             PasswordUser = passUserHash64,
-            SaldPassword = passUserSalt,
-            PhotoUser = userData.PhotoUser,
+            SaltPassword = passUserSalt,
+            Userphoto = userData.PhotoUser,
         };
 
         await userRep.Add(u);
@@ -82,7 +82,7 @@ public class UserController : ControllerBase
         UserBaddit userLogin = userList.First();
 
         var hashUserDB = userLogin.PasswordUser;
-        var saltUserDB = userLogin.SaldPassword;
+        var saltUserDB = userLogin.SaltPassword;
 
         var passUserHash = jwt.PasswordIsCorrect(loginData.PasswordUser,
                                                  hashUserDB,
@@ -109,36 +109,27 @@ public class UserController : ControllerBase
 
     [HttpPost("tokenValidate")]
     [EnableCors("MainPolicy")]
-    public async Task<ActionResult<UserSecurityToken>> ValidateJwt(
+    public Task<ActionResult<UserSecurityToken>> ValidateJwt(
         [FromServices] IJwtService jwtService,
         [FromBody] JwtDTO jwt
     )
     {
         if (jwt.ValueToken == "" || jwt.ValueToken is null)
         {
-            return Ok(new UserSecurityToken { Authenticated = false });
+            return Task.FromResult<ActionResult<UserSecurityToken>>(Ok(new UserSecurityToken { Authenticated = false }));
         }
 
         try
         {
             var result = jwtService.Validate<UserSecurityToken>(jwt.ValueToken);
-            return Ok(result);
+            return Task.FromResult<ActionResult<UserSecurityToken>>(Ok(result));
         }
         catch (Exception)
         {
-            return Ok(new UserSecurityToken { Authenticated = false });
+            return Task.FromResult<ActionResult<UserSecurityToken>>(Ok(new UserSecurityToken { Authenticated = false }));
         }
     }
 
-    // [HttpPost("getUser")]
-    // [EnableCors("MainPolicy")]
-    // public async Task<ActionResult<UserBaddit>> GetUserByID(
-    //                     [FromServices] IUserRepository<UserBaddit> userRep,
-    //                     [FromBody] int id
-    // )
-    // {
-    //     return await userRep.GetUserByID(id);
-    // }
 
     [HttpPost("userLoggedIn")]
     [EnableCors("MainPolicy")]
@@ -165,7 +156,7 @@ public class UserController : ControllerBase
         {
             Username = user.UserName,
             Email = user.Email,
-            PhotoUser = user.PhotoUser,
+            PhotoUser = user.Userphoto,
         };
 
         return Ok(result);

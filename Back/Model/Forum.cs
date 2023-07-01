@@ -7,7 +7,7 @@ public partial class Forum
 {
     public int Id { get; set; }
 
-    public string? Creator { get; set; }
+    public int? Creator { get; set; }
 
     public string ForumName { get; set; } = null!;
 

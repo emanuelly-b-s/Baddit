@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using DTO;
 
 namespace Back.Model;
 
@@ -18,11 +17,11 @@ public partial class UserBaddit
 
     public string NickUser { get; set; } = null!;
 
-    public string? PasswordUser { get; set; }
+    public string PasswordUser { get; set; } = null!;
 
-    public string SaldPassword { get; set; } = null!;
+    public string SaltPassword { get; set; } = null!;
 
-    public int? PhotoUser { get; set; }
+    public int? Userphoto { get; set; }
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
@@ -32,19 +31,9 @@ public partial class UserBaddit
 
     public virtual ICollection<ParticipantForum> ParticipantForums { get; set; } = new List<ParticipantForum>();
 
-    public virtual ImageDatum? PhotoUserNavigation { get; set; }
-
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 
     public virtual ICollection<UpvoteDownvote> UpvoteDownvotes { get; set; } = new List<UpvoteDownvote>();
 
-    public static implicit operator UserBaddit?(string? v)
-    {
-        throw new NotImplementedException();
-    }
-
-    public static implicit operator UserBaddit(Task<InfoUser> v)
-    {
-        throw new NotImplementedException();
-    }
+    public virtual ImageDatum? UserphotoNavigation { get; set; }
 }

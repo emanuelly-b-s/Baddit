@@ -4,6 +4,7 @@ using Back.Repositories.User;
 using SecurityService;
 using Security.Jwt;
 using UserServices;
+using Back.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

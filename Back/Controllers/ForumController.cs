@@ -16,9 +16,7 @@ public class ForumController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
         [FromServices] IForumRepository<Forum> forumRep,
-        [FromServices] IUserRepository<UserBaddit> userRep,
         [FromBody] NewForumDTO forumData)
-
         
     {
         if (await forumRep.ExistingForum(forumData.ForumName))
