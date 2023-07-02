@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../DTO-front/User';
-import { UserRegister } from '../DTO-front/UserRegister';
-import { UserLogin } from '../DTO-front/UserLogin';
+import { User } from '../DTO/User/User';
+import { UserRegister } from '../DTO/User/UserRegister';
+import { UserLogin } from '../DTO/User/UserLogin';
 import { ConfigService } from './config.service';
-import { Jwt } from '../DTO-front/Jwt';
-import { SessionLogin } from '../DTO-front/SessionLogin';
-import { UserSecurityToken } from '../DTO-front/UserSecurityToken';
+import { Jwt } from '../DTO/Jwt';
+import { SessionLogin } from '../DTO/SessionLogin';
+import { UserSecurityToken } from '../DTO/User/UserSecurityToken';
 
 @Injectable({
   providedIn: 'root',

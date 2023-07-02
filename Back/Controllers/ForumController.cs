@@ -1,9 +1,9 @@
 using Back.Model;
 using Back.Repositories.ForumRep;
-using Back.Repositories.User;
 using DTO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using UserServices;
 
 namespace Back.Controllers;
@@ -12,12 +12,12 @@ namespace Back.Controllers;
 [Route("forum")]
 public class ForumController : ControllerBase
 {
-    [HttpPost("/new-forum")]
+    [HttpPost("new-forum")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
         [FromServices] IForumRepository<Forum> forumRep,
         [FromBody] NewForumDTO forumData)
-        
+
     {
         if (await forumRep.ExistingForum(forumData.ForumName))
             return BadRequest("Forum ja existe");
@@ -37,24 +37,28 @@ public class ForumController : ControllerBase
     }
 
 
-    [HttpGet("{code}")]
+    [HttpPost("get-forum")]
     public async Task<ActionResult<Forum>> GetById(
-        string code,
+        int id,
         [FromServices] IForumRepository<Forum> forumRep
     )
     {
-        if (int.TryParse(code, out int id))
+        Forum forumData = await forumRep.GetForumById(id);
+
+        if (forumData is null)
+            return NotFound();
+
+
+        InfoForum result = new()
         {
-            var query = await forumRep.Filter(f => f.Id == id);
-            var forum = query.FirstOrDefault();
+            ID = forumData.Id,
+            Creator = forumData.Creator,
+            ForumName = forumData.ForumName,
+            DescriptionForum = forumData.DescriptionForum
+        };
 
-            if (forum is null)
-                return NotFound();
+        return Ok(result);
 
-            return forum;
-        }
-
-        return BadRequest("n deu boa");
     }
 
     [HttpGet]

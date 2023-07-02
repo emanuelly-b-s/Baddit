@@ -27,6 +27,12 @@ public class ForumRepository : IForumRepository<Forum>
         throw new NotImplementedException();
     }
 
+    public async Task<Forum> GetForumById(int id)
+    {
+        var forum = await ctx.FindAsync<Forum>(id);
+        return forum;
+    }
+
 
     public Task<List<Forum>> Filter(Expression<Func<Forum, bool>> condition)
     {

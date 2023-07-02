@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ForumRegister } from 'src/app/DTO-front/ForumRegister';
+import { ForumRegister } from 'src/app/DTO/Forum/ForumRegister';
 import { ForumService } from 'src/app/services/forum.service';
 import { UserService } from 'src/app/services/users.service';
 

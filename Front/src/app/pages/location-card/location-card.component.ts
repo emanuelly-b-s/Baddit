@@ -1,6 +1,6 @@
 
 import { Component, Input } from '@angular/core';
-import { Location } from '../../DTO-front/Location';
+import { Location } from '../../DTO/Location';
 
 
 @Component({

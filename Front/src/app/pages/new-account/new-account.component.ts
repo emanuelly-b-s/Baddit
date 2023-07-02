@@ -5,7 +5,7 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { UserService } from '../../services/users.service';
-import { UserRegister } from '../../DTO-front/UserRegister';
+import { UserRegister } from '../../DTO/User/UserRegister';
 import { Router } from '@angular/router';
 
 @Component({

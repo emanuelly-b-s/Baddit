@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Location } from '../DTO-front/Location';
+import { Location } from '../DTO/Location';
 import { ConfigService } from './config.service';
 
 @Injectable({
