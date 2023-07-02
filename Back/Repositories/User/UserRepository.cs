@@ -25,7 +25,7 @@ public class UserRepository : IUserRepository<UserBaddit>
         await ctx.SaveChangesAsync();
     }
 
-    public async void Delete(UserBaddit obj)
+    public async Task Delete(UserBaddit obj)
     {
         ctx.UserBaddits.Remove(obj);
         await ctx.SaveChangesAsync();
@@ -38,7 +38,7 @@ public class UserRepository : IUserRepository<UserBaddit>
             .ToListAsync();
     }
 
-    public async void Update(UserBaddit obj)
+    public async Task Update(UserBaddit obj)
     {
         ctx.UserBaddits.Update(obj);
         await ctx.SaveChangesAsync();
@@ -56,19 +56,12 @@ public class UserRepository : IUserRepository<UserBaddit>
         return user;
     }
 
-    public async Task<List<Forum>> GetGroups(int id)
+    public Task<List<Forum>> GetGroups(int id)
     {
-        var user = await GetUserByID(id);
-
-        var query = await ctx.Forums.Where(u => u.Creator == user.Id).ToListAsync();
-
-        foreach (var item in query)
-        {
-            Console.WriteLine(query);
-
-        }
-
-        return query;
+        throw new NotImplementedException();
     }
-}
+
+    
+
+   }
 

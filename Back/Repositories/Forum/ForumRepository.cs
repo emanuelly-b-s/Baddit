@@ -22,7 +22,7 @@ public class ForumRepository : IForumRepository<Forum>
         await ctx.SaveChangesAsync();
     }
 
-    public void Delete(Forum obj)
+    public async Task Delete(Forum obj)
     {
         throw new NotImplementedException();
     }
@@ -39,7 +39,7 @@ public class ForumRepository : IForumRepository<Forum>
         throw new NotImplementedException();
     }
 
-    public void Update(Forum obj)
+    public async Task Update(Forum obj)
     {
         throw new NotImplementedException();
     }
@@ -48,4 +48,16 @@ public class ForumRepository : IForumRepository<Forum>
     {
         throw new NotImplementedException();
     }
+
+    public Task<List<Forum>> GetParticipants(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task AddUser(ParticipantForum participant)
+    {
+        await ctx.ParticipantForums.AddAsync(participant);
+        await ctx.SaveChangesAsync();
+    }
+
 }

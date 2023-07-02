@@ -4,7 +4,8 @@ import { InfoForum } from 'src/app/DTO/Forum/InfoForum';
 import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
 import { ForumService } from 'src/app/services/forum.service';
-
+import { ParticipantForum } from 'src/app/DTO/Forum/ParticipantForum';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-forum-page',
@@ -12,12 +13,17 @@ import { ForumService } from 'src/app/services/forum.service';
   styleUrls: ['./forum-page.component.css'],
 })
 export class ForumPageComponent {
-  constructor(private userService: UserService, private router: Router, private forumService : ForumService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private forumService: ForumService,
+    private fb: FormBuilder
+  ) {}
 
   authenticated: boolean = true;
 
   user: User = {
-    id: 0,
+    userid: 0,
     username: '',
     nickUser: '',
     email: '',
@@ -25,11 +31,37 @@ export class ForumPageComponent {
   };
 
   forumData: InfoForum = {
-    id: 0,
+    id: 1,
     creator: 0,
     forumName: '',
     descriptionForum: '',
   };
+
+  participanteForum: ParticipantForum = {
+    participantForum1: 0,
+    forum: 0,
+  };
+
+  addUser() {
+    console.log(this.participanteForum);
+    this.participanteForum.forum = this.forumData.id;
+
+    
+    let jwt = sessionStorage.getItem('jwtSession') ?? '';
+    
+    this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
+      next: (res: User) => {
+        this.user = res;
+        // this.participanteForum.participantForum1 = res.userid;
+        this.participanteForum.participantForum1 = res.userid;
+        console.log(this.participanteForum);
+      },
+    });
+
+    // this.forumService.addUser(this.participanteForum).subscribe((result) => {
+    //   console.log(result);
+    // });
+  }
 
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
@@ -37,12 +69,13 @@ export class ForumPageComponent {
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
+        this.participanteForum.participantForum1 = res.userid;
+
+        console.log(this.participanteForum)
       },
       error: (error: any) => {
-        console.log(error);
         this.router.navigate(['']);
       },
     });
-
   }
 }

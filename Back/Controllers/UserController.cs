@@ -154,6 +154,7 @@ public class UserController : ControllerBase
 
         InfoUser result = new()
         {
+            UserId = user.Id,
             Username = user.UserName,
             NickUser = user.NickUser,
             Email = user.Email,

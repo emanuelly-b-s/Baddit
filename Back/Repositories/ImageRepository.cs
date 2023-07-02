@@ -17,7 +17,7 @@ namespace Back.Repositories
             await ctx.SaveChangesAsync();
         }
 
-        public void Delete(ImageDatum obj)
+        public async Task Delete(ImageDatum obj)
         {
             throw new NotImplementedException();
         }
@@ -43,7 +43,7 @@ namespace Back.Repositories
         //     throw new NotImplementedException();
         // }
 
-        public void Update(ImageDatum obj)
+        public async Task Update(ImageDatum obj)
         {
             throw new NotImplementedException();
         }

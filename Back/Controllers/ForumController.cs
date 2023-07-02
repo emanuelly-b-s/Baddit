@@ -38,6 +38,7 @@ public class ForumController : ControllerBase
 
 
     [HttpPost("get-forum")]
+    [EnableCors("MainPolicy")]
     public async Task<ActionResult<Forum>> GetById(
         int id,
         [FromServices] IForumRepository<Forum> forumRep
@@ -71,6 +72,24 @@ public class ForumController : ControllerBase
         return query;
     }
 
-    
+    [HttpPost("addUser")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult> AddUser(
+       [FromServices] IForumRepository<Forum> forumRep,
+       [FromBody] ParticipantForum data
+    )
+    {
+        ParticipantForum newUser = new()
+        {
+            ParticipantForum1 = data.ParticipantForum1,
+            Forum = data.Forum,
+        };
+
+        await forumRep.AddUser(newUser);
+
+        return Ok();
+
+    }
+
 }
 
