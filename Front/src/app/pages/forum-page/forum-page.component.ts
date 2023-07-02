@@ -43,6 +43,6 @@ export class ForumPageComponent {
       },
     });
 
-
+    
   }
 }
