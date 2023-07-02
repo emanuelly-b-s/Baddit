@@ -1,9 +1,6 @@
 using System.Linq.Expressions;
 using Back.Model;
 using Microsoft.EntityFrameworkCore;
-using Back.Repositories;
-using SecurityService;
-using Microsoft.Identity.Client.Extensibility;
 using DTO;
 
 namespace Back.Repositories.User;
@@ -57,6 +54,21 @@ public class UserRepository : IUserRepository<UserBaddit>
     {
         var user = await ctx.FindAsync<InfoUser>(userName);
         return user;
+    }
+
+    public async Task<List<Forum>> GetGroups(int id)
+    {
+        var user = await GetUserByID(id);
+
+        var query = await ctx.Forums.Where(u => u.Creator == user.Id).ToListAsync();
+
+        foreach (var item in query)
+        {
+            Console.WriteLine(query);
+
+        }
+
+        return query;
     }
 }
 

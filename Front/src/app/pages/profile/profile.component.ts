@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { InfoForum } from 'src/app/DTO/Forum/InfoForum';
 import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
-import { ForumService } from 'src/app/services/forum.service';
-
 
 @Component({
-  selector: 'app-forum-page',
-  templateUrl: './forum-page.component.html',
-  styleUrls: ['./forum-page.component.css'],
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
 })
-export class ForumPageComponent {
-  constructor(private userService: UserService, private router: Router, private forumService : ForumService) {}
+export class ProfileComponent {
+  constructor(private userService: UserService, private router: Router) {}
 
   authenticated: boolean = true;
 
@@ -24,25 +21,18 @@ export class ForumPageComponent {
     photouser: 0,
   };
 
-  forumData: InfoForum = {
-    id: 0,
-    creator: 0,
-    forumName: '',
-    descriptionForum: '',
-  };
-
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
 
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
+        console.log(this.user);
       },
       error: (error: any) => {
         console.log(error);
         this.router.navigate(['']);
       },
     });
-
   }
 }

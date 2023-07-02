@@ -10,4 +10,5 @@ public interface IUserRepository<UserBaddit> : IRepository<UserBaddit>
     Task<bool> ExistingEmail(string userEmail);
     Task<UserBaddit> GetUserByID(int id);
     Task<InfoUser> GetUserByName(string userName);
+    Task<List<Forum>> GetGroups (int id);
 }

@@ -18,7 +18,9 @@ export class HomePageComponent {
     username: '',
     email: '',
     photouser: 0,
+    nickUser: ''
   };
+
 
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
@@ -26,6 +28,7 @@ export class HomePageComponent {
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
+        console.log(this.user);
       },
       error: (error: any) => {
         console.log(error);

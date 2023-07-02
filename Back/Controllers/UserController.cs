@@ -1,4 +1,4 @@
-      using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Security.Jwt;
 
 
@@ -155,11 +155,25 @@ public class UserController : ControllerBase
         InfoUser result = new()
         {
             Username = user.UserName,
+            NickUser = user.NickUser,
             Email = user.Email,
             PhotoUser = user.Userphoto,
         };
 
         return Ok(result);
+    }
+
+
+    [HttpPost("getForumsRegister")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult<Forum>> GetForumsRegister(
+        [FromServices] IUserRepository<UserBaddit> userRep,
+        [FromBody] int id
+    )
+    {
+        var groups = userRep.GetGroups(id);
+
+        return Ok(groups);
     }
 
 }

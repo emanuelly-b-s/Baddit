@@ -6,6 +6,7 @@ import { NewaccountComponent } from './pages/new-account/new-account.component';
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
 import { ForumRegisterComponent } from './pages/forum-register/forum-register.component';
 import { CardsComponent } from './pages/cards/cards.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http'; // Added for use HttpClient
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'home-page', component: HomePageComponent },
   { path: 'new-account', component: NewaccountComponent },
   { path: 'forum-home', component	: ForumPageComponent},
-  { path : 'forum-register', component : ForumRegisterComponent }
+  { path : 'forum-register', component : ForumRegisterComponent },
+  { path : 'profile-user', component : ProfileComponent },
 ];
 
 @NgModule({
