@@ -14,13 +14,13 @@ export class ForumService {
   back = this.config.backEnd;
 
   add(newForum: ForumRegister) {
-    return this.http.post(this.back + 'user/new-forum', newForum);
+    return this.http.post(this.back + '/forum/new-forum', newForum);
   }
 
   getForumByID(idForum: number)
   {
     console.log(idForum);
-    return this.http.post<InfoForum>(this.back + 'user/get-forum', idForum);
+    return this.http.post<InfoForum>(this.back + '/forum/get-forum', idForum);
   }
 
 }
