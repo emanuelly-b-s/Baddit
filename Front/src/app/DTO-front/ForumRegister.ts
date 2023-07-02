@@ -1,5 +1,5 @@
 export interface ForumRegister {
-  IDOwner: number;
+  owner: number;
   forumName: string;
   descriptionForum: string;
 }

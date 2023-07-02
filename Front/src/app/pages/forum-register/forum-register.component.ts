@@ -32,7 +32,7 @@ export class ForumRegisterComponent {
   });
 
   forumRegister: ForumRegister = {
-    IDOwner: 0,
+    owner: 0,
     forumName: '',
     descriptionForum: '',
   };
@@ -51,7 +51,8 @@ export class ForumRegisterComponent {
 
   register() {
     this.forumRegister = { ...this.form.value };
-    this.forumRegister.IDOwner = this.idOwner;
+    this.forumRegister.owner = this.idOwner;
+    console.log(this.forumRegister);
         
     this.forum.add(this.forumRegister).subscribe((res) => {
       console.log(res);
