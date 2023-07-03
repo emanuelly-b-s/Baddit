@@ -1,3 +1,9 @@
 <p>profile works!</p>
 
-<p>{{user.nickUser}}</p>
+<p>{{ user.nickUser }}</p>
+<li *ngFor="let forum of forums"></li>
+<div style="display: flex; align-items: center; flex-direction: column">
+  <div>
+    {{ forums.name }}
+  </div>
+</div>

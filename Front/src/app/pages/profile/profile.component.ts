@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InfoForum } from 'src/app/DTO/Forum/InfoForum';
 import { User } from 'src/app/DTO/User/User';
+import { ConfigService } from 'src/app/services/config.service';
 import { UserService } from 'src/app/services/users.service';
 
 @Component({
@@ -8,8 +10,14 @@ import { UserService } from 'src/app/services/users.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent {
-  constructor(private userService: UserService, private router: Router) {}
+export class ProfileComponent implements OnInit {
+  forums: InfoForum[] = [];
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private config: ConfigService
+  ) {}
 
   authenticated: boolean = true;
 
@@ -33,6 +41,24 @@ export class ProfileComponent {
         console.log(error);
         this.router.navigate(['']);
       },
+    });
+    this.userService.getForums(this.user).subscribe((list) => {
+      console.log(list);
+
+      var newList: InfoForum[] = [];
+      list.forEach((element) => {
+        newList.push({
+
+          id: element.id,
+          creator: element.creator,
+          forumName: element.forumName,
+          descriptionForum: element.descriptionForum
+
+        });
+      });
+
+      this.forums = newList;
+      
     });
   }
 }

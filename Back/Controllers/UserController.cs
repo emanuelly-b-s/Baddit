@@ -167,12 +167,12 @@ public class UserController : ControllerBase
 
     [HttpPost("getForumsRegister")]
     [EnableCors("MainPolicy")]
-    public async Task<ActionResult<Forum>> GetForumsRegister(
+    public async Task<ActionResult<IEnumerable<Forum>>> GetForumsRegister(
         [FromServices] IUserRepository<UserBaddit> userRep,
-        [FromBody] int id
+        [FromBody] InfoUser user
     )
     {
-        var groups = userRep.GetGroups(id);
+        var groups = userRep.GetGroups(user.UserId);
 
         return Ok(groups);
     }

@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using Back.Model;
 using Microsoft.EntityFrameworkCore;
 using DTO;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Back.Repositories.User;
 
@@ -56,12 +57,26 @@ public class UserRepository : IUserRepository<UserBaddit>
         return user;
     }
 
-    public Task<List<Forum>> GetGroups(int id)
+    public async Task<ActionResult<IEnumerable<Forum>>> GetGroups(int id)
     {
-        throw new NotImplementedException();
+        var groups =  ctx.UserBaddits.Join(ctx.ListParticipantsForums,
+            u => u.Id,
+            listGroups => listGroups.Participant,
+            (u, listGroups) => new{
+                userNick = u.NickUser,
+                idUser = u.Id, 
+                listGroupsId = listGroups.Forum
+            })
+            .Where(x => x.idUser == id)
+            .Join(ctx.Forums,
+            listGroups => listGroups.listGroupsId,
+            groups => groups.Id,
+            (listGroups, forum) => forum);
+        
+        var forums = await groups.ToListAsync();
+
+        return forums;
     }
 
-    
-
-   }
+}
 

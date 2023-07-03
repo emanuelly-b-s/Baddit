@@ -7,6 +7,7 @@ import { ConfigService } from './config.service';
 import { Jwt } from '../DTO/Jwt';
 import { SessionLogin } from '../DTO/SessionLogin';
 import { UserSecurityToken } from '../DTO/User/UserSecurityToken';
+import { InfoForum } from '../DTO/Forum/InfoForum';
 
 @Injectable({
   providedIn: 'root',
@@ -37,8 +38,13 @@ export class UserService {
   }
 
   getUserLoggedIn(jwtSession: Jwt) {
-    console.log(jwtSession);  
+    console.log(jwtSession);
     return this.http.post<User>(this.back + '/user/userLoggedIn', jwtSession);
+  }
+
+  getForums(userData : User)
+  {
+    return this.http.post<InfoForum[]>(this.back + '/user/getForumsRegister', userData);
   }
 
 }
