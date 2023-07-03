@@ -54,10 +54,11 @@ public class ForumRepository : IForumRepository<Forum>
         throw new NotImplementedException();
     }
 
-    public async Task AddUser(ParticipantForum participant)
+    public async Task AddUser(ListParticipantsForum obj)
     {
-        await ctx.ParticipantForums.AddAsync(participant);
+        await ctx.ListParticipantsForums.AddAsync(obj);
         await ctx.SaveChangesAsync();
     }
+
 
 }

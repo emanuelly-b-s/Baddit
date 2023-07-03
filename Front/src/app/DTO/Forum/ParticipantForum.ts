@@ -1,6 +1,6 @@
 
-export interface ParticipantForum
+export interface ListParticipantsForum
 {
   forum: number;
-  participantForum1 : number;
+  Participant : number;
 }

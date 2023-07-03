@@ -4,7 +4,7 @@ import { ForumRegister } from '../DTO/Forum/ForumRegister';
 import { ConfigService } from './config.service';
 import { User } from '../DTO/User/User';
 import { InfoForum } from '../DTO/Forum/InfoForum';
-import { ParticipantForum } from '../DTO/Forum/ParticipantForum';
+import { ListParticipantsForum } from '../DTO/Forum/ParticipantForum';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,7 @@ export class ForumService {
     return this.http.post<InfoForum>(this.back + '/forum/get-forum', idForum);
   }
 
-  addUser(data : ParticipantForum)
+  addUser(data : ListParticipantsForum)
   {
     console.log(data);
     return this.http.post(this.back + '/forum/addUser', data);

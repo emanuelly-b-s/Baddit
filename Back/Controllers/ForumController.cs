@@ -76,12 +76,12 @@ public class ForumController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> AddUser(
        [FromServices] IForumRepository<Forum> forumRep,
-       [FromBody] ParticipantForum data
+       [FromBody] AddUserOnForum data
     )
     {
-        ParticipantForum newUser = new()
+        ListParticipantsForum newUser = new()
         {
-            ParticipantForum1 = data.ParticipantForum1,
+            Participant = data.Participant,
             Forum = data.Forum,
         };
 

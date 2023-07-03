@@ -19,7 +19,6 @@ export class ForumRegisterComponent {
   ) {}
 
   form: FormGroup = this.fb.group({
-    
     forumName: ['', [Validators.required, Validators.minLength(2)]],
     descriptionForum: [
       '',
@@ -38,24 +37,22 @@ export class ForumRegisterComponent {
   };
   idOwner: number = 0;
 
-
   ngOnInit(): void {
     this.userService.validateUser().subscribe((res) => {
       if (!res.authenticated) {
         this.router.navigate(['/']);
       }
+      console.log(this.idOwner);
       this.idOwner = res.idUser;
-      console.log(res);
     });
   }
 
   register() {
     this.forumRegister = { ...this.form.value };
     this.forumRegister.owner = this.idOwner;
-    console.log(this.forumRegister);
-        
+
     this.forum.add(this.forumRegister).subscribe((res) => {
-      console.log(res);
+      this.router.navigate(['/forum-home']);
     });
   }
 }

@@ -4,7 +4,7 @@ import { InfoForum } from 'src/app/DTO/Forum/InfoForum';
 import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
 import { ForumService } from 'src/app/services/forum.service';
-import { ParticipantForum } from 'src/app/DTO/Forum/ParticipantForum';
+import { ListParticipantsForum } from 'src/app/DTO/Forum/ParticipantForum';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -37,30 +37,22 @@ export class ForumPageComponent {
     descriptionForum: '',
   };
 
-  participanteForum: ParticipantForum = {
-    participantForum1: 0,
+  creator: number = 0;
+
+  participanteForum: ListParticipantsForum = {
+    Participant: 0,
     forum: 0,
   };
 
   addUser() {
-    console.log(this.participanteForum);
+    this.participanteForum.Participant = this.creator;
     this.participanteForum.forum = this.forumData.id;
 
-    
-    let jwt = sessionStorage.getItem('jwtSession') ?? '';
-    
-    this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
-      next: (res: User) => {
-        this.user = res;
-        // this.participanteForum.participantForum1 = res.userid;
-        this.participanteForum.participantForum1 = res.userid;
-        console.log(this.participanteForum);
-      },
-    });
+    this.forumService.addUser(this.participanteForum).subscribe((res) =>
+    {
+      console.log(res);
+    })
 
-    // this.forumService.addUser(this.participanteForum).subscribe((result) => {
-    //   console.log(result);
-    // });
   }
 
   ngOnInit(): void {
@@ -69,9 +61,8 @@ export class ForumPageComponent {
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
-        this.participanteForum.participantForum1 = res.userid;
-
-        console.log(this.participanteForum)
+        this.creator = res.userid;
+        console.log(this.creator);
       },
       error: (error: any) => {
         this.router.navigate(['']);

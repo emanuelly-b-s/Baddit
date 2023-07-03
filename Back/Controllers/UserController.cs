@@ -53,7 +53,7 @@ public class UserController : ControllerBase
             NickUser = userData.NickUser,
             PasswordUser = passUserHash64,
             SaltPassword = passUserSalt,
-            Userphoto = userData.PhotoUser,
+            UserPhoto = userData.PhotoUser,
         };
 
         await userRep.Add(u);
@@ -158,7 +158,7 @@ public class UserController : ControllerBase
             Username = user.UserName,
             NickUser = user.NickUser,
             Email = user.Email,
-            PhotoUser = user.Userphoto,
+            PhotoUser = user.UserPhoto,
         };
 
         return Ok(result);

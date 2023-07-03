@@ -21,19 +21,17 @@ public partial class UserBaddit
 
     public string SaltPassword { get; set; } = null!;
 
-    public int? Userphoto { get; set; }
+    public int? UserPhoto { get; set; }
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     public virtual ICollection<Forum> Forums { get; set; } = new List<Forum>();
 
-    public virtual ICollection<LocationPhoto> LocationPhotos { get; set; } = new List<LocationPhoto>();
+    public virtual ICollection<ListParticipantsForum> ListParticipantsForums { get; set; } = new List<ListParticipantsForum>();
 
-    public virtual ICollection<ParticipantForum> ParticipantForums { get; set; } = new List<ParticipantForum>();
+    public virtual ICollection<LocationPhoto> LocationPhotos { get; set; } = new List<LocationPhoto>();
 
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 
     public virtual ICollection<UpvoteDownvote> UpvoteDownvotes { get; set; } = new List<UpvoteDownvote>();
-
-    public virtual ImageDatum? UserphotoNavigation { get; set; }
 }

@@ -1,4 +1,5 @@
 using Back.Model;
+using DTO;
 
 namespace Back.Repositories.ForumRep;
 
@@ -8,6 +9,6 @@ public interface IForumRepository<Forum> : IRepository<Forum>
     Task<Forum> GetForumById(int id);
     Task<List<Forum>> GetParticipants(int id);
     
-    Task AddUser(ParticipantForum participant);
+    Task AddUser(ListParticipantsForum participant);
 
 }

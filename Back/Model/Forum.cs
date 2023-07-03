@@ -15,7 +15,7 @@ public partial class Forum
 
     public virtual UserBaddit? CreatorNavigation { get; set; }
 
-    public virtual ICollection<ParticipantForum> ParticipantForums { get; set; } = new List<ParticipantForum>();
+    public virtual ICollection<ListParticipantsForum> ListParticipantsForums { get; set; } = new List<ListParticipantsForum>();
 
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 
