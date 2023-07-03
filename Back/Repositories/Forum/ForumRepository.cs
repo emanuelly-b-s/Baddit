@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using Back.Model;
 using Microsoft.EntityFrameworkCore;
 using Back.Repositories;
+using DTO;
 
 namespace Back.Repositories.ForumRep;
 
@@ -60,5 +61,12 @@ public class ForumRepository : IForumRepository<Forum>
         await ctx.SaveChangesAsync();
     }
 
+    public async Task<IEnumerable<Forum>> GetAllForums()
+    {
+       var forumsTake = ctx.Forums.Take(20);
 
+        var forums = await forumsTake.ToListAsync();
+
+       return forums;
+    }
 }

@@ -30,4 +30,10 @@ export class ForumService {
     return this.http.post(this.back + '/forum/addUser', data);
   }
 
+  allForums()
+  {
+    return this.http.get<InfoForum[]>(this.back + "/forum/getForumsRegister")
+  }
+
+
 }

@@ -1,6 +1,12 @@
 <app-nav></app-nav>
 <a href="/forum-register"> Novo Forum </a>
+<li *ngFor="let forum of forums">
+
+  <a [routerLink]="['forum-home/, '']">blabla</a>
+  {{ forum.forumName }}
+</li>
 <mat-drawer-container class="example-container">
-    <app-side-nav></app-side-nav>
+    <app-side-nav>
+    </app-side-nav>
     <app-cards></app-cards>
 </mat-drawer-container>

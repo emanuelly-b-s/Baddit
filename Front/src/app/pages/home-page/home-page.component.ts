@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { InfoForum } from 'src/app/DTO/Forum/InfoForum';
+import { ListParticipantsForum } from 'src/app/DTO/Forum/ParticipantForum';
 import { User } from 'src/app/DTO/User/User';
+import { ForumService } from 'src/app/services/forum.service';
 import { UserService } from 'src/app/services/users.service';
 
 @Component({
@@ -8,8 +11,14 @@ import { UserService } from 'src/app/services/users.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css'],
 })
-export class HomePageComponent {
-  constructor(private userService: UserService, private router: Router) {}
+export class HomePageComponent implements OnInit {
+  forums: InfoForum[] = [];
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private ForumService: ForumService
+  ) {}
 
   authenticated: boolean = true;
 
@@ -18,9 +27,14 @@ export class HomePageComponent {
     username: '',
     email: '',
     photouser: 0,
-    nickUser: ''
+    nickUser: '',
   };
 
+  idForum: number = 0;
+
+  goForum() {
+    this.router.navigate(['/forum'], { queryParams: { id: this.idForum } });
+  }
 
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
@@ -28,16 +42,24 @@ export class HomePageComponent {
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
-        console.log(res);
-      },
-      error: (error: any) => {
-        console.log(error);
-        this.router.navigate(['']);
+
+        this.userService.getForums(this.user).subscribe((list) => {
+          console.log(list);
+          var newList: InfoForum[] = [];
+          list.forEach((element) => {
+            newList.push({
+              forumName: element.forumName,
+              id: element.id,
+              creator: element.creator,
+              descriptionForum: element.descriptionForum,
+            });
+          });
+          this.forums = newList;
+        });
       },
     });
   }
 }
-
 // import { Component} from "@angular/core";
 // @Component({
 //   selector: "like-dislike",
@@ -96,4 +118,3 @@ export class HomePageComponent {
 //       this.dislikeCounter = true;
 //     }
 //   }
-// }

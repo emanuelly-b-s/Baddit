@@ -91,5 +91,16 @@ public class ForumController : ControllerBase
 
     }
 
+    [HttpPost]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult<IEnumerable<Forum>>> GetAllForums(
+        [FromServices] IForumRepository<Forum> forumRepo
+    )
+    {
+        var forums = await forumRepo.GetAllForums();
+
+        return Ok(forums);
+    }
+
 }
 

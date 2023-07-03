@@ -1,23 +1,24 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InfoForum } from 'src/app/DTO/Forum/InfoForum';
 import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
 import { ForumService } from 'src/app/services/forum.service';
 import { ListParticipantsForum } from 'src/app/DTO/Forum/ParticipantForum';
-import { FormBuilder } from '@angular/forms';
+import { filter } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-forum-page',
   templateUrl: './forum-page.component.html',
   styleUrls: ['./forum-page.component.css'],
 })
-export class ForumPageComponent {
+export class ForumPageComponent implements OnInit{
   constructor(
     private userService: UserService,
     private router: Router,
     private forumService: ForumService,
-    private fb: FormBuilder
+    private route: ActivatedRoute
   ) {}
 
   authenticated: boolean = true;
@@ -31,7 +32,7 @@ export class ForumPageComponent {
   };
 
   forumData: InfoForum = {
-    id: 1,
+    id: 0,
     creator: 0,
     forumName: '',
     descriptionForum: '',
@@ -58,15 +59,28 @@ export class ForumPageComponent {
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
 
-    this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
-      next: (res: User) => {
-        this.user = res;
-        this.creator = res.userId;
-        console.log(this.user);
-      },
-      error: (error: any) => {
-        this.router.navigate(['']);
-      },
-    });
+
+    // this.subscription = this.route.params.subscribe((params) => {
+    //   //         this.group = {
+    //   //             name: params['name'],
+    //   //             description: 'Descrição do grupo',
+    //   //         };
+    //   //     });
+
+    // this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
+    //   next: (res: User) => {
+    //     this.user = res;
+    //     this.creator = res.userId;
+    //     console.log(this.user);
+
+    //     this.route.queryParams.
+    //     filter((params:any) => params.id)
+    //   },
+
+
+      // error: (error: any) => {
+      //   this.router.navigate(['']);
+      // },
+    // });
   }
 }

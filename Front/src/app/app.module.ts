@@ -16,6 +16,8 @@ import { NewaccountComponent } from './pages/new-account/new-account.component';
 import { CreatePasswordComponent } from './pages/create-password/create-password.component';
 import { PasswordComponent } from './pages/password/password.component';
 import { EmailComponent } from './pages/email/email.component';
+import { SideNavHomePagComponent } from './pages/side-nav-home-pag/side-nav-home-pag.component';
+
 //router desgraçado
 import { RouterModule } from '@angular/router';
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
@@ -39,7 +41,7 @@ import { HttpClientModule } from '@angular/common/http'; // Added for use HttpCl
 import { NgIf } from '@angular/common';
 import { ForumRegisterComponent } from './pages/forum-register/forum-register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { UpvoteDownvoteComponent } from './upvote-downvote/upvote-downvote.component';
+
 
 
 
@@ -63,7 +65,9 @@ import { UpvoteDownvoteComponent } from './upvote-downvote/upvote-downvote.compo
     SideNavComponent,
     ForumRegisterComponent,
     ProfileComponent,
-    UpvoteDownvoteComponent
+    SideNavComponent,
+    SideNavHomePagComponent
+
   ],
 
   imports: [

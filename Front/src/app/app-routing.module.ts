@@ -15,7 +15,10 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'home-page', component: HomePageComponent },
   { path: 'new-account', component: NewaccountComponent },
-  { path: 'forum-home', component	: ForumPageComponent},
+  { path: 'forum-home/:id', component	: ForumPageComponent},
+  {
+
+  },
   { path : 'forum-register', component : ForumRegisterComponent },
   { path : 'profile-user', component : ProfileComponent },
 ];
