@@ -10,5 +10,6 @@ public interface IForumRepository<Forum> : IRepository<Forum>
     Task<List<Forum>> GetParticipants(int id);
     Task AddUser(ListParticipantsForum participant);
     Task<IEnumerable<Forum>> GetAllForums();
+    
 
 }

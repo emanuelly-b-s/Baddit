@@ -2,7 +2,6 @@ using System.Linq.Expressions;
 using Back.Model;
 using Microsoft.EntityFrameworkCore;
 using DTO;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Back.Repositories.User;
 
