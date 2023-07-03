@@ -14,7 +14,7 @@ export class HomePageComponent {
   authenticated: boolean = true;
 
   user: User = {
-    userid: 0,
+    userId: 0,
     username: '',
     email: '',
     photouser: 0,

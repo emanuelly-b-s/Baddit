@@ -23,7 +23,7 @@ export class ForumPageComponent {
   authenticated: boolean = true;
 
   user: User = {
-    userid: 0,
+    userId: 0,
     username: '',
     nickUser: '',
     email: '',
@@ -61,8 +61,8 @@ export class ForumPageComponent {
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
-        this.creator = res.userid;
-        console.log(this.creator);
+        this.creator = res.userId;
+        console.log(this.user);
       },
       error: (error: any) => {
         this.router.navigate(['']);

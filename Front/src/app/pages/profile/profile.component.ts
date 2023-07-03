@@ -14,7 +14,7 @@ export class ProfileComponent {
   authenticated: boolean = true;
 
   user: User = {
-    userid: 0,
+    userId: 0,
     username: '',
     nickUser: '',
     email: '',
