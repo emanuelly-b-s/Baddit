@@ -172,7 +172,7 @@ public class UserController : ControllerBase
         [FromBody] InfoUser user
     )
     {
-        var groups = userRep.GetGroups(user.UserId);
+        var groups = await userRep.GetGroups(user.UserId);
 
         return Ok(groups);
     }

@@ -57,7 +57,7 @@ public class UserRepository : IUserRepository<UserBaddit>
         return user;
     }
 
-    public async Task<ActionResult<IEnumerable<Forum>>> GetGroups(int id)
+    public async Task<IEnumerable<Forum>> GetGroups(int id)
     {
         var groups =  ctx.UserBaddits.Join(ctx.ListParticipantsForums,
             u => u.Id,

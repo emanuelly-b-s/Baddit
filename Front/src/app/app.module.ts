@@ -39,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http'; // Added for use HttpCl
 import { NgIf } from '@angular/common';
 import { ForumRegisterComponent } from './pages/forum-register/forum-register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { UpvoteDownvoteComponent } from './upvote-downvote/upvote-downvote.component';
 
 
 
@@ -61,7 +62,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     PostComponent,
     SideNavComponent,
     ForumRegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    UpvoteDownvoteComponent
   ],
 
   imports: [

@@ -35,30 +35,26 @@ export class ProfileComponent implements OnInit {
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
-        console.log(this.user);
-      },
-      error: (error: any) => {
-        console.log(error);
-        this.router.navigate(['']);
-      },
-    });
-    this.userService.getForums(this.user).subscribe((list) => {
-      console.log(list);
 
-      var newList: InfoForum[] = [];
-      list.forEach((element) => {
-        newList.push({
+        this.userService.getForums(this.user).subscribe(list => {
+          var newList: InfoForum[] = [];
+          list.forEach(element => {
+            console.log(element.forumName)
+            newList.push({
+              id: element.id,
+              creator: element.creator,
+              forumName: element.forumName,
+              descriptionForum: element.descriptionForum
+            });
+          });
 
-          id: element.id,
-          creator: element.creator,
-          forumName: element.forumName,
-          descriptionForum: element.descriptionForum
+          this.forums = newList;
 
         });
-      });
-
-      this.forums = newList;
-      
+      },
+      error: (error: any) => {
+        this.router.navigate(['']);
+      }
     });
   }
 }
