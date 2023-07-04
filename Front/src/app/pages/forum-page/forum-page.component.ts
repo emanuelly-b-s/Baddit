@@ -67,19 +67,21 @@ export class ForumPageComponent implements OnInit, OnDestroy {
       this.forum.id = params['id'];
     });
 
+
+    this.forumService.getForumByID(this.forum.id).subscribe((res) => {
+      console.log(res)
+    });
+
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
         this.creator = res.userId;
-        console.log(this.user);
-
       },
 
-
-    error: (error: any) => {
-      this.router.navigate(['']);
-    },
+      error: (error: any) => {
+        this.router.navigate(['']);
+      },
     });
   }
 

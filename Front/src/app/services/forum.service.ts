@@ -18,15 +18,20 @@ export class ForumService {
     return this.http.post(this.back + '/forum/new-forum', newForum);
   }
 
+  // getForumByID(idForum: number)
+  // {
+  //   return this.http.get<InfoForum>(this.back + '/forum/get-forum' + idForum);
+  // }
+
+
   getForumByID(idForum: number)
   {
-    console.log(idForum);
     return this.http.post<InfoForum>(this.back + '/forum/get-forum', idForum);
   }
 
+
   addUser(data : ListParticipantsForum)
   {
-    console.log(data);
     return this.http.post(this.back + '/forum/addUser', data);
   }
 

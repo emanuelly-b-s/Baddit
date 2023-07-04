@@ -38,7 +38,6 @@ export class UserService {
   }
 
   getUserLoggedIn(jwtSession: Jwt) {
-    console.log(jwtSession);
     return this.http.post<User>(this.back + '/user/userLoggedIn', jwtSession);
   }
 

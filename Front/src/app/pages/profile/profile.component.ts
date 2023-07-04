@@ -39,7 +39,6 @@ export class ProfileComponent implements OnInit {
         this.userService.getForums(this.user).subscribe(list => {
           var newList: InfoForum[] = [];
           list.forEach(element => {
-            console.log(element.forumName)
             newList.push({
               id: element.id,
               creator: element.creator,
