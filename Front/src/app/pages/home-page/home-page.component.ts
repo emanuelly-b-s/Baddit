@@ -48,7 +48,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
           this.user = res;
 
           this.userService.getForums(this.user).subscribe((list) => {
-            console.log(list);
             var newList: InfoForum[] = [];
             list.forEach((element) => {
               newList.push({

@@ -12,7 +12,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './forum-page.component.html',
   styleUrls: ['./forum-page.component.css'],
 })
-export class ForumPageComponent implements OnInit, OnDestroy {
+export class ForumPageComponent implements OnInit {
   subscription: any;
 
   constructor(
@@ -66,7 +66,6 @@ export class ForumPageComponent implements OnInit, OnDestroy {
     this.subscription = this.route.params.subscribe((params) => {
       this.forum.id = params['id'];
     });
-
     
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
@@ -85,7 +84,7 @@ export class ForumPageComponent implements OnInit, OnDestroy {
         });
   }
 
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+  // ngOnDestroy(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 }

@@ -11,7 +11,7 @@ export class PostService {
 
   back = this.config.backEnd;
 
-  add(newPost: Post) {
+  addPost(newPost: Post) {
     return this.http.post(this.back + '/forum/post/new-post', newPost);
   }
 }

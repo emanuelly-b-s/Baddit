@@ -2,7 +2,7 @@
 <div class="container">
   <div class="input-group mb-3">
     <h5 class="border-bottom">New Post</h5>
-    <form class="p-1" >
+    <form class="p-1" [formGroup]="form">
       <div
         class="form-group"
         style="
@@ -17,6 +17,8 @@
       <div class="form-group">
         <label >Tittle</label>
         <input
+        formControlName="tittle"
+
           type="text"
           class="form-control"
           placeholder="How to use a computer"
@@ -26,6 +28,7 @@
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Description</label>
         <textarea
+        formControlName="postText"
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
@@ -47,6 +50,7 @@
           <button
             class="btn px-5"
             style="display: flex; justify-content: center"
+            (click)="addPost()"
           >
             Publish
           </button>

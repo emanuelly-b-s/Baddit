@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Post } from 'src/app/DTO/Post.ts/Post';
 import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
+import { ForumService } from 'src/app/services/forum.service';
 
 @Component({
   selector: 'app-post',
@@ -14,13 +15,15 @@ import { UserService } from 'src/app/services/users.service';
 export class PostComponent {
   constructor(
     private userService: UserService,
+    private forumService: ForumService,
     private router: Router,
     private postService: PostService,
     private fb: FormBuilder
   ) {}
 
+  
   ngOnInit(): void {
-    let jwt = sessionStorage.getItem('jwtSession') ?? '';
+        let jwt = sessionStorage.getItem('jwtSession') ?? '';
 
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
@@ -28,9 +31,9 @@ export class PostComponent {
       },
     });
   }
-
+  
   authenticated: boolean = true;
-
+  
   user: User = {
     userId: 0,
     username: '',
@@ -38,14 +41,16 @@ export class PostComponent {
     email: '',
     photouser: 0,
   };
-
+  
   post: Post = {
     tittle: '',
     postText: '',
     postDate: new Date(),
-    forum: 1,
+    forum: 0,
     participant: 0,
   };
+  
+  idForum = Number(this.router.url.split("/")[2])
 
   form: FormGroup = this.fb.group({
     tittle: [
@@ -58,10 +63,13 @@ export class PostComponent {
   addPost() {
     this.post = { ...this.form.value };
     this.post.participant = this.user.userId;
-    this.post.forum = 1; // preciso de um void p/ receber o id forum
+    this.post.forum = this.idForum; 
+    console.log(this.post)
+    console.log(this.form.value)
     
-    this.postService.add(this.post).subscribe((res) => {
-      this.router.navigate(['forum-home']);
+    this.postService.addPost(this.post).subscribe((res) => {
+      this.form.reset();
+      this.router.navigate(['forum-home/' + this.idForum]);
       console.log(res);
     });
   }
