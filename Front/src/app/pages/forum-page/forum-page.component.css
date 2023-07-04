@@ -2,13 +2,13 @@
 
 @import url('https://css.gg/css?=|chevron-down-o|chevron-up-o|feed');
 
-.forumName{
+.forumName {
   display: flex;
   justify-content: flex-start;
 }
 
 
-.container{
+.container {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -16,16 +16,46 @@
   align-content: center;
 }
 
+.container-tittle {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  width: 45%;
+  margin: 3% auto 0px auto;
+  padding: 0.5% 5%;
+  border-radius: 30px;
+  box-shadow: 0px 0px 25px -16px #00000069;
+  background-color:#6f8eb266 ;
+  z-index: 0;
+}
 
-main{
+.container-description {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  width: 55%;
+  margin: -0.5% auto 0px auto;
+  padding: 0.5% 5%;
+  border-radius: 30px;
+  /* box-shadow: 0px 0px 25px -16px #00000069; */
+  z-index: 1;
+  background-color: rgb(0 0 0 / 54%);
+}
+
+main {
   height: 100%;
 }
 
-hr{
+hr {
   border: 8px solid black;
 }
 
-.row{
+
+
+
+.row {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -38,40 +68,39 @@ hr{
 }
 
 
-body{
+body {
   background-color: white;
 }
 
 .mat-drawer {
-    position: relative;
-    z-index: 4;
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 3;
-    outline: 0;
-    box-sizing: border-box;
-    overflow-y: auto;
-    transform: translate3d(-100%, 0, 0);
-    width: 15%;
-    padding: 2%;
-    margin-bottom: 5px;
+  position: relative;
+  z-index: 4;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  outline: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  transform: translate3d(-100%, 0, 0);
+  width: 15%;
+  padding: 2%;
+  margin-bottom: 5px;
 }
 
 mat-sidenav {
-    margin: 16px;
-    width: 200px;
-    border-right: none;
-    background: #002b5c;
-    color: white;
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
+  margin: 16px;
+  width: 200px;
+  border-right: none;
+  background: #002b5c;
+  color: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
 }
 
 
 mat-sidenav-container {
-    height: calc(100vh - 65px);
+  height: calc(100vh - 65px);
 }
-

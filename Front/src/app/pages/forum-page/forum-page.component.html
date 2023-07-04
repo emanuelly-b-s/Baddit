@@ -9,29 +9,28 @@
     </mat-list>
   </mat-drawer>
   <div class="container">
-    <div class="container text-center">
+    <div class="container-tittle">
       <div class="row">
-        <div class="col">
-          <!-- <button class="btn btn-primary" (click)="addUser()">add user</button> -->
-          <h5>
-            {{ forum.id }}
-            teste : {{ forum.forumName }}
-            Nome forum
-          </h5>
-        </div>
-        <div class="col">
-          <h5>
-            <!-- {{ forum.desc }} -->
-            Desc forum
-          </h5>
-        </div>
+        <!-- <button class="btn btn-primary" (click)="addUser()">add user</button> -->
+        <h5>
+          {{ forum.forumName }}
+        </h5>
       </div>
-      <div class="row">
-        <!-- se for adm -->
-      </div>
-
-        <app-post></app-post>
-      <app-cards></app-cards>
     </div>
+    <div class="container-description"> 
+      <div class="row">
+        <h5>
+          {{ forum.descriptionForum }}
+
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <!-- se for adm -->
+    </div>
+
+    <app-post></app-post>
+    <app-cards></app-cards>
   </div>
+  
 </mat-drawer-container>

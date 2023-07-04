@@ -3,8 +3,6 @@ using Back.Repositories.ForumRep;
 using DTO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic;
-using UserServices;
 
 namespace Back.Controllers;
 
@@ -40,11 +38,11 @@ public class ForumController : ControllerBase
     [HttpPost("get-forum")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<Forum>> GetById(
-        int id,
+        [FromBody] InfoForum  forumData,
         [FromServices] IForumRepository<Forum> forumRep
     )
     {
-        Forum forumData = await forumRep.GetForumById(id);
+        Forum forum = await forumRep.GetForumById(forumData.ID);
 
         if (forumData is null)
             return NotFound();
@@ -52,10 +50,10 @@ public class ForumController : ControllerBase
 
         InfoForum result = new()
         {
-            ID = forumData.Id,
-            Creator = forumData.Creator,
-            ForumName = forumData.ForumName,
-            DescriptionForum = forumData.DescriptionForum
+            ID = forum.Id,
+            Creator = forum.Creator,
+            ForumName = forum.ForumName,
+            DescriptionForum = forum.DescriptionForum
         };
 
         return Ok(result);

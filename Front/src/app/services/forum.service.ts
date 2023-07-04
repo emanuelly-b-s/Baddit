@@ -24,9 +24,9 @@ export class ForumService {
   // }
 
 
-  getForumByID(idForum: number)
+  getForumByID(forumData: InfoForum)
   {
-    return this.http.post<InfoForum>(this.back + '/forum/get-forum', idForum);
+    return this.http.post<InfoForum>(this.back + '/forum/get-forum/', forumData);
   }
 
 
