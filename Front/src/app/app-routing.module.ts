@@ -18,6 +18,8 @@ const routes: Routes = [
   { path: 'forum-home', component	: ForumPageComponent},
   { path: 'forum-register', component : ForumRegisterComponent },
   { path: 'profile-user', component : ProfileComponent },
+  { path: "forum-home/:id", component: ForumPageComponent },
+
 ];
 
 @NgModule({

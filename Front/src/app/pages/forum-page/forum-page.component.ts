@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfoForum } from 'src/app/DTO/Forum/InfoForum';
 import { User } from 'src/app/DTO/User/User';
@@ -7,19 +7,27 @@ import { ForumService } from 'src/app/services/forum.service';
 import { ListParticipantsForum } from 'src/app/DTO/Forum/ParticipantForum';
 import { filter } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-forum-page',
   templateUrl: './forum-page.component.html',
   styleUrls: ['./forum-page.component.css'],
 })
-export class ForumPageComponent implements OnInit{
+export class ForumPageComponent implements OnInit, OnDestroy {
+  subscription: any;
+
   constructor(
     private userService: UserService,
     private router: Router,
     private forumService: ForumService,
     private route: ActivatedRoute
   ) {}
+
+  forum: InfoForum = {
+    id: 0,
+    creator: 0,
+    forumName: '',
+    descriptionForum: '',
+  };
 
   authenticated: boolean = true;
 
@@ -49,38 +57,33 @@ export class ForumPageComponent implements OnInit{
     this.participanteForum.Participant = this.creator;
     this.participanteForum.forum = this.forumData.id;
 
-    this.forumService.addUser(this.participanteForum).subscribe((res) =>
-    {
+    this.forumService.addUser(this.participanteForum).subscribe((res) => {
       console.log(res);
-    })
-
+    });
   }
 
   ngOnInit(): void {
+    this.subscription = this.route.params.subscribe((params) => {
+      this.forum.id = params['id'];
+    });
+
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
+    this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
+      next: (res: User) => {
+        this.user = res;
+        this.creator = res.userId;
+        console.log(this.user);
+
+      },
 
 
-    // this.subscription = this.route.params.subscribe((params) => {
-    //   //         this.group = {
-    //   //             name: params['name'],
-    //   //             description: 'Descrição do grupo',
-    //   //         };
-    //   //     });
+    error: (error: any) => {
+      this.router.navigate(['']);
+    },
+    });
+  }
 
-    // this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
-    //   next: (res: User) => {
-    //     this.user = res;
-    //     this.creator = res.userId;
-    //     console.log(this.user);
-
-    //     this.route.queryParams.
-    //     filter((params:any) => params.id)
-    //   },
-
-
-      // error: (error: any) => {
-      //   this.router.navigate(['']);
-      // },
-    // });
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
   }
 }
