@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'home-page', component: HomePageComponent },
   { path: 'new-account', component: NewaccountComponent },
   { path: 'forum-home', component	: ForumPageComponent},
-  { path : 'forum-register', component : ForumRegisterComponent },
-  { path : 'profile-user', component : ProfileComponent },
+  { path: 'forum-register', component : ForumRegisterComponent },
+  { path: 'profile-user', component : ProfileComponent },
 ];
 
 @NgModule({

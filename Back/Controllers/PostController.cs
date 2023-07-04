@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Back.Model;
 using Back.Repositories.PostRep;
+using DTO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -18,10 +19,10 @@ public class PostController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<IActionResult> AddPost(
         [FromServices] IPostRepository<Post> postRepo,
-        [FromBody] Post post
+        [FromBody] NewPostDTO post
         )
         {
-            Post newPost = new Post()
+            Post newPost = new()
             {
                 Tittle = post.Tittle,
                 PostText = post.PostText,

@@ -8,9 +8,12 @@ namespace Back.Repositories.PostRep;
 public class PostRepository : IPostRepository<Post>
 {
     private readonly BadditContext ctx;
-    public async Task AddPost(Post post)
+    public PostRepository(BadditContext ctx)
+        => this.ctx = ctx;
+
+    public async Task AddPost(Post obj)
     {
-        await ctx.Posts.AddAsync(post);
+        await ctx.Posts.AddAsync(obj);
         await ctx.SaveChangesAsync();
     }
 }

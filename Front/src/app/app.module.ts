@@ -47,6 +47,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
+    PostComponent,
     HomePageComponent,
     LoginComponent,
     UploaderComponent,
@@ -61,7 +62,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
     EmailComponent,
     ForumPageComponent,
     CardsComponent,
-    PostComponent,
     SideNavComponent,
     ForumRegisterComponent,
     ProfileComponent,

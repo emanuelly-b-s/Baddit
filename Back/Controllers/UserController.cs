@@ -28,9 +28,10 @@ public class UserController : ControllerBase
 
     [HttpPost("new-account")]
     [EnableCors("MainPolicy")]
-    public async Task<ActionResult> Register([FromServices] IUserRepository<UserBaddit> userRep,
-                                             [FromBody] NewUserDTO userData,
-                                             [FromServices] ISecurityServiceJwt passJwt
+    public async Task<ActionResult> Register(
+        [FromServices] IUserRepository<UserBaddit> userRep,
+        [FromBody] NewUserDTO userData,
+        [FromServices] ISecurityServiceJwt passJwt
     )
     {
 

@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from './../../services/post.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,8 +16,18 @@ export class PostComponent {
     private userService: UserService,
     private router: Router,
     private postService: PostService,
-    private post: Post
+    private fb: FormBuilder
   ) {}
+
+  ngOnInit(): void {
+    let jwt = sessionStorage.getItem('jwtSession') ?? '';
+
+    this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
+      next: (res: User) => {
+        this.user = res;
+      },
+    });
+  }
 
   authenticated: boolean = true;
 
@@ -28,14 +39,30 @@ export class PostComponent {
     photouser: 0,
   };
 
-  ngOnInit(): void {
-    let jwt = sessionStorage.getItem('jwtSession') ?? '';
+  post: Post = {
+    tittle: '',
+    postText: '',
+    postDate: new Date(),
+    forum: 1,
+    participant: 0,
+  };
 
-    this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
-      next: (res: User) => {
-        this.user = res;
+  form: FormGroup = this.fb.group({
+    tittle: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.maxLength(15)],
+    ],
+    postText: ['', [Validators.required, Validators.minLength(5)]],
+  });
 
-      },
+  addPost() {
+    this.post = { ...this.form.value };
+    this.post.participant = this.user.userId;
+    this.post.forum = 1; // preciso de um void p/ receber o id forum
+    
+    this.postService.add(this.post).subscribe((res) => {
+      this.router.navigate(['forum-home']);
+      console.log(res);
     });
   }
 }

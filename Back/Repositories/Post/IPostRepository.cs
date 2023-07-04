@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Back.Repositories.PostRep;
-public interface IPostRepository<Post> 
+public interface IPostRepository<T> 
 {
-    Task AddPost(Post post);
+    Task AddPost(T obj);
 }

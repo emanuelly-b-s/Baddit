@@ -5,6 +5,7 @@ using SecurityService;
 using Security.Jwt;
 using UserServices;
 using Back.Repositories;
+using Back.Repositories.PostRep;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IForumRepository<Forum>, ForumRepository>();
 builder.Services.AddTransient<ISecurityServiceJwt, SecurityServiceJwt>();
 builder.Services.AddTransient<IJwtService, JwtService>();
+builder.Services.AddTransient<IPostRepository<Post>, PostRepository>();
 builder.Services.AddScoped<BadditContext>();
 
 builder.Services.AddTransient<IPasswordProvider>(p =>{
