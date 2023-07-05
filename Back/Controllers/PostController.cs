@@ -53,7 +53,7 @@ public class PostController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> UpvolteDownvote(
         [FromServices] IPostRepository<Post> postRepo,
-        [FromBody] Post post
+        [FromBody] InfoPostDTO post
     )
     {
         await postRepo.UpdateUpDown(post);

@@ -35,11 +35,12 @@ public class PostRepository : IPostRepository<Post>
         return getPosts;
     }
 
-    public async Task UpdateUpDown(Post post)
+    public async Task UpdateUpDown(InfoPostDTO post)
     {
         var postUpdate = await ctx.Posts
                                         .Where(postForum => postForum.Id == post.Id)
                                         .FirstOrDefaultAsync();
+        Console.WriteLine(postUpdate.Upvote);
 
         ctx.Posts.Update(postUpdate);
         await ctx.SaveChangesAsync();

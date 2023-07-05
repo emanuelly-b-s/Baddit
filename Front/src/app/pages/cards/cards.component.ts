@@ -70,6 +70,7 @@ export class CardsComponent {
               downvote: element.downvote
             });
           });
+          console.log(newList)
           this.posts = newList;
         });
       },
