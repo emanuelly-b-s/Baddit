@@ -5,4 +5,6 @@ export interface Post
     postDate: Date;
     forum: number;
     participant: number;
+    upvote: number;
+    downvote: number;
 }

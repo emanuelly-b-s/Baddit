@@ -30,6 +30,8 @@ export class CardsComponent {
     postDate: new Date(),
     forum: 0,
     participant: 0,
+    upvote: 0,
+    downvote: 0
   };
 
   user: User = {
@@ -64,9 +66,10 @@ export class CardsComponent {
               postDate: element.postDate,
               forum: element.forum,
               participant: element.participant,
+              upvote: element.upvote,
+              downvote: element.downvote
             });
           });
-          console.log(newList)
           this.posts = newList;
         });
       },

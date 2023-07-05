@@ -27,7 +27,7 @@ public class PostRepository : IPostRepository<Post>
     {
         var post = ctx.Posts
             .Where(postForum => postForum.Forum == idForum);
-    
+
 
         var getPosts = await post.Take(10)
                                  .ToListAsync();
@@ -35,5 +35,13 @@ public class PostRepository : IPostRepository<Post>
         return getPosts;
     }
 
+    public async Task UpdateUpDown(Post post)
+    {
+        var postUpdate = await ctx.Posts
+                                        .Where(postForum => postForum.Id == post.Id)
+                                        .FirstOrDefaultAsync();
 
+        ctx.Posts.Update(postUpdate);
+        await ctx.SaveChangesAsync();
+    }
 }

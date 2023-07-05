@@ -21,20 +21,20 @@ public class PostController : ControllerBase
         [FromServices] IPostRepository<Post> postRepo,
         [FromBody] NewPostDTO post
         )
+    {
+        Post newPost = new()
         {
-            Post newPost = new()
-            {
-                Tittle = post.Tittle,
-                PostText = post.PostText,
-                PostDate = post.PostDate,
-                Forum = post.Forum,
-                Participant = post.Participant
-            };
+            Tittle = post.Tittle,
+            PostText = post.PostText,
+            PostDate = post.PostDate,
+            Forum = post.Forum,
+            Participant = post.Participant
+        };
 
-            await postRepo.AddPost(newPost);
+        await postRepo.AddPost(newPost);
 
         return Ok();
-        }
+    }
 
     [HttpPost("getPosts")]
     [EnableCors("MainPolicy")]
@@ -46,7 +46,19 @@ public class PostController : ControllerBase
     {
         var posts = await postRepo.GetAllPost(infoForum.ID);
 
-        return Ok(posts);   
+        return Ok(posts);
+    }
+
+    [HttpPost("upvotesDownvotes")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult> UpvolteDownvote(
+        [FromServices] IPostRepository<Post> postRepo,
+        [FromBody] Post post
+    )
+    {
+        await postRepo.UpdateUpDown(post);
+
+        return Ok();    
     }
 
 
