@@ -66,6 +66,7 @@ export class CardsComponent {
               participant: element.participant,
             });
           });
+          console.log(newList)
           this.posts = newList;
         });
       },
