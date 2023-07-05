@@ -58,20 +58,22 @@ public class UserRepository : IUserRepository<UserBaddit>
 
     public async Task<IEnumerable<Forum>> GetGroups(int id)
     {
-        var groups =  ctx.UserBaddits.Join(ctx.ListParticipantsForums,
+        var groups = ctx.UserBaddits.Join(ctx.ListParticipantsForums,
             u => u.Id,
             listGroups => listGroups.Participant,
-            (u, listGroups) => new{
+            (u, listGroups) => new
+            {
                 userNick = u.NickUser,
-                idUser = u.Id, 
+                idUser = u.Id,
                 listGroupsId = listGroups.Forum
             })
             .Where(x => x.idUser == id)
             .Join(ctx.Forums,
-            listGroups => listGroups.listGroupsId,
-            groups => groups.Id,
-            (listGroups, forum) => forum);
-        
+                listGroups => listGroups.listGroupsId,
+                groups => groups.Id,
+                (listGroups, forum)
+                => forum);
+
         var forums = await groups.ToListAsync();
 
         return forums;

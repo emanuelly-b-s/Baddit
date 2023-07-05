@@ -35,4 +35,19 @@ public class PostController : ControllerBase
 
         return Ok();
         }
+
+    [HttpPost("getPosts")]
+    [EnableCors("MainPolicy")]
+
+    public async Task<ActionResult<IEnumerable<Post>>> GetPosts(
+        [FromServices] IPostRepository<Post> postRepo,
+        [FromBody] InfoForum infoForum
+    )
+    {
+        var posts = await postRepo.GetAllPost(infoForum.ID);
+
+        return Ok(posts);   
+    }
+
+
 }
