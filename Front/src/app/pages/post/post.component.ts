@@ -6,6 +6,7 @@ import { Post } from 'src/app/DTO/Post.ts/Post';
 import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
 import { ForumService } from 'src/app/services/forum.service';
+import { InfoForum } from 'src/app/DTO/Forum/InfoForum';
 
 @Component({
   selector: 'app-post',
@@ -13,35 +14,42 @@ import { ForumService } from 'src/app/services/forum.service';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent {
+  posts: Post[] = [];
+
   constructor(
     private userService: UserService,
-    private forumService: ForumService,
     private router: Router,
     private postService: PostService,
     private fb: FormBuilder
   ) {}
 
-  
   ngOnInit(): void {
-        let jwt = sessionStorage.getItem('jwtSession') ?? '';
+    let jwt = sessionStorage.getItem('jwtSession') ?? '';
 
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
+
+        this.forum.id = Number(this.router.url.split('/')[2]);
+        this.postService.getPostsByForum(this.forum).subscribe((list) => {
+          var newList: Post[] = [];
+          list.forEach((element) => {
+            newList.push({
+              tittle: element.tittle,
+              postText: element.postText,
+              postDate: element.postDate,
+              forum: element.forum,
+              participant: element.participant,
+            });
+          });
+          this.posts = newList;
+        });
       },
     });
   }
-  
+
   authenticated: boolean = true;
-  
-  user: User = {
-    userId: 0,
-    username: '',
-    nickUser: '',
-    email: '',
-    photouser: 0,
-  };
-  
+
   post: Post = {
     tittle: '',
     postText: '',
@@ -49,8 +57,21 @@ export class PostComponent {
     forum: 0,
     participant: 0,
   };
-  
-  idForum = Number(this.router.url.split("/")[2])
+
+  user: User = {
+    userId: 0,
+    username: '',
+    nickUser: '',
+    email: '',
+    photouser: 0,
+  };
+
+  forum: InfoForum = {
+    id: 0,
+    creator: 0,
+    forumName: '',
+    descriptionForum: '',
+  };
 
   form: FormGroup = this.fb.group({
     tittle: [
@@ -63,14 +84,11 @@ export class PostComponent {
   addPost() {
     this.post = { ...this.form.value };
     this.post.participant = this.user.userId;
-    this.post.forum = this.idForum; 
-    console.log(this.post)
-    console.log(this.form.value)
-    
+    this.post.forum = this.forum.id;
+
     this.postService.addPost(this.post).subscribe((res) => {
       this.form.reset();
-      this.router.navigate(['forum-home/' + this.idForum]);
-      console.log(res);
+      this.router.navigate(['forum-home/' + this.forum.id]);
     });
   }
 }
