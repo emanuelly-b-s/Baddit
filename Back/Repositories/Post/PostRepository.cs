@@ -40,7 +40,6 @@ public class PostRepository : IPostRepository<Post>
         var postUpdate = await ctx.Posts
                                         .Where(postForum => postForum.Id == post.Id)
                                         .FirstOrDefaultAsync();
-        Console.WriteLine(postUpdate.Upvote);
 
         ctx.Posts.Update(postUpdate);
         await ctx.SaveChangesAsync();
