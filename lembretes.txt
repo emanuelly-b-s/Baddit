@@ -72,6 +72,8 @@
 		Tittle VARCHAR(100) NOT NULL,
 		PostText VARCHAR(MAX) NOT NULL,
 		PostDate DATE NOT NULL,
+		Upvote INT, 
+		Downvote INT,
 		Forum INT FOREIGN KEY REFERENCES Forum(ID), 
 		Participant INT FOREIGN KEY REFERENCES User_Baddit(ID)
 	);
@@ -112,6 +114,14 @@
 	select * from User_Baddit
 	select * from Forum
 	select * from ListParticipantsForum
+	select * from Post
+
+	insert into ListParticipantsForum values (1,2)
+
+
+	alter table user_baddit drop column UserPhoto
+
+	alter table user_baddit add UserPhoto int foreign key references imageData(ID)
 
 	select u.nickuser, f.ForumName
 	from User_Baddit as u 
