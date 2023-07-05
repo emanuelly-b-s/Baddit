@@ -34,4 +34,6 @@ public partial class UserBaddit
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 
     public virtual ICollection<UpvoteDownvote> UpvoteDownvotes { get; set; } = new List<UpvoteDownvote>();
+
+    public virtual ImageDatum? UserPhotoNavigation { get; set; }
 }

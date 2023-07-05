@@ -13,6 +13,10 @@ public partial class Post
 
     public DateTime PostDate { get; set; }
 
+    public int? Upvote { get; set; }
+
+    public int? Downvote { get; set; }
+
     public int? Forum { get; set; }
 
     public int? Participant { get; set; }

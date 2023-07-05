@@ -10,4 +10,6 @@ public partial class ImageDatum
     public byte[] Photo { get; set; } = null!;
 
     public virtual ICollection<LocationPhoto> LocationPhotos { get; set; } = new List<LocationPhoto>();
+
+    public virtual ICollection<UserBaddit> UserBaddits { get; set; } = new List<UserBaddit>();
 }
