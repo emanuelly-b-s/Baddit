@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using Back.Model;
+using DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace Back.Repositories;
@@ -19,6 +20,11 @@ public class PermissionRepository : IPermissionRepository
     }
 
     public Task<List<Permission>> Filter(Expression<Func<Permission, bool>> condition)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<PermissionDTO> GetPermission(int id)
     {
         throw new NotImplementedException();
     }
