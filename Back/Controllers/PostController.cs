@@ -18,7 +18,7 @@ public class PostController : ControllerBase
     [HttpPost("new-post")]
     [EnableCors("MainPolicy")]
     public async Task<IActionResult> AddPost(
-        [FromServices] IPostRepository<Post> postRepo,
+        [FromServices] IPostRepository postRepo,
         [FromBody] NewPostDTO post
         )
     {
@@ -40,7 +40,7 @@ public class PostController : ControllerBase
     [EnableCors("MainPolicy")]
 
     public async Task<ActionResult<IEnumerable<Post>>> GetPosts(
-        [FromServices] IPostRepository<Post> postRepo,
+        [FromServices] IPostRepository postRepo,
         [FromBody] InfoForum infoForum
     )
     {

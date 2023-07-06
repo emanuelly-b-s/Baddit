@@ -5,7 +5,7 @@ using DTO;
 
 namespace Back.Repositories.User;
 
-public class UserRepository : IUserRepository<UserBaddit>
+public class UserRepository : IUserRepository
 {
     private readonly BadditContext ctx;
 

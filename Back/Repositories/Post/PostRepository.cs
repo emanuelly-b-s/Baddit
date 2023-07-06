@@ -7,13 +7,13 @@ using Back.Repositories.User;
 
 namespace Back.Repositories.PostRep;
 
-public class PostRepository : IPostRepository<Post>
+public class PostRepository : IPostRepository
 {
     private readonly BadditContext ctx;
-    private readonly IForumRepository<Forum> _forumRepository;
-    private readonly IUserRepository<UserBaddit> _userRepo;
+    private readonly IForumRepository _forumRepository;
+    private readonly IUserRepository _userRepo;
 
-    public PostRepository(BadditContext ctx, IForumRepository<Forum> _forumRepository)
+    public PostRepository(BadditContext ctx, IForumRepository _forumRepository)
     {
         this.ctx = ctx;
         this._forumRepository = _forumRepository;

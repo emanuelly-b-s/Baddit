@@ -6,7 +6,7 @@ using DTO;
 
 namespace Back.Repositories.ForumRep;
 
-public class ForumRepository : IForumRepository<Forum>
+public class ForumRepository : IForumRepository
 {
     private readonly BadditContext ctx;
 

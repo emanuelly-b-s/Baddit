@@ -10,10 +10,10 @@ namespace Back.Repositories.PostRep;
 public class UpDownRepository : IUpDownRepository
 {
     private readonly BadditContext ctx;
-    private readonly IForumRepository<Forum> _forumRepository;
-    private readonly IUserRepository<UserBaddit> _userRepo;
+    private readonly IForumRepository _forumRepository;
+    private readonly IUserRepository _userRepo;
 
-    public UpDownRepository(BadditContext ctx, IForumRepository<Forum> _forumRepository)
+    public UpDownRepository(BadditContext ctx, IForumRepository _forumRepository)
     {
         this.ctx = ctx;
         this._forumRepository = _forumRepository;

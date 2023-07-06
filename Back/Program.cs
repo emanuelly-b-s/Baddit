@@ -21,12 +21,12 @@ builder.Services.AddCors(opt =>
 });
 
 builder.Services.AddTransient<IRepository<ImageDatum>, ImageRepository>();
-builder.Services.AddTransient<IUserRepository<UserBaddit>, UserRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IForumRepository<Forum>, ForumRepository>();
+builder.Services.AddTransient<IForumRepository, ForumRepository>();
 builder.Services.AddTransient<ISecurityServiceJwt, SecurityServiceJwt>();
 builder.Services.AddTransient<IJwtService, JwtService>();
-builder.Services.AddTransient<IPostRepository<Post>, PostRepository>();
+builder.Services.AddTransient<IPostRepository, PostRepository>();
 builder.Services.AddTransient<IUpDownRepository, UpDownRepository>();
 builder.Services.AddScoped<BadditContext>();
 

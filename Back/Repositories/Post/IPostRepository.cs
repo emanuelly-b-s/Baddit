@@ -6,9 +6,9 @@ using Back.Model;
 using DTO;
 
 namespace Back.Repositories.PostRep;
-public interface IPostRepository<T> : IRepository<T> 
+public interface IPostRepository: IRepository<Post>
 {
-    Task Add(T obj);
+    Task Add(Post obj);
     Task<List<Post>> GetAllPost(int idForum);
     Task<List<Post>> GetPostsFeed(int idUser);
 

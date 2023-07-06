@@ -13,7 +13,7 @@ public class ForumController : ControllerBase
     [HttpPost("new-forum")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
-        [FromServices] IForumRepository<Forum> forumRep,
+        [FromServices] IForumRepository forumRep,
         [FromBody] NewForumDTO forumData)
 
     {
@@ -39,7 +39,7 @@ public class ForumController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<Forum>> GetById(
         [FromBody] InfoForum  forumData,
-        [FromServices] IForumRepository<Forum> forumRep
+        [FromServices] IForumRepository forumRep
     )
     {
         Forum forum = await forumRep.GetForumById(forumData.ID);
@@ -63,7 +63,7 @@ public class ForumController : ControllerBase
     [HttpGet]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<List<Forum>>> GetAll(
-        [FromServices] IForumRepository<Forum> forumRepo
+        [FromServices] IForumRepository forumRepo
     )
     {
         var query = await forumRepo.Filter(f => true);
@@ -73,7 +73,7 @@ public class ForumController : ControllerBase
     [HttpPost("addUser")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> AddUser(
-       [FromServices] IForumRepository<Forum> forumRep,
+       [FromServices] IForumRepository forumRep,
        [FromBody] AddUserOnForum data
     )
     {
@@ -92,7 +92,7 @@ public class ForumController : ControllerBase
     [HttpPost]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<IEnumerable<Forum>>> GetAllForums(
-        [FromServices] IForumRepository<Forum> forumRepo
+        [FromServices] IForumRepository forumRepo
     )
     {
         var forums = await forumRepo.GetAllForums();

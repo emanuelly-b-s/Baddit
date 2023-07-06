@@ -7,10 +7,10 @@ namespace UserServices;
 
 public class UserService : IUserService
 {
-    private readonly IUserRepository<UserBaddit> _userRepository;
+    private readonly IUserRepository _userRepository;
     private readonly IJwtService _jwtService;
 
-    public UserService(IJwtService jwtService, IUserRepository<UserBaddit> userRepository)
+    public UserService(IJwtService jwtService, IUserRepository userRepository)
     {
         _jwtService = jwtService;
         _userRepository = userRepository;

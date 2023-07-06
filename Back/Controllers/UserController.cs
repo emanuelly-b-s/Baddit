@@ -19,7 +19,7 @@ public class UserController : ControllerBase
     [HttpGet]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<List<UserBaddit>>> GetAll(
-        [FromServices] IUserRepository<UserBaddit> userRepository
+        [FromServices] IUserRepository userRepository
     )
     {
         var query = await userRepository.Filter(u => true);
@@ -29,7 +29,7 @@ public class UserController : ControllerBase
     [HttpPost("new-account")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
-        [FromServices] IUserRepository<UserBaddit> userRep,
+        [FromServices] IUserRepository userRep,
         [FromBody] NewUserDTO userData,
         [FromServices] ISecurityServiceJwt passJwt
     )
@@ -66,7 +66,7 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<LoginResultDTO>> Login([FromBody] LoginUserDTO loginData,
-                                          [FromServices] IUserRepository<UserBaddit> userRep,
+                                          [FromServices] IUserRepository userRep,
                                           [FromServices] ISecurityServiceJwt jwt,
                                           [FromServices] IJwtService jwtService
 
@@ -169,7 +169,7 @@ public class UserController : ControllerBase
     [HttpPost("getForumsRegister")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<IEnumerable<Forum>>> GetForumsRegister(
-        [FromServices] IUserRepository<UserBaddit> userRep,
+        [FromServices] IUserRepository userRep,
         [FromBody] InfoUser user
     )
     {
