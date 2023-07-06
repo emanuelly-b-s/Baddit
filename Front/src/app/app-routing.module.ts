@@ -8,6 +8,7 @@ import { ForumRegisterComponent } from './pages/forum-register/forum-register.co
 import { CardsComponent } from './pages/cards/cards.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http'; // Added for use HttpClient
+import { RoleComponent } from './pages/role/role.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'forum-register', component : ForumRegisterComponent },
   { path: 'profile-user', component : ProfileComponent },
   { path: "forum-home/:id", component: ForumPageComponent },
+  { path: "new-role", component: RoleComponent}
 
 ];
 

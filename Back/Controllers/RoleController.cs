@@ -17,7 +17,7 @@ public class RoleController : ControllerBase
     [HttpPost("new-role")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
-        [FromServices] IRoleRepository<Role> roleRep,
+        [FromServices] IRoleRepository roleRep,
         [FromBody] RoleDTO roleData)
 
     {

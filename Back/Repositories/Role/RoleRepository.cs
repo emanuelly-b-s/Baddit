@@ -4,9 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Back.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Back.Repositories;
-public class RoleRepository : IRoleRepository<Role>
+public class RoleRepository : IRoleRepository
 {
 
     private readonly BadditContext ctx;
@@ -22,10 +23,9 @@ public class RoleRepository : IRoleRepository<Role>
         throw new NotImplementedException();
     }
 
-    public Task<bool> ExistingRole(string nameRole)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<bool> ExistingRole(string nameRole)
+        => await ctx.Roles
+                    .AnyAsync(r => r.RoleName == nameRole);
 
     public Task<List<Role>> Filter(System.Linq.Expressions.Expression<Func<Role, bool>> condition)
     {

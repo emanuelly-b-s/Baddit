@@ -28,6 +28,7 @@ builder.Services.AddTransient<ISecurityServiceJwt, SecurityServiceJwt>();
 builder.Services.AddTransient<IJwtService, JwtService>();
 builder.Services.AddTransient<IPostRepository, PostRepository>();
 builder.Services.AddTransient<IUpDownRepository, UpDownRepository>();
+builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<BadditContext>();
 
 builder.Services.AddTransient<IPasswordProvider>(p =>{
