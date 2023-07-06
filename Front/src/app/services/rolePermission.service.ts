@@ -7,7 +7,7 @@ import { Permission } from '../DTO/RolePermission/Permission';
 @Injectable({
   providedIn: 'root',
 })
-export class RoleService {
+export class RolePermissionService {
   back = this.config.backEnd;
 
   constructor(private http: HttpClient, private config: ConfigService) {}

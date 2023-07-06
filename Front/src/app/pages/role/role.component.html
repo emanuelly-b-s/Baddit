@@ -14,34 +14,26 @@
       ></div>
       <div class="form-group">
         <label>Name</label>
-        <input type="text" class="form-control" placeholder="Adm" z="forum" formControlName="roleName"/>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Adm"
+          formControlName="roleName"
+        />
       </div>
       <div class="form-group">
         <label>Permissoes</label>
-        <div>
+        <div *ngFor="let p of permissions">
+          <h6>{{ p.permissionName }}</h6>
           <input
+            ng-model="p.id"
             type="checkbox"
             class="form-control"
             placeholder="Adm"
-            z="forum"
+            formControlName="control"
           />
-          <h6>Create new post</h6>
-          <input
-            type="checkbox"
-            class="form-control"
-            placeholder="Adm"
-            z="forum"
-          />
-          <h6>Create new role</h6>
-          <input
-            type="checkbox"
-            class="form-control"
-            placeholder="Adm"
-            z="forum"
-          />
-          <h6>Delet post</h6>
         </div>
-
+        <div></div>
       </div>
       <div
         class="form-group"
@@ -56,7 +48,7 @@
         <button
           class="btn px-5"
           style="display: flex; justify-content: center"
-          (click) = "addRole()"
+          (click)="addRole()"
         >
           Criar
         </button>

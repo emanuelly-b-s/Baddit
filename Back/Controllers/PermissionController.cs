@@ -36,6 +36,11 @@ public class PermissionController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<List<Permission>> Permissions(
         [FromServices] IPermissionRepository permissionRep
-    ) => await permissionRep.GetAllPermission();
+    )
+    {
+       var p = await permissionRep.GetAllPermission();
+
+       return p;
+    }
 
 }
