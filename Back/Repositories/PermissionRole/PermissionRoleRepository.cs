@@ -7,30 +7,33 @@ using Back.Model;
 
 namespace Back.Repositories;
 
-public class PermissionRoleRepository : IRepository<Permission>
+public class PermissionRoleRepository : IRepository<RolePermission>
 {
 
     private readonly BadditContext ctx;
 
     public PermissionRoleRepository(BadditContext ctx) => this.ctx = ctx;
 
-    public Task Add(Permission obj)
+    public async Task Add(RolePermission obj)
+    {
+        ctx.RolePermissions.Add(obj);
+        await ctx.SaveChangesAsync();
+    }
+
+    public Task Delete(RolePermission obj)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(Permission obj)
+    public Task<List<RolePermission>> Filter(Expression<Func<RolePermission, bool>> condition)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Permission>> Filter(Expression<Func<Permission, bool>> condition)
-    {
-        throw new NotImplementedException();
-    }
 
-    public Task Update(Permission obj)
+    public Task Update(RolePermission obj)
     {
         throw new NotImplementedException();
     }
 }
+  

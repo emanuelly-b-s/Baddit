@@ -8,7 +8,7 @@ namespace DTO;
 public class PermissionRoleDTO
 {
    public int Id { get; set; }
-   public string IdRole { get; set; }
-   public string IdPermission { get; set; }
+   public int IdRole { get; set; }
+   public int IdPermission { get; set; }
 
 }
