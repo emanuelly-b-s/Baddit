@@ -41,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http'; // Added for use HttpCl
 import { NgIf } from '@angular/common';
 import { ForumRegisterComponent } from './pages/forum-register/forum-register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { RoleComponent } from './pages/role/role.component';
 
 
 
@@ -66,7 +67,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ForumRegisterComponent,
     ProfileComponent,
     SideNavComponent,
-    SideNavHomePagComponent
+    SideNavHomePagComponent,
+    RoleComponent
 
   ],
 
