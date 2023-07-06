@@ -28,8 +28,10 @@
     <div class="row">
       <!-- se for adm -->
     </div>
-    
-    <app-role></app-role>
+    <div *ngIf="forum.creator == user.userId">
+      {{forum.creator }} -- {{user.userId}}
+      <app-role></app-role>
+    </div>
     <app-post></app-post>
     <app-cards></app-cards>
   </div>
