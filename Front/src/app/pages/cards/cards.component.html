@@ -1,24 +1,3 @@
 <div *ngFor="let post of posts">
-  <div class="container">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ post.tittle }}</mat-card-title>
-        <mat-card-subtitle>{{ post.participant }}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content style="margin-bottom: 2%">
-        <p style="padding-left: 5%">
-          {{ post.postText }}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <!-- <button (click)="likeButtonClick()" [ngClass]="chooseclassl ? 'like-button' : 'liked'"> Like | {{numberOfLikes}} </button>
-<button (click)="dislikeButtonClick()" [ngClass]="chooseclassd ? 'dislike-button' : 'disliked'"> Dislike | {{numberOfDislike}} </button> -->
-        <button class="btn" (click) = "addUpDown()" ><i class="gg-chevron-up-o"></i></button>
-        {{ post.upvote }}
-        <button class="btn"  ><i class="gg-chevron-down-o"></i></button>
-        <button class="btn"><i class="gg-feed"></i></button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+  <app-card [post]="post"></app-card>
 </div>
