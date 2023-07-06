@@ -46,17 +46,27 @@ public class PostController : ControllerBase
     {
         var posts = await postRepo.GetAllPost(infoForum.ID);
 
+        if(posts.Count < 0)
+            return BadRequest();
+
         return Ok(posts);
-    }
+    } 
 
     [HttpPost("upvotesDownvotes")]
     [EnableCors("MainPolicy")]
-    public async Task<ActionResult> UpvolteDownvote(
+    public async Task<ActionResult> AddUpDown(
         [FromServices] IPostRepository<Post> postRepo,
-        [FromBody] InfoPostDTO post
+        [FromBody] UpvoteDownvoteDTO up
     )
     {
-        await postRepo.UpdateUpDown(post);
+
+        UpvoteDownvote upDown = new()
+        {
+           Participant = up.Participant,
+           Post = up.Post
+        };
+
+        await postRepo.UpDown(upDown);
 
         return Ok();    
     }

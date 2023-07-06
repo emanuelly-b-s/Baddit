@@ -14,9 +14,9 @@
       <mat-card-actions>
         <!-- <button (click)="likeButtonClick()" [ngClass]="chooseclassl ? 'like-button' : 'liked'"> Like | {{numberOfLikes}} </button>
 <button (click)="dislikeButtonClick()" [ngClass]="chooseclassd ? 'dislike-button' : 'disliked'"> Dislike | {{numberOfDislike}} </button> -->
-        <button class="btn"><i class="gg-chevron-up-o"></i></button>
+        <button class="btn" (click) = "addUpDown()" ><i class="gg-chevron-up-o"></i></button>
         {{ post.upvote }}
-        <button class="btn"><i class="gg-chevron-down-o"></i></button>
+        <button class="btn"  ><i class="gg-chevron-down-o"></i></button>
         <button class="btn"><i class="gg-feed"></i></button>
       </mat-card-actions>
     </mat-card>

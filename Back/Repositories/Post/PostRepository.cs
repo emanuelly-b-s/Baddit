@@ -3,6 +3,7 @@ using Back.Model;
 using Microsoft.EntityFrameworkCore;
 using DTO;
 using Back.Repositories.ForumRep;
+using Back.Repositories.User;
 
 namespace Back.Repositories.PostRep;
 
@@ -10,10 +11,13 @@ public class PostRepository : IPostRepository<Post>
 {
     private readonly BadditContext ctx;
     private readonly IForumRepository<Forum> _forumRepository;
+    private readonly IUserRepository<UserBaddit> _userRepo;
+
     public PostRepository(BadditContext ctx, IForumRepository<Forum> _forumRepository)
     {
         this.ctx = ctx;
         this._forumRepository = _forumRepository;
+        this._userRepo = _userRepo;
     }
 
 
@@ -35,13 +39,20 @@ public class PostRepository : IPostRepository<Post>
         return getPosts;
     }
 
-    public async Task UpdateUpDown(InfoPostDTO post)
+    public Task<List<Post>> GetPostsFeed(int idUser)
     {
-        var postUpdate = await ctx.Posts
-                                        .Where(postForum => postForum.Id == post.Id)
-                                        .FirstOrDefaultAsync();
+        throw new NotImplementedException();
+    }
 
-        ctx.Posts.Update(postUpdate);
+    public Task UpdateUpDown(InfoPostDTO post)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task UpDown(UpvoteDownvote upDown)
+    {
+        ctx.UpvoteDownvotes.Add(upDown);
         await ctx.SaveChangesAsync();
     }
+
 }

@@ -10,6 +10,7 @@ public interface IPostRepository<T>
 {
     Task AddPost(T obj);
     Task<List<Post>> GetAllPost(int idForum);
-    Task UpdateUpDown(InfoPostDTO post);
+    Task<List<Post>> GetPostsFeed(int idUser);
+    Task UpDown(UpvoteDownvote upDown);
 
 }

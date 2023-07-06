@@ -3,9 +3,11 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InfoForum } from 'src/app/DTO/Forum/InfoForum';
 import { Post } from 'src/app/DTO/Post.ts/Post';
+import { UpDown } from 'src/app/DTO/UpvoteDownvote';
 import { User } from 'src/app/DTO/User/User';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/users.service';
+import { UpDownService } from 'src/app/services/upDown.service';
 
 @Component({
   selector: 'app-cards',
@@ -19,12 +21,13 @@ export class CardsComponent {
     private userService: UserService,
     private router: Router,
     private postService: PostService,
-    private fb: FormBuilder
+    private upDownService : UpDownService
   ) {}
 
   authenticated: boolean = true;
 
   post: Post = {
+    id: 0,
     tittle: '',
     postText: '',
     postDate: new Date(),
@@ -49,6 +52,23 @@ export class CardsComponent {
     descriptionForum: '',
   };
 
+  upDown : UpDown =
+  {
+
+    participant: 0,
+    post: 0
+  }
+
+  addUpDown()
+  {
+    this.upDown.post = this.post.id;
+    this.upDown.participant = this.user.userId;
+
+    this.upDownService.addUpDown(this.upDown).subscribe((res) => {
+      console.log(res);
+    })
+  }
+
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
 
@@ -61,6 +81,7 @@ export class CardsComponent {
           var newList: Post[] = [];
           list.forEach((element) => {
             newList.push({
+              id: element.id,
               tittle: element.tittle,
               postText: element.postText,
               postDate: element.postDate,

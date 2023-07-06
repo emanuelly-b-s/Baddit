@@ -35,6 +35,7 @@ export class PostComponent {
           var newList: Post[] = [];
           list.forEach((element) => {
             newList.push({
+              id: element.id,
               tittle: element.tittle,
               postText: element.postText,
               postDate: element.postDate,
@@ -59,7 +60,8 @@ export class PostComponent {
     forum: 0,
     participant: 0,
     upvote: 0,
-    downvote: 0
+    downvote: 0,
+    id: 0
   };
 
   user: User = {
