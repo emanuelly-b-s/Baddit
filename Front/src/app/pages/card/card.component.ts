@@ -23,10 +23,11 @@ export class CardComponent {
     downvote: 0,
   };
 
+  @Input() qtdUpvote : number = 0;
+
   constructor(
     private upDownService: UpDownService,
     private userService: UserService,
-    private postService: PostService
   ) {}
 
   upDown: UpDown = {
@@ -42,8 +43,6 @@ export class CardComponent {
     photouser: 0,
   };
 
-  qtdUpvote: number = 0;
-
   addUpDown() {
     this.upDown.post = this.post.id;
     this.upDown.participant = this.user.userId;
@@ -54,12 +53,6 @@ export class CardComponent {
   }
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
-
-    this.upDownService.getUpvote(this.post).subscribe((res) =>
-    {
-      console.log(res);
-      this.qtdUpvote = res;
-    })
 
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {

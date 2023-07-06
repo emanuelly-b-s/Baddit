@@ -17,7 +17,6 @@ export class PostService {
   }
 
   getPostsByForum(forumId: InfoForum) {
-    console.log(forumId)
     return this.http.post<Post[]>(this.back + '/forum/post/getPosts', forumId);
   }
 }

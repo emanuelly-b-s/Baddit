@@ -54,11 +54,11 @@ export class CardsComponent {
 
   upDown : UpDown =
   {
-
     participant: 0,
     post: 0
   }
 
+  qtdUpvote: number = 0;
 
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
@@ -82,7 +82,6 @@ export class CardsComponent {
               downvote: element.downvote
             });
           });
-          console.log(newList)
           this.posts = newList;
         });
       },

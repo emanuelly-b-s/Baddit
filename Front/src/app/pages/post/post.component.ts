@@ -1,3 +1,4 @@
+import { UpDownService } from 'src/app/services/upDown.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from './../../services/post.service';
 import { Component } from '@angular/core';
@@ -20,7 +21,9 @@ export class PostComponent {
     private userService: UserService,
     private router: Router,
     private postService: PostService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private upDownService : UpDownService
+
   ) {}
 
   ngOnInit(): void {
