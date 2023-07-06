@@ -18,11 +18,6 @@ public class RoleRepository : IRoleRepository
         await ctx.SaveChangesAsync();
     }
 
-    public async Task AddPermission(Permission permission)
-    {
-        ctx.Add(permission);
-        await ctx.SaveChangesAsync();   
-    }
 
     public Task Delete(Role obj)
     {

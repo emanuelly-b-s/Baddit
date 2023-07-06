@@ -6,7 +6,7 @@ using Back.Model;
 
 namespace Back.Repositories;
 
-public interface IRoleRepository : IRepository<Role>
+public interface IPermissionRepository : IRepository<Permission>
 {
-    Task<bool> ExistingRole(string nameRole);
+    // Task AddPermission(Permission permission);
 }

@@ -36,23 +36,6 @@ public class RoleController : ControllerBase
     }
 
     
-    [HttpPost("new-permission")]
-    [EnableCors("MainPolicy")]
-    public async Task<ActionResult> Permission(
-        [FromServices] IRoleRepository roleRep,
-        [FromBody] PermissionDTO permissionData
-    )
-    {
-
-        Permission p = new()
-        {
-            PermissionName = permissionData.PermissionName
-        };
-
-        await roleRep.AddPermission(p);
-
-        return Ok();
-    }
-
+    
 
 }
