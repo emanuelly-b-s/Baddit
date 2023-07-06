@@ -1,10 +1,10 @@
-import { RoleService } from './../../services/role.service';
+import { RoleService } from '../../services/rolePermission.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
-import { RoleAdd } from 'src/app/DTO/Roles';
+import { RoleAdd } from 'src/app/DTO/RolePermission/Roles';
 
 @Component({
   selector: 'app-role',

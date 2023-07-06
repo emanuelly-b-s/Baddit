@@ -13,7 +13,7 @@ namespace Back.Controllers;
 [ApiController]
 [Route("forum/role/permission")]
 public class PermissionController : ControllerBase
-{ 
+{
     [HttpPost("new-permission")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Permission(
@@ -31,5 +31,11 @@ public class PermissionController : ControllerBase
 
         return Ok();
     }
+
+    [HttpGet("get-permissions")]
+    [EnableCors("MainPolicy")]
+    public async Task<List<Permission>> Permissions(
+        [FromServices] IPermissionRepository permissionRep
+    ) => await permissionRep.GetAllPermission();
 
 }

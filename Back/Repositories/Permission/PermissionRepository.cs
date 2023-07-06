@@ -24,9 +24,11 @@ public class PermissionRepository : IPermissionRepository
         throw new NotImplementedException();
     }
 
-    public Task<PermissionDTO> GetPermission(int id)
+    public async Task<List<Permission>> GetAllPermission()
     {
-        throw new NotImplementedException();
+       var permissions = await ctx.Permissions.ToListAsync();
+
+       return permissions;
     }
 
     public Task Update(Permission obj)

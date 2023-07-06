@@ -9,5 +9,5 @@ namespace Back.Repositories;
 
 public interface IPermissionRepository : IRepository<Permission>
 {
-    Task<PermissionDTO> GetPermission(int id);
+    Task<List<Permission>> GetAllPermission();
 }
