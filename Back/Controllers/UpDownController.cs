@@ -17,7 +17,7 @@ public class UpDownController : ControllerBase
     [HttpPost("upvotesDownvotes")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> AddUpDown(
-        [FromServices] IUpDownRepository<UpvoteDownvote> postRepo,
+        [FromServices] IUpDownRepository upDownRepo,
         [FromBody] UpvoteDownvoteDTO up
     )
     {
@@ -28,11 +28,22 @@ public class UpDownController : ControllerBase
             Post = up.Post
         };
 
-        await postRepo.Add(upDown);
+        await upDownRepo.Add(upDown);
 
         return Ok();
     }
 
 
+    [HttpPost("countUpvotesDownvotes")]
+    [EnableCors("MainPolicy")]
+    public int CountUpDown(
+        [FromServices] IUpDownRepository upDownRepo,
+        [FromBody] InfoPostDTO up
+    )
+    {
+        var qtdUpvote = upDownRepo.CountUpvote(up);
+
+        return qtdUpvote;
+    }
 
 }

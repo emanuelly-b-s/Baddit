@@ -7,7 +7,7 @@ using Back.Repositories.User;
 
 namespace Back.Repositories.PostRep;
 
-public class UpDownRepository : IUpDownRepository<UpvoteDownvote>
+public class UpDownRepository : IUpDownRepository
 {
     private readonly BadditContext ctx;
     private readonly IForumRepository<Forum> _forumRepository;
