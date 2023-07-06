@@ -5,7 +5,7 @@ import { UserRegister } from '../DTO/User/UserRegister';
 import { UserLogin } from '../DTO/User/UserLogin';
 import { ConfigService } from './config.service';
 import { Jwt } from '../DTO/Jwt';
-import { SessionLogin } from '../DTO/SessionLogin';
+import { SessionLogin } from '../DTO/User/SessionLogin';
 import { UserSecurityToken } from '../DTO/User/UserSecurityToken';
 import { InfoForum } from '../DTO/Forum/InfoForum';
 

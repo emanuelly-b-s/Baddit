@@ -14,7 +14,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-account.component.css'],
 })
 export class NewaccountComponent {
-  constructor(private fb: FormBuilder, private user : UserService, private router: Router) {}
+  constructor(private fb: FormBuilder,
+              private user : UserService,
+              private router: Router)
+              {}
 
   form : FormGroup  = this.fb.group({
       Email: [

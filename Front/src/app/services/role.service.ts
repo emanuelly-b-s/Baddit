@@ -12,6 +12,6 @@ export class RoleService {
 
   constructor(private http: HttpClient, private config: ConfigService) {}
   add(newRole: RoleAdd) {
-    return this.http.post(this.back + '/forum/new-forum', newRole);
+    return this.http.post(this.back + '/forum/role/new-role', newRole);
   }
 }
