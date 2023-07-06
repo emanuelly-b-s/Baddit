@@ -9,4 +9,5 @@ namespace Back.Repositories;
 public interface IRoleRepository : IRepository<Role>
 {
     Task<bool> ExistingRole(string nameRole);
+    Task AddPermission(Permission permission);
 }

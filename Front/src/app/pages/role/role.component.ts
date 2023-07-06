@@ -23,7 +23,9 @@ export class RoleComponent {
 
   form: FormGroup = this.fb.group({
     roleName: ['', Validators.required],
-    forum: [''],
+    newPost: [''],
+    newRole: [''],
+    deletPost: [''],
   });
 
   ngOnInit(): void {

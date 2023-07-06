@@ -18,6 +18,12 @@ public class RoleRepository : IRoleRepository
         await ctx.SaveChangesAsync();
     }
 
+    public async Task AddPermission(Permission permission)
+    {
+        ctx.Add(permission);
+        await ctx.SaveChangesAsync();   
+    }
+
     public Task Delete(Role obj)
     {
         throw new NotImplementedException();
@@ -27,7 +33,7 @@ public class RoleRepository : IRoleRepository
         => await ctx.Roles
                     .AnyAsync(r => r.RoleName == nameRole);
 
-    public Task<List<Role>> Filter(System.Linq.Expressions.Expression<Func<Role, bool>> condition)
+    public Task<List<Role>> Filter(Expression<Func<Role, bool>> condition)
     {
         throw new NotImplementedException();
     }
@@ -36,6 +42,5 @@ public class RoleRepository : IRoleRepository
     {
         throw new NotImplementedException();
     }
-
 
 }
