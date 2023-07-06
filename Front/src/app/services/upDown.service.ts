@@ -13,7 +13,11 @@ export class UpDownService {
   back = this.config.backEnd;
 
   addUpDown(upDown: UpDown) {
-    console.log(upDown)
     return this.http.post(this.back + '/post/upDown/upvotesDownvotes', upDown);
+  }
+
+  getUpvote(post: Post) {
+    console.log(post)
+    return this.http.post<number>(this.back + '/post/upDown/countUpvotesDownvotes', post);
   }
 }
