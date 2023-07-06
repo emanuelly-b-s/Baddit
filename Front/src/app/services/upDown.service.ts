@@ -14,6 +14,6 @@ export class UpDownService {
 
   addUpDown(upDown: UpDown) {
     console.log(upDown)
-    return this.http.post(this.back + '/forum/post/upvotesDownvotes', upDown);
+    return this.http.post(this.back + '/post/upDown/upvotesDownvotes', upDown);
   }
 }

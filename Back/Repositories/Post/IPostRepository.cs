@@ -6,11 +6,10 @@ using Back.Model;
 using DTO;
 
 namespace Back.Repositories.PostRep;
-public interface IPostRepository<T>
+public interface IPostRepository<T> : IRepository<T> 
 {
-    Task AddPost(T obj);
+    Task Add(T obj);
     Task<List<Post>> GetAllPost(int idForum);
     Task<List<Post>> GetPostsFeed(int idUser);
-    Task UpDown(UpvoteDownvote upDown);
 
 }

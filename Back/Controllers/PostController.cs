@@ -31,7 +31,7 @@ public class PostController : ControllerBase
             Participant = post.Participant
         };
 
-        await postRepo.AddPost(newPost);
+        await postRepo.Add(newPost);
 
         return Ok();
     }
@@ -51,25 +51,5 @@ public class PostController : ControllerBase
 
         return Ok(posts);
     } 
-
-    [HttpPost("upvotesDownvotes")]
-    [EnableCors("MainPolicy")]
-    public async Task<ActionResult> AddUpDown(
-        [FromServices] IPostRepository<Post> postRepo,
-        [FromBody] UpvoteDownvoteDTO up
-    )
-    {
-
-        UpvoteDownvote upDown = new()
-        {
-           Participant = up.Participant,
-           Post = up.Post
-        };
-
-        await postRepo.UpDown(upDown);
-
-        return Ok();    
-    }
-
 
 }

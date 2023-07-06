@@ -59,15 +59,6 @@ export class CardsComponent {
     post: 0
   }
 
-  addUpDown()
-  {
-    this.upDown.post = this.post.id;
-    this.upDown.participant = this.user.userId;
-
-    this.upDownService.addUpDown(this.upDown).subscribe((res) => {
-      console.log(res);
-    })
-  }
 
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';

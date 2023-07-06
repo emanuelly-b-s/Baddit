@@ -1,9 +1,9 @@
-import { UserService } from './../services/users.service';
+import { UserService } from '../../services/users.service';
 import { Component, Input } from '@angular/core';
 import { Post } from 'src/app/DTO/Post.ts/Post';
-import { UpDown } from '../DTO/UpvoteDownvote';
-import { UpDownService } from '../services/upDown.service';
-import { User } from '../DTO/User/User';
+import { UpDown } from '../../DTO/UpvoteDownvote';
+import { UpDownService } from '../../services/upDown.service';
+import { User } from '../../DTO/User/User';
 
 @Component({
   selector: 'app-card',

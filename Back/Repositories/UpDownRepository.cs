@@ -7,46 +7,23 @@ using Back.Repositories.User;
 
 namespace Back.Repositories.PostRep;
 
-public class PostRepository : IPostRepository<Post>
+public class UpDownRepository : IUpDownRepository<UpvoteDownvote>
 {
     private readonly BadditContext ctx;
     private readonly IForumRepository<Forum> _forumRepository;
     private readonly IUserRepository<UserBaddit> _userRepo;
 
-    public PostRepository(BadditContext ctx, IForumRepository<Forum> _forumRepository)
+    public UpDownRepository(BadditContext ctx, IForumRepository<Forum> _forumRepository)
     {
         this.ctx = ctx;
         this._forumRepository = _forumRepository;
         this._userRepo = _userRepo;
     }
 
-
-    public async Task Add(Post obj)
+    public async Task Add(UpvoteDownvote upDown)
     {
-        await ctx.Posts.AddAsync(obj);
+        ctx.UpvoteDownvotes.Add(upDown);
         await ctx.SaveChangesAsync();
-    }
-
-    public async Task<List<Post>> GetAllPost(int idForum)
-    {
-        var post = ctx.Posts
-            .Where(postForum => postForum.Forum == idForum);
-
-
-        var getPosts = await post.Take(10)
-                                 .ToListAsync();
-
-        return getPosts;
-    }
-
-    public Task<List<Post>> GetPostsFeed(int idUser)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateUpDown(InfoPostDTO post)
-    {
-        throw new NotImplementedException();
     }
 
     public int CountUpvote(InfoPostDTO post)
@@ -58,17 +35,22 @@ public class PostRepository : IPostRepository<Post>
         return posts;
     }
 
+    public Task Delete(UpvoteDownvote obj)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<List<Post>> Filter(Expression<Func<Post, bool>> condition)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(Post obj)
+    public Task<List<UpvoteDownvote>> Filter(Expression<Func<UpvoteDownvote, bool>> condition)
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(Post obj)
+    public Task Update(UpvoteDownvote obj)
     {
         throw new NotImplementedException();
     }
