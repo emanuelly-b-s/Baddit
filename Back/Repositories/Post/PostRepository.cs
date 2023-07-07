@@ -41,30 +41,37 @@ public class PostRepository : IPostRepository
 
 
 
-    public async Task<IEnumerable<Post>> GetPostsFeed()
+    public async Task<IEnumerable<Post>> GetPostsFeed(int idUser)
     {
-        // var userOnForum = ctx.UserBaddits.Join(ctx.ListParticipantsForums,
-        //                                 user => user.Id,
-        //                                 forumList => forumList.Forum,
-        //                                 (user, forumList) => new
-        //                                 {
-        //                                     forums = forumList.Id,
-        //                                     userId = user.Id
-        //                                 });
-                                        
 
-        // var getPostsForUser = ctx.Posts.Join(userOnForum,
-        //                             post => post.Participant,
-        //                             f => f.forums,
-        //                             (post, f) 
-        //                                 => post);
+        var users =  ctx.ListParticipantsForums.Where(u => u.Id == idUser);
 
-        // var listPosts = await getPostsForUser.ToListAsync();
+        var userOnForum = ctx.UserBaddits.Join(ctx.ListParticipantsForums,
+                                        user => user.Id,
+                                        userList => userList.Participant,
+                                        (user, forumList) => new
+                                        {
+                                            forums = forumList.Forum,
+                                            userId = forumList.Participant
+                                        })
+                                        .Where(u => u.userId == idUser);
 
-        var listPost  =  ctx.Posts;
+                 
 
-    
-        return listPost;
+        var getPostsForUser = ctx.Posts.Join(userOnForum,
+                                    post => post.Forum,
+                                    f => f.forums,
+                                    (post, f) 
+                                        => post);
+
+        var listPosts = await getPostsForUser.ToListAsync();
+
+        foreach (var item in getPostsForUser)
+        {
+            Console.WriteLine(item.PostText);
+        }
+
+        return listPosts;
     }
 
     public Task UpdateUpDown(InfoPostDTO post)

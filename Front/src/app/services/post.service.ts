@@ -3,6 +3,7 @@ import { Post } from './../DTO/Post.ts/Post';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
+import { User } from '../DTO/User/User';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +21,8 @@ export class PostService {
     return this.http.post<Post[]>(this.back + '/forum/post/getPosts', forumId);
   }
 
-  getAllPostsFeed()
+  getAllPostsFeed(user: User)
   {
-    return this.http.get<Post[]>(this.back + '/forum/post/getPostsFeed');
+    return this.http.post<Post[]>(this.back + '/forum/post/getPostsFeed', user);
   }
 }

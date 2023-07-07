@@ -52,16 +52,16 @@ public class PostController : ControllerBase
         return Ok(posts);
     }
 
-    [HttpGet("getPostsFeed")]
+    [HttpPost("getPostsFeed")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<IEnumerable<Post>>> GetPostsFeed(
-        [FromServices] IPostRepository postRepo
-        // [FromBody] InfoUser userData
+        [FromServices] IPostRepository postRepo,
+        [FromBody] InfoUser userData
     )
     {   
         // var idUSer = userData.UserId;
 
-        var listPost = await postRepo.GetPostsFeed();
+        var listPost = await postRepo.GetPostsFeed(userData.UserId);
 
         return Ok(listPost);
     }
