@@ -39,6 +39,11 @@ export class ForumService {
   }
 
   allForums() {
-    return this.http.get<InfoForum[]>(this.back + '/forum/getForumsRegister');
+    return this.http.get<InfoForum[]>(this.back + '/forum/searchForum');
+  }
+
+  searchForum(forumSearch : string)
+  {
+    return this.http.post<InfoForum[]>(this.back + '/forum/searchForum', forumSearch);
   }
 }

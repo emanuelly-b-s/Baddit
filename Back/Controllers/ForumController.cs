@@ -123,11 +123,10 @@ public class ForumController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<List<Forum>>> SearchForum(
         [FromServices] IForumRepository forumRepo,
-        [FromBody] InfoForum forum
+        [FromBody] string forum
     )
     {
-        var forumSearch = forum.ForumName;
-        var forums = await forumRepo.Search(forumSearch);
+        var forums = await forumRepo.Search(forum);
 
         return Ok(forums);
     }

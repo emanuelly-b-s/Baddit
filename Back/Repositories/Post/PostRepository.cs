@@ -66,11 +66,6 @@ public class PostRepository : IPostRepository
 
         var listPosts = await getPostsForUser.ToListAsync();
 
-        foreach (var item in getPostsForUser)
-        {
-            Console.WriteLine(item.PostText);
-        }
-
         return listPosts;
     }
 

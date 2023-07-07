@@ -1,18 +1,31 @@
-<nav class="navbar navbar-light bg-light" style="background-color: #223237;">
+<nav class="navbar navbar-light bg-light" style="background-color: #223237">
   <a class="navbar-brand" href="/home-page">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbdpVDLLnVzG78DnNgcm7gJJwrvh_joWOmw&usqp=CAU"
-      width="40" height="40" alt="" style="border-radius: 55%;" />
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbdpVDLLnVzG78DnNgcm7gJJwrvh_joWOmw&usqp=CAU"
+      width="40"
+      height="40"
+      alt=""
+      style="border-radius: 55%"
+    />
     Baddit
   </a>
 
-  <a class="navbar-brand" href="#">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbdpVDLLnVzG78DnNgcm7gJJwrvh_joWOmw&usqp=CAU"
-      width="40" height="40" alt="" style="border-radius: 55%;" />
-    My profile
-  </a>
-
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 450px;">
-    <button class="button btn px-5" type="submit" style="display: flex; justify-content: center;">Search</button>
+    <input
+      name="forumSearch"
+      ngModel class="form-control mr-sm-2"
+      type="string"
+      placeholder="Search"
+      aria-label="Search"
+      style="width: 450px"
+    />
+    <button
+      class="button btn px-5"
+      type="submit"
+      style="display: flex; justify-content: center"
+      (click)="search()"
+    >
+      Search
+    </button>
   </form>
 </nav>

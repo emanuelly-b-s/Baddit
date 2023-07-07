@@ -42,7 +42,6 @@ export class ForumRegisterComponent {
       if (!res.authenticated) {
         this.router.navigate(['/']);
       }
-      console.log(this.idOwner);
       this.idOwner = res.idUser;
     });
   }
