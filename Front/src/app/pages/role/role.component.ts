@@ -66,6 +66,7 @@ export class RoleComponent {
   };
 
   role: RoleAdd = {
+    id: 0,
     roleName: '',
     forum: 0,
   };
@@ -76,29 +77,27 @@ export class RoleComponent {
     idPermission: 0,
   };
 
+  idPermission: number = 0;
+  idRole: number = 0;
 
   GetStats(event: any): void {
 
-    if(event.target.checked)
-    {
-
+    if (event.target.checked) {
+      this.idPermission = event.target.value;
     }
-
-    console.log(event.target.name, event.target.value, event.target.checked);
-  }
-
-
-  addPermission()
-  {
-
+    console.log(event.target.value, event.target.checked);
   }
 
   addRole() {
     this.role = { ...this.form.value };
     this.role.forum = Number(this.router.url.split('/')[2]);
-    console.log(this.forumID);
 
-    console.log(this.role);
+    this.permissionRole.idPermission = this.idPermission;
+    this.permissionRole.idRole = 0;
+
+    this.rolePermissionService.addRolePermission(this.permissionRole).subscribe((res) => {
+      console.log(res);
+    })
 
     this.rolePermissionService.addRole(this.role).subscribe((res) => {
       console.log(res);

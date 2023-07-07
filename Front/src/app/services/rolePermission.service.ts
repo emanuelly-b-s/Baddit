@@ -32,7 +32,7 @@ export class RolePermissionService {
 
   addRolePermission(newPermissionForRole: RolePermission){
     return this.http.post(
-      this.back + '/forum/role/permission/new-permission',
+      this.back + '/forum/role/permission/new-permissionRole',
       newPermissionForRole
     );
   }
