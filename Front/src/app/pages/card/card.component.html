@@ -3,9 +3,11 @@
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{ post.tittle }}</mat-card-title>
-      <mat-card-subtitle>{{ post.participant }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ post.participant }} id participant</mat-card-subtitle>
+      <mat-card-subtitle>{{ post.forum }} id forum</mat-card-subtitle>
+      <mat-card-subtitle>{{ post.postDate }} date </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content style="margin-bottom: 2%">
+    <mat-card-content style="margin-bottom: 2%; margin-top:10px ;">
       <p style="padding-left: 5%">
         {{ post.postText }}
       </p>

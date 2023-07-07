@@ -21,7 +21,7 @@ import { SideNavHomePagComponent } from './pages/side-nav-home-pag/side-nav-home
 //router desgraçado
 import { RouterModule } from '@angular/router';
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
-import { CardsComponent } from './pages/cards/cards.component';
+import { CardsComponent } from './pages/cards-forum/cards-forum.component';
 import { PostComponent } from './pages/post/post.component';
 import { SideNavComponent } from './pages/side-nav/side-nav.component';
 
@@ -43,6 +43,7 @@ import { ForumRegisterComponent } from './pages/forum-register/forum-register.co
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RoleComponent } from './pages/role/role.component';
 import { CardComponent } from './pages/card/card.component';
+import { CardsFeedComponent } from './pages/cards-feed/cards-feed.component';
 
 
 
@@ -70,7 +71,8 @@ import { CardComponent } from './pages/card/card.component';
     SideNavComponent,
     SideNavHomePagComponent,
     RoleComponent,
-    CardComponent
+    CardComponent,
+    CardsFeedComponent
 
   ],
 

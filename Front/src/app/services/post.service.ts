@@ -19,4 +19,9 @@ export class PostService {
   getPostsByForum(forumId: InfoForum) {
     return this.http.post<Post[]>(this.back + '/forum/post/getPosts', forumId);
   }
+
+  getAllPostsFeed()
+  {
+    return this.http.get<Post[]>(this.back + '/forum/post/getPostsFeed');
+  }
 }

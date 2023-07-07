@@ -11,8 +11,8 @@ import { UpDownService } from 'src/app/services/upDown.service';
 
 @Component({
   selector: 'app-cards',
-  templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.css']
+  templateUrl: './cards-forum.component.html',
+  styleUrls: ['./cards-forum.component.css']
 })
 export class CardsComponent {
   posts: Post[] = [];

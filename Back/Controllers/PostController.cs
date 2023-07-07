@@ -52,7 +52,7 @@ public class PostController : ControllerBase
         return Ok(posts);
     }
 
-    [HttpPost("getPostsFeed")]
+    [HttpGet("getPostsFeed")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<IEnumerable<Post>>> GetPostsFeed(
         [FromServices] IPostRepository postRepo
