@@ -63,7 +63,6 @@ public class UserRepository : IUserRepository
             listGroups => listGroups.Participant,
             (u, listGroups) => new
             {
-                userNick = u.NickUser,
                 idUser = u.Id,
                 listGroupsId = listGroups.Forum
             })

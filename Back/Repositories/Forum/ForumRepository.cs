@@ -50,10 +50,22 @@ public class ForumRepository : IForumRepository
         throw new NotImplementedException();
     }
 
-    public Task<List<Forum>> GetParticipants(int id)
-    {
-        throw new NotImplementedException();
-    }
+    // public Task<IEnumerable<InfoUser>> GetParticipants(int id)
+    // {
+    // //     var users = ctx.Forums.Join(ctx.ListParticipantsForums,
+    // //                             f => f.Id,
+    // //                             listUser => listUser.Forum,
+    // //                             (f, listUser) => new
+    // //                             {
+    // //                                 idForum = f.Id,
+    // //                                 listUserId = listUser.Participant
+    // //                             })
+    // //                             .Where(f => f.idForum == id)
+    // //                             .Join(ctx.UserBaddits,
+    // //                                 listUsers => listUsers.listUsersId,
+    // //                                 user)
+    // // }
+    // }
 
     public async Task AddUser(ListParticipantsForum obj)
     {
@@ -98,9 +110,14 @@ public class ForumRepository : IForumRepository
                             .Contains(forum
                             .Substring(0, (forum.Length - 2))
                             ));
-        
+
         var listForumsSearch = await forumsSearch.ToListAsync();
 
         return listForumsSearch;
+    }
+
+    public Task<IEnumerable<InfoUser>> GetParticipants(int id)
+    {
+        throw new NotImplementedException();
     }
 }
