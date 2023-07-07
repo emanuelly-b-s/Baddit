@@ -63,11 +63,15 @@ public class ForumRepository : IForumRepository
 
     public async Task<IEnumerable<Forum>> GetAllForums()
     {
-       var forumsTake = ctx.Forums.Take(20);
+        var forumsTake = ctx.Forums.Take(20);
 
         var forums = await forumsTake.ToListAsync();
 
-       return forums;
+        return forums;
     }
 
+    public Task<bool> ExistingUserOnForum(int userID, int forumId)
+    {
+        throw new NotImplementedException();
+    }
 }
