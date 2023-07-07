@@ -5,6 +5,8 @@ import { UpDown } from '../../DTO/UpvoteDownvote';
 import { UpDownService } from '../../services/upDown.service';
 import { User } from '../../DTO/User/User';
 import { PostService } from 'src/app/services/post.service';
+import { ListParticipantsForum } from 'src/app/DTO/Forum/ParticipantForum';
+import { ForumService } from 'src/app/services/forum.service';
 
 @Component({
   selector: 'app-card',
@@ -23,11 +25,13 @@ export class CardComponent {
     downvote: 0,
   };
 
-  @Input() qtdUpvote : number = 0;
+  @Input() qtdUpvote: number = 0;
 
   constructor(
     private upDownService: UpDownService,
     private userService: UserService,
+    private postService: PostService,
+    private forumService: ForumService
   ) {}
 
   upDown: UpDown = {
@@ -43,11 +47,25 @@ export class CardComponent {
     photouser: 0,
   };
 
+  listParticipant: ListParticipantsForum = {
+    forum: 0,
+    Participant: 0
+  };
+
   addUpDown() {
     this.upDown.post = this.post.id;
     this.upDown.participant = this.user.userId;
 
     this.upDownService.addUpDown(this.upDown).subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+
+  followForum() {
+    this.listParticipant.forum = this.post.forum;
+    this.listParticipant.Participant = this.user.userId;
+
+    this.forumService.addUser(this.listParticipant).subscribe((res: any) => {
       console.log(res);
     });
   }
