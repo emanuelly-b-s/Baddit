@@ -1,10 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap");
 
 @import url('https://css.gg/css?=|chevron-down-o|chevron-up-o|feed');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/check-o.css');
+
 
 .forumName {
   display: flex;
   justify-content: flex-start;
+}
+
+.btn {
+  display: flex;
+  font-weight: 500;
+  background: none;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 3px px;
 }
 
 
@@ -54,7 +76,6 @@ hr {
 
 
 
-
 .row {
   display: -ms-flexbox;
   display: flex;
@@ -75,7 +96,7 @@ body {
 .mat-drawer {
   position: relative;
   z-index: 4;
-  display: block;
+  display: flex;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -84,8 +105,8 @@ body {
   box-sizing: border-box;
   overflow-y: auto;
   transform: translate3d(-100%, 0, 0);
-  width: 15%;
-  padding: 2%;
+  width: 12%;
+  padding: 1%;
   margin-bottom: 5px;
 }
 

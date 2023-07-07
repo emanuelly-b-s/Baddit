@@ -2,10 +2,11 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
     <mat-list role="list">
-      <app-profile></app-profile>
-      <mat-list-item role="listitem">Item 1</mat-list-item>
-      <mat-list-item role="listitem">Item 2</mat-list-item>
-      <mat-list-item role="listitem">Item 3</mat-list-item>
+
+      <button class="btn" (click)="followForum()" >Seguir forum<i class="gg-check-o" style="margin-left:10px ;"></i></button>
+      <button class="btn" (click)="followForum()" >Deixar de seguir<i class="gg-check-o" style="margin-left:10px ;"></i></button>
+      <!-- <mat-list-item role="listitem">Item 2</mat-list-item>
+      <mat-list-item role="listitem">Item 3</mat-list-item> -->
     </mat-list>
   </mat-drawer>
   <div class="container">

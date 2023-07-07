@@ -53,6 +53,20 @@ export class ForumPageComponent implements OnInit {
     forum: 0,
   };
 
+  listParticipant: ListParticipantsForum = {
+    forum: 0,
+    Participant: 0
+  };
+
+  followForum() {
+    this.listParticipant.forum =  Number(this.router.url.split('/')[2]);
+    this.listParticipant.Participant = this.user.userId;
+
+    this.forumService.addUser(this.listParticipant).subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+
   addUser() {
     this.participanteForum.Participant = this.creator;
     this.participanteForum.forum = this.forumData.id;
@@ -66,19 +80,19 @@ export class ForumPageComponent implements OnInit {
     this.subscription = this.route.params.subscribe((params) => {
       this.forum.id = params['id'];
     });
-    
+
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
         this.user = res;
         this.creator = res.userId;
       },
-      
+
       error: (error: any) => {
         this.router.navigate(['']);
       },
     });
-    
+
         this.forumService.getForumByID(this.forum).subscribe((res) => {
           this.forum = res;
         });
