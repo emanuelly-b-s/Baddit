@@ -10,6 +10,6 @@ public interface IPostRepository: IRepository<Post>
 {
     Task Add(Post obj);
     Task<List<Post>> GetAllPost(int idForum);
-    Task<List<Post>> GetPostsFeed(int idUser);
+    Task<IEnumerable<Post>> GetPostsFeed(int idUser);
 
 }

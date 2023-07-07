@@ -46,10 +46,24 @@ public class PostController : ControllerBase
     {
         var posts = await postRepo.GetAllPost(infoForum.ID);
 
-        if(posts.Count < 0)
+        if (posts.Count < 0)
             return BadRequest();
 
         return Ok(posts);
-    } 
+    }
+
+    [HttpPost("getPostsFeed")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult<IEnumerable<Post>>> GetPostsFeed(
+        [FromServices] IPostRepository postRepo,
+        [FromBody] InfoUser userData
+    )
+    {   
+        var idUSer = userData.UserId;
+
+        var listPost = await postRepo.GetPostsFeed(idUSer);
+
+        return Ok(listPost);
+    }
 
 }
