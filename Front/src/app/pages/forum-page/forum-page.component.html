@@ -2,9 +2,12 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
     <mat-list role="list">
-
-      <button class="btn" (click)="followForum()" >Seguir forum<i class="gg-check-o" style="margin-left:10px ;"></i></button>
-      <button class="btn" (click)="followForum()" >Deixar de seguir<i class="gg-check-o" style="margin-left:10px ;"></i></button>
+      <button class="btn" (click)="followForum()">
+        Seguir forum<i class="gg-check-o" style="margin-left: 10px"></i>
+      </button>
+      <button class="btn" (click)="removeUser()">
+        Deixar de seguir<i class="gg-check-o" style="margin-left: 10px"></i>
+      </button>
       <!-- <mat-list-item role="listitem">Item 2</mat-list-item>
       <mat-list-item role="listitem">Item 3</mat-list-item> -->
     </mat-list>
@@ -22,7 +25,6 @@
       <div class="row">
         <h5>
           {{ forum.descriptionForum }}
-
         </h5>
       </div>
     </div>
@@ -30,11 +32,10 @@
       <!-- se for adm -->
     </div>
     <div *ngIf="forum.creator == user.userId">
-      {{forum.creator }} -- {{user.userId}}
+      {{ forum.creator }} -- {{ user.userId }}
       <app-role></app-role>
     </div>
     <app-post></app-post>
     <app-cards></app-cards>
   </div>
-
 </mat-drawer-container>

@@ -76,6 +76,15 @@ export class ForumPageComponent implements OnInit {
     });
   }
 
+  removeUser() {
+    this.participanteForum.Participant = this.creator;
+    this.participanteForum.forum = this.forumData.id;
+
+    this.forumService.removeUser(this.participanteForum).subscribe((res) => {
+      console.log(res);
+    });
+  }
+
   ngOnInit(): void {
     this.subscription = this.route.params.subscribe((params) => {
       this.forum.id = params['id'];

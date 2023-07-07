@@ -23,22 +23,22 @@ export class ForumService {
   //   return this.http.get<InfoForum>(this.back + '/forum/get-forum' + idForum);
   // }
 
-
-  getForumByID(forumData: InfoForum)
-  {
-    return this.http.post<InfoForum>(this.back + '/forum/get-forum/', forumData);
+  getForumByID(forumData: InfoForum) {
+    return this.http.post<InfoForum>(
+      this.back + '/forum/get-forum/',
+      forumData
+    );
   }
 
-
-  addUser(data : ListParticipantsForum)
-  {
+  addUser(data: ListParticipantsForum) {
     return this.http.post(this.back + '/forum/addUser', data);
   }
 
-  allForums()
-  {
-    return this.http.get<InfoForum[]>(this.back + "/forum/getForumsRegister")
+  removeUser(data: ListParticipantsForum) {
+    return this.http.post(this.back + '/forum/removeUser', data);
   }
 
-
+  allForums() {
+    return this.http.get<InfoForum[]>(this.back + '/forum/getForumsRegister');
+  }
 }

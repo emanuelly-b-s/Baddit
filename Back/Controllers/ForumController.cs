@@ -74,7 +74,7 @@ public class ForumController : ControllerBase
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> AddUser(
        [FromServices] IForumRepository forumRep,
-       [FromBody] AddUserOnForum data
+       [FromBody] ListUserOnForum data
     )
     {
         ListParticipantsForum newUser = new()
@@ -84,6 +84,19 @@ public class ForumController : ControllerBase
         };
 
         await forumRep.AddUser(newUser);
+
+        return Ok();
+
+    }
+
+    [HttpPost("removeUser")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult> RemoveUser(
+       [FromServices] IForumRepository forumRep,
+       [FromBody] ListParticipantsForum data
+    )
+    {
+        await forumRep.RemoveUser(data);
 
         return Ok();
 

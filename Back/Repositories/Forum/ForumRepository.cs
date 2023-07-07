@@ -60,6 +60,11 @@ public class ForumRepository : IForumRepository
         await ctx.ListParticipantsForums.AddAsync(obj);
         await ctx.SaveChangesAsync();
     }
+    public async Task RemoveUser(ListParticipantsForum obj)
+    {
+        ctx.ListParticipantsForums.Remove(obj);
+        await ctx.SaveChangesAsync();
+    }
 
     public async Task<IEnumerable<Forum>> GetAllForums()
     {

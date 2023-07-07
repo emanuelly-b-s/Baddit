@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DTO;
 
-public class AddUserOnForum
+public class ListUserOnForum
 {
     public int? Forum { get; set; }
 
