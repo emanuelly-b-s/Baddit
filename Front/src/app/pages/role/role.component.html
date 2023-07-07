@@ -26,11 +26,11 @@
         <div *ngFor="let p of permissions">
           <h6>{{ p.permissionName }}</h6>
           <input
-            ng-model="p.id"
+            [value]="p.id"
+            (change)="GetStats($event)"
             type="checkbox"
             class="form-control"
             formControlName="control"
-           
           />
         </div>
         <div></div>

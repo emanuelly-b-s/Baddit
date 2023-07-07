@@ -73,10 +73,25 @@ export class RoleComponent {
   permissionRole: RolePermission = {
     id: 0,
     idRole: 0,
-    idPermission: 0
+    idPermission: 0,
   };
 
 
+  GetStats(event: any): void {
+
+    if(event.target.checked)
+    {
+
+    }
+
+    console.log(event.target.name, event.target.value, event.target.checked);
+  }
+
+
+  addPermission()
+  {
+
+  }
 
   addRole() {
     this.role = { ...this.form.value };
