@@ -1,13 +1,15 @@
 <app-nav></app-nav>
-<a href="/forum-register"> Novo Forum </a>
-<li *ngFor="let forum of forums">
-  <a href="{{'/forum-home/' + forum.id }}">a<</a>
-  {{ forum.forumName }}
-</li>
+<div  >
+  <mat-drawer mode="side" opened>
+    Seus forums
+    <mat-list role="list">
+      <div *ngFor="let forum of forums">
+        <mat-list-item role="listitem"
+          ><a href="{{ '/forum-home/' + forum.id }}">
+            {{ forum.forumName }}</a>
+        </mat-list-item>
+      </div>
+    </mat-list>
+  </mat-drawer>
 
-<!-- href="{{'/recover/' + email}}"> -->
-<mat-drawer-container class="example-container">
-    <app-side-nav>
-    </app-side-nav>
-    <!-- <app-cards></app-cards> -->
-</mat-drawer-container>
+</div>

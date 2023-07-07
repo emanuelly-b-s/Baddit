@@ -12,6 +12,20 @@
   box-shadow: 0px 0px 31px -16px #00000069;
 }
 
+.ng-star-inserted{
+  margin: 10px;
+}
+
+
+.selectStyle {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
 .input-group {
   display: flex;
   -ms-flex-wrap: wrap;

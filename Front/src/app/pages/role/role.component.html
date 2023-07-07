@@ -21,16 +21,16 @@
           formControlName="roleName"
         />
       </div>
-      <div class="form-group">
-        <label>Permissoes</label>
+      <label>Permissoes</label>
+      <div class="selectStyle">
         <div *ngFor="let p of permissions">
           <h6>{{ p.permissionName }}</h6>
           <input
             ng-model="p.id"
             type="checkbox"
             class="form-control"
-            placeholder="Adm"
             formControlName="control"
+           
           />
         </div>
         <div></div>
