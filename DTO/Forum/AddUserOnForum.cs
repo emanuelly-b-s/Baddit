@@ -7,7 +7,7 @@ namespace DTO;
 
 public class ListUserOnForum
 {
-    public int? Forum { get; set; }
+    public int Forum { get; set; }
 
-    public int? Participant { get; set; }
+    public int Participant { get; set; }
 }

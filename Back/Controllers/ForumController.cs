@@ -77,6 +77,12 @@ public class ForumController : ControllerBase
        [FromBody] ListUserOnForum data
     )
     {
+
+    var isMember = await forumRep.IsMember(data.Participant, data.Forum);
+
+        if(isMember)
+            return BadRequest();
+
         ListParticipantsForum newUser = new()
         {
             Participant = data.Participant,

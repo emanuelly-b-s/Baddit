@@ -12,6 +12,7 @@ public interface IForumRepository : IRepository<Forum>
     Task RemoveUser(ListParticipantsForum participant);
     Task<bool> ExistingUserOnForum(int userID, int forumId);
     Task<IEnumerable<Forum>> GetAllForums();
+    Task<bool> IsMember(int user, int forum);
 
 
 }

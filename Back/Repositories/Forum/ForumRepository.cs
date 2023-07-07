@@ -66,6 +66,13 @@ public class ForumRepository : IForumRepository
         await ctx.SaveChangesAsync();
     }
 
+    public async Task<bool> IsMember(int user, int forum)
+    {
+        bool isMember = await ctx.ListParticipantsForums
+                                    .AnyAsync(f => f.Participant == user && f.Forum == forum);
+        return isMember;
+    }
+
     public async Task<IEnumerable<Forum>> GetAllForums()
     {
         var forumsTake = ctx.Forums.Take(20);
