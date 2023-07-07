@@ -86,4 +86,21 @@ public class ForumRepository : IForumRepository
     {
         throw new NotImplementedException();
     }
+
+    public async Task<List<Forum>> Search(string forum)
+    {
+        var forumsSearch = ctx.Forums
+                            .Where(f => f.ForumName
+                            .Contains(forum) || f.ForumName
+                            .Contains(forum
+                            .Substring(forum.Length - 3))
+                            || f.ForumName
+                            .Contains(forum
+                            .Substring(0, (forum.Length - 2))
+                            ));
+        
+        var listForumsSearch = await forumsSearch.ToListAsync();
+
+        return listForumsSearch;
+    }
 }

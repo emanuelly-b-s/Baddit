@@ -38,7 +38,7 @@ public class ForumController : ControllerBase
     [HttpPost("get-forum")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<Forum>> GetById(
-        [FromBody] InfoForum  forumData,
+        [FromBody] InfoForum forumData,
         [FromServices] IForumRepository forumRep
     )
     {
@@ -78,9 +78,9 @@ public class ForumController : ControllerBase
     )
     {
 
-    var isMember = await forumRep.IsMember(data.Participant, data.Forum);
+        var isMember = await forumRep.IsMember(data.Participant, data.Forum);
 
-        if(isMember)
+        if (isMember)
             return BadRequest();
 
         ListParticipantsForum newUser = new()
@@ -108,13 +108,26 @@ public class ForumController : ControllerBase
 
     }
 
-    [HttpPost]
+    [HttpPost("getAllForums")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<IEnumerable<Forum>>> GetAllForums(
         [FromServices] IForumRepository forumRepo
     )
     {
         var forums = await forumRepo.GetAllForums();
+
+        return Ok(forums);
+    }
+
+    [HttpPost("searchForum")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult<List<Forum>>> SearchForum(
+        [FromServices] IForumRepository forumRepo,
+        [FromBody] InfoForum forum
+    )
+    {
+        var forumSearch = forum.ForumName;
+        var forums = await forumRepo.Search(forumSearch);
 
         return Ok(forums);
     }

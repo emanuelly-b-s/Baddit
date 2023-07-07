@@ -14,5 +14,6 @@ public interface IForumRepository : IRepository<Forum>
     Task<IEnumerable<Forum>> GetAllForums();
     Task<bool> IsMember(int user, int forum);
 
+    Task<List<Forum>> Search(string forum);
 
 }
