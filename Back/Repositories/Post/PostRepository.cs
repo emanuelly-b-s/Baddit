@@ -41,32 +41,30 @@ public class PostRepository : IPostRepository
 
 
 
-    public async Task<IEnumerable<Post>> GetPostsFeed(int idUser)
+    public async Task<IEnumerable<Post>> GetPostsFeed()
     {
-        var userOnForum = ctx.UserBaddits.Join(ctx.ListParticipantsForums,
-                                        user => user.Id,
-                                        forumList => forumList.Forum,
-                                        (user, forumList) => new
-                                        {
-                                            forums = forumList.Id,
-                                            userId = user.Id
-                                        });
+        // var userOnForum = ctx.UserBaddits.Join(ctx.ListParticipantsForums,
+        //                                 user => user.Id,
+        //                                 forumList => forumList.Forum,
+        //                                 (user, forumList) => new
+        //                                 {
+        //                                     forums = forumList.Id,
+        //                                     userId = user.Id
+        //                                 });
                                         
 
-        var getPostsForUser = ctx.Posts.Join(userOnForum,
-                                    post => post.Participant,
-                                    f => f.forums,
-                                    (post, f) 
-                                        => post);
+        // var getPostsForUser = ctx.Posts.Join(userOnForum,
+        //                             post => post.Participant,
+        //                             f => f.forums,
+        //                             (post, f) 
+        //                                 => post);
 
-        var listPosts = await getPostsForUser.ToListAsync();
+        // var listPosts = await getPostsForUser.ToListAsync();
 
-        foreach (var item in listPosts)
-        {
-            Console.WriteLine(item.PostText);
-        }
+        var listPost  =  ctx.Posts;
 
-        return listPosts;
+    
+        return listPost;
     }
 
     public Task UpdateUpDown(InfoPostDTO post)
