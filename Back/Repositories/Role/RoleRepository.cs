@@ -19,9 +19,10 @@ public class RoleRepository : IRoleRepository
     }
 
 
-    public Task Delete(Role obj)
+    public async Task Delete(Role obj)
     {
-        throw new NotImplementedException();
+        ctx.Roles.Remove(obj);
+        await ctx.SaveChangesAsync();
     }
 
     public async Task<bool> ExistingRole(string nameRole)

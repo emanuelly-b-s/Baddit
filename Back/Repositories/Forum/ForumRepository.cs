@@ -25,7 +25,8 @@ public class ForumRepository : IForumRepository
 
     public async Task Delete(Forum obj)
     {
-        throw new NotImplementedException();
+        ctx.Forums.Remove(obj);
+        await ctx.SaveChangesAsync();
     }
 
     public async Task<Forum> GetForumById(int id)
@@ -42,30 +43,14 @@ public class ForumRepository : IForumRepository
 
     public async Task Update(Forum obj)
     {
-        throw new NotImplementedException();
+        ctx.Forums.Update(obj);
+        await ctx.SaveChangesAsync();
     }
 
     public Task<List<Forum>> GetAll(Forum ctx)
     {
         throw new NotImplementedException();
     }
-
-    // public Task<IEnumerable<InfoUser>> GetParticipants(int id)
-    // {
-    // //     var users = ctx.Forums.Join(ctx.ListParticipantsForums,
-    // //                             f => f.Id,
-    // //                             listUser => listUser.Forum,
-    // //                             (f, listUser) => new
-    // //                             {
-    // //                                 idForum = f.Id,
-    // //                                 listUserId = listUser.Participant
-    // //                             })
-    // //                             .Where(f => f.idForum == id)
-    // //                             .Join(ctx.UserBaddits,
-    // //                                 listUsers => listUsers.listUsersId,
-    // //                                 user)
-    // // }
-    // }
 
     public async Task AddUser(ListParticipantsForum obj)
     {

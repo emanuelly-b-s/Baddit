@@ -44,7 +44,7 @@ public class PostRepository : IPostRepository
     public async Task<IEnumerable<Post>> GetPostsForUser(int idUser)
     {
 
-        var users =  ctx.ListParticipantsForums.Where(u => u.Id == idUser);
+        var users = ctx.ListParticipantsForums.Where(u => u.Id == idUser);
 
         var userOnForum = ctx.UserBaddits.Join(ctx.ListParticipantsForums,
                                         user => user.Id,
@@ -56,12 +56,12 @@ public class PostRepository : IPostRepository
                                         })
                                         .Where(u => u.userId == idUser);
 
-                 
+
 
         var getPostsForUser = ctx.Posts.Join(userOnForum,
                                     post => post.Forum,
                                     f => f.forums,
-                                    (post, f) 
+                                    (post, f)
                                         => post);
 
         var listPosts = await getPostsForUser.ToListAsync();
@@ -88,14 +88,16 @@ public class PostRepository : IPostRepository
         throw new NotImplementedException();
     }
 
-    public Task Delete(Post obj)
+    public async Task Delete(Post obj)
     {
-        throw new NotImplementedException();
+        ctx.Posts.Remove(obj);
+        await ctx.SaveChangesAsync();
     }
 
-    public Task Update(Post obj)
+    public async Task Update(Post obj)
     {
-        throw new NotImplementedException();
+        ctx.Posts.Update(obj);
+        await ctx.SaveChangesAsync();
     }
 
     public async Task<List<Post>> GetPostsFeed()
