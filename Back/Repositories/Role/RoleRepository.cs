@@ -18,6 +18,23 @@ public class RoleRepository : IRoleRepository
         await ctx.SaveChangesAsync();
     }
 
+     public async Task Add(Role role, List<int> permissions)
+    {
+        ctx.Roles.Add(role);
+        await ctx.SaveChangesAsync();
+
+        foreach (var permission in permissions)
+        {
+            await ctx.RolePermissions.AddAsync(new RolePermission()
+            {
+                RoleId = role.Id,
+                PermissionId = permission,
+            });
+        }
+
+        await ctx.SaveChangesAsync();
+    }
+
 
     public async Task Delete(Role obj)
     {
