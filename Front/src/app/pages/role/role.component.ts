@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
 import { RoleAdd } from 'src/app/DTO/RolePermission/Roles';
-import { Permission } from 'src/app/DTO/RolePermission/Permission';
 import { RolePermission } from 'src/app/DTO/RolePermission/RolePermission';
 
 @Component({
@@ -14,7 +13,7 @@ import { RolePermission } from 'src/app/DTO/RolePermission/RolePermission';
   styleUrls: ['./role.component.css'],
 })
 export class RoleComponent {
-  permissions: Permission[] = [];
+  permissionsList: number[] = [];
 
   constructor(
     private userService: UserService,
@@ -27,30 +26,21 @@ export class RoleComponent {
 
   form: FormGroup = this.fb.group({
     roleName: ['', Validators.required],
-    newPost: [''],
-    newRole: [''],
-    deletPost: [''],
   });
+
+  addPost: boolean = false;
+  deletePost: boolean = false;
+  editPost: boolean = false;
+  manageRole: boolean = false;
+  dropUser: boolean = false;
+  dropForum: boolean = false;
 
   ngOnInit(): void {
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
 
     this.userService.getUserLoggedIn({ valueToken: jwt }).subscribe({
       next: (res: User) => {
-        this.user = res;
         this.forumID = Number(this.router.url.split('/')[2]);
-
-        this.rolePermissionService.getPermissions().subscribe((list) => {
-          var newList: Permission[] = [];
-          list.forEach((element) => {
-            newList.push({
-              permissionName: element.permissionName,
-              id: element.id,
-            });
-          });
-          console.log(newList);
-          this.permissions = newList;
-        });
       },
     });
   }
@@ -69,6 +59,7 @@ export class RoleComponent {
     id: 0,
     roleName: '',
     forum: 0,
+    permissions: [],
   };
 
   permissionRole: RolePermission = {
@@ -77,27 +68,20 @@ export class RoleComponent {
     idPermission: 0,
   };
 
-  idPermission: number = 0;
-  idRole: number = 0;
+  onInputChange(event: any, check: boolean) {
+    let value: number = event.target.value;
 
-  GetStats(event: any): void {
-
-    if (event.target.checked) {
-      this.idPermission = event.target.value;
-    }
-    console.log(event.target.value, event.target.checked);
-  }
+    if (check) this.permissionsList.push(value);
+    else
+        this.permissionsList = this.permissionsList.filter(
+            (d: number) => d !== value
+        );
+}
 
   addRole() {
     this.role = { ...this.form.value };
     this.role.forum = Number(this.router.url.split('/')[2]);
-
-    this.permissionRole.idPermission = this.idPermission;
-    this.permissionRole.idRole = 0;
-
-    this.rolePermissionService.addRolePermission(this.permissionRole).subscribe((res) => {
-      console.log(res);
-    })
+    this.role.permissions = this.permissionsList;
 
     this.rolePermissionService.addRole(this.role).subscribe((res) => {
       console.log(res);
