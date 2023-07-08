@@ -18,7 +18,7 @@ public class RoleRepository : IRoleRepository
         await ctx.SaveChangesAsync();
     }
 
-     public async Task Add(Role role, List<int> permissions)
+     public async Task AddRole(Role role, List<int> permissions)
     {
         ctx.Roles.Add(role);
         await ctx.SaveChangesAsync();

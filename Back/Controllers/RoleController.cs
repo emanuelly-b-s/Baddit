@@ -17,7 +17,7 @@ public class RoleController : ControllerBase
     [HttpPost("new-role")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult> Register(
-        [FromServices] RoleRepository roleRep,
+        [FromServices] IRoleRepository roleRep,
         [FromBody] RoleDTO roleData)
 
     {
@@ -30,7 +30,7 @@ public class RoleController : ControllerBase
             RoleName = roleData.RoleName
         };
 
-        await roleRep.Add(r, roleData.Permissions);
+        await roleRep.AddRole(r, roleData.Permissions);
 
         return Ok();
     }
