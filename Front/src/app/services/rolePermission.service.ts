@@ -13,6 +13,7 @@ export class RolePermissionService {
   constructor(private http: HttpClient, private config: ConfigService) {}
 
   addRole(newRole: RoleAdd) {
+    console.log(newRole);
     return this.http.post(this.back + '/forum/role/new-role', newRole);
   }
 

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
 import { RoleAdd } from 'src/app/DTO/RolePermission/Roles';
-import { RolePermission } from 'src/app/DTO/RolePermission/RolePermission';
 
 @Component({
   selector: 'app-role',
@@ -60,28 +59,25 @@ export class RoleComponent {
     roleName: '',
     forum: 0,
     permissions: [],
-  };
-
-  permissionRole: RolePermission = {
-    id: 0,
-    idRole: 0,
-    idPermission: 0,
-  };
+  }
 
   onInputChange(event: any, check: boolean) {
     let value: number = event.target.value;
+    console.log(event.target.checked)
+    console.log(value);
 
-    if (check) this.permissionsList.push(value);
+    if (event.target.checked) this.permissionsList.push(value);
     else
-        this.permissionsList = this.permissionsList.filter(
-            (d: number) => d !== value
-        );
-}
+      this.permissionsList = this.permissionsList.filter(
+        (d: number) => d !== value
+      );
+  }
 
   addRole() {
     this.role = { ...this.form.value };
     this.role.forum = Number(this.router.url.split('/')[2]);
     this.role.permissions = this.permissionsList;
+    console.log(this.permissionsList);
 
     this.rolePermissionService.addRole(this.role).subscribe((res) => {
       console.log(res);
