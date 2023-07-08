@@ -48,7 +48,7 @@ export class CardsFeedComponent {
         this.user = res;
 
 
-        this.postService.getAllPostsFeed(this.user).subscribe((list) => {
+        this.postService.getAllPostsFeed().subscribe((list) => {
           var newList: Post[] = [];
           list.forEach((element) => {
             console.log(element);

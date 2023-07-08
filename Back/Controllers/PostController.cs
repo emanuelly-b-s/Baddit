@@ -36,15 +36,15 @@ public class PostController : ControllerBase
         return Ok();
     }
 
-    [HttpPost("getPosts")]
+    [HttpPost("getPostsForum")]
     [EnableCors("MainPolicy")]
 
-    public async Task<ActionResult<IEnumerable<Post>>> GetPosts(
+    public async Task<ActionResult<IEnumerable<Post>>> GetAllPostForum(
         [FromServices] IPostRepository postRepo,
         [FromBody] InfoForum infoForum
     )
     {
-        var posts = await postRepo.GetAllPost(infoForum.ID);
+        var posts = await postRepo.GetAllPostForum(infoForum.ID);
 
         if (posts.Count < 0)
             return BadRequest();
@@ -52,16 +52,27 @@ public class PostController : ControllerBase
         return Ok(posts);
     }
 
-    [HttpPost("getPostsFeed")]
+    [HttpPost("getPostsUser")]
     [EnableCors("MainPolicy")]
-    public async Task<ActionResult<IEnumerable<Post>>> GetPostsFeed(
+    public async Task<ActionResult<IEnumerable<Post>>> GetPostsForUser(
         [FromServices] IPostRepository postRepo,
         [FromBody] InfoUser userData
     )
     {   
+        var listPost = await postRepo.GetPostsForUser(userData.UserId);
+
+        return Ok(listPost);
+    }
+
+    [HttpGet("getPostsFeed")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult<List<Post>>> GetPostsFeed(
+        [FromServices] IPostRepository postRepo
+    )
+    {   
         // var idUSer = userData.UserId;
 
-        var listPost = await postRepo.GetPostsFeed(userData.UserId);
+        var listPost = await postRepo.GetPostsFeed();
 
         return Ok(listPost);
     }

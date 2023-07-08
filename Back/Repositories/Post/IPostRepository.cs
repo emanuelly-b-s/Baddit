@@ -9,7 +9,9 @@ namespace Back.Repositories.PostRep;
 public interface IPostRepository: IRepository<Post>
 {
     Task Add(Post obj);
-    Task<List<Post>> GetAllPost(int idForum);
-    Task<IEnumerable<Post>> GetPostsFeed(int idUser);
+    Task<List<Post>> GetAllPostForum(int idForum);
+    Task<IEnumerable<Post>> GetPostsForUser(int idUser);
+
+    Task<List<Post>> GetPostsFeed();
 
 }

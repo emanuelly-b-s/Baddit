@@ -18,11 +18,16 @@ export class PostService {
   }
 
   getPostsByForum(forumId: InfoForum) {
-    return this.http.post<Post[]>(this.back + '/forum/post/getPosts', forumId);
+    return this.http.post<Post[]>(this.back + '/forum/post/getPostsForum', forumId);
   }
 
-  getAllPostsFeed(user: User)
+  getAllPostsUser(user: User)
   {
-    return this.http.post<Post[]>(this.back + '/forum/post/getPostsFeed', user);
+    return this.http.post<Post[]>(this.back + '/forum/post/getPostsUser', user);
+  }
+
+  getAllPostsFeed()
+  {
+    return this.http.get<Post[]>(this.back + '/forum/post/getPostsFeed');
   }
 }

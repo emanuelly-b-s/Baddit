@@ -27,7 +27,7 @@ public class PostRepository : IPostRepository
         await ctx.SaveChangesAsync();
     }
 
-    public async Task<List<Post>> GetAllPost(int idForum)
+    public async Task<List<Post>> GetAllPostForum(int idForum)
     {
         var post = ctx.Posts
             .Where(postForum => postForum.Forum == idForum);
@@ -41,7 +41,7 @@ public class PostRepository : IPostRepository
 
 
 
-    public async Task<IEnumerable<Post>> GetPostsFeed(int idUser)
+    public async Task<IEnumerable<Post>> GetPostsForUser(int idUser)
     {
 
         var users =  ctx.ListParticipantsForums.Where(u => u.Id == idUser);
@@ -96,5 +96,13 @@ public class PostRepository : IPostRepository
     public Task Update(Post obj)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<List<Post>> GetPostsFeed()
+    {
+        var posts = ctx.Posts.Take(20);
+        var listPosts = await posts.ToListAsync();
+
+        return listPosts;
     }
 }
