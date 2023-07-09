@@ -135,7 +135,7 @@ public class ForumController : ControllerBase
     [HttpPost("teste")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<List<ListParticipantsForum>>> GetUserForum(
-        [FromServices] RoleRepository forumRepo,
+        [FromServices] IRoleRepository forumRepo,
         [FromBody] InfoForum forum
     )
     {

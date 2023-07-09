@@ -77,11 +77,11 @@ public class RoleRepository : IRoleRepository
 
     public async Task<List<ListParticipantsForum>> GetUserForum(InfoForum forum)
     {
-        var userForum = await ctx.ListParticipantsForums
-                        .Include(f => f.Forum == forum.ID)
-                        .ToListAsync(); 
+        // var userForum = await ctx.Forums
+        //                 .Include(l => l.ListParticipantsForums.Where(f => f.Forum == forum.ID))
+        //                 .ToListAsync(); 
 
-        return userForum;
+        // return userForum;
     }
 
 }
