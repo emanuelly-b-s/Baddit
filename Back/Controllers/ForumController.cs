@@ -1,4 +1,5 @@
 using Back.Model;
+using Back.Repositories;
 using Back.Repositories.ForumRep;
 using DTO;
 using Microsoft.AspNetCore.Cors;
@@ -130,6 +131,18 @@ public class ForumController : ControllerBase
 
         return Ok(forums);
     }
+
+    [HttpPost("teste")]
+    [EnableCors("MainPolicy")]
+    public async Task<ActionResult<List<ListParticipantsForum>>> GetUserForum(
+        [FromServices] RoleRepository forumRepo,
+        [FromBody] InfoForum forum
+    )
+    {
+
+        return Ok(await forumRepo.GetUserForum(forum));
+    }
+
 
 }
 

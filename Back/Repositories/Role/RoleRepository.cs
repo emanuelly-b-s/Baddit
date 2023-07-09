@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Back.Model;
+using DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace Back.Repositories;
@@ -74,20 +75,13 @@ public class RoleRepository : IRoleRepository
         return hasPerm;
     }
 
-    // public async Task<List<Permissions>> GetUserPermissions(UserBaddit user, Forum forum)
-    // {
-    //     var query = await ctx.ListParticipantsForums
-                        
+    public async Task<List<ListParticipantsForum>> GetUserForum(InfoForum forum)
+    {
+        var userForum = await ctx.ListParticipantsForums
+                        .Include(f => f.Forum == forum.ID)
+                        .ToListAsync(); 
 
-
-
-    //         .Include(userForum => userForum.CargoUser)
-    //         .Where(userForum => userForum.Forum == forum.Id && userForum.Participant == user.Id)
-    //         .FirstAsync();
-
-    //     // var result = query.Select(rp => (PermissionEnum)rp.PermissionId).ToList();
-
-    //     return result;
-    // }
+        return userForum;
+    }
 
 }
