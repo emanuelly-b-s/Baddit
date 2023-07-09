@@ -12,7 +12,6 @@ export interface InfoParticipant {
 }
 
 export interface RoleParticipant {
-  userId: number;
-  roleId: number;
-  forumId: number;
+  name: number;
+  roleUser: number;
 }

@@ -5,6 +5,7 @@ import { ConfigService } from './config.service';
 import { User } from '../DTO/User/User';
 import { InfoForum } from '../DTO/Forum/InfoForum';
 import { ListParticipantsForum } from '../DTO/Forum/ParticipantForum';
+import { RoleParticipant } from '../DTO/Forum/ParticipantForum';
 
 @Injectable({
   providedIn: 'root',
@@ -42,8 +43,17 @@ export class ForumService {
     return this.http.get<InfoForum[]>(this.back + '/forum/searchForum');
   }
 
-  searchForum(forumSearch : string)
-  {
-    return this.http.post<InfoForum[]>(this.back + '/forum/searchForum', forumSearch);
+  searchForum(forumSearch: string) {
+    return this.http.post<InfoForum[]>(
+      this.back + '/forum/searchForum',
+      forumSearch
+    );
+  }
+
+  getUsers(forum: InfoForum) {
+    return this.http.post<RoleParticipant[]>(
+      this.back + '/forum/getAllMembers',
+      forum
+    );
   }
 }
