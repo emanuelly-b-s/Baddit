@@ -61,11 +61,11 @@ public class RoleRepository : IRoleRepository
     {
         var role = ctx.ListParticipantsForums
                         .First(userForum => userForum.ForumId == forum.Id
-                                && userForum.ParticipantId == user.Id);
-                                // .CargoUser;
+                                && userForum.ParticipantId == user.Id)
+                                .RoleId;
 
         var permissions = await ctx.RolePermissions
-            // .Where(idRolePerm => idRolePerm.Role == role)
+            .Where(idRolePerm => idRolePerm.RoleId == role)
             .Select(r => r.Permission.Id)
             .ToListAsync();
 
@@ -88,17 +88,24 @@ public class RoleRepository : IRoleRepository
 
     public async Task<List<ParticipantForum>> GetGroupMembers(InfoForum forum)
     {
+
+        Console.WriteLine('a');
         var users = ctx.ListParticipantsForums
                     .Include(uForum => uForum.Participant)
-                    // .Include(uForum => uForum.CargoUser)
+                    .Include(uForum => uForum.Role)
                     .Where(uForum => uForum.ForumId == forum.ID)
                     .Select(uForum => new ParticipantForum
                     {
                         Id = (int)uForum.ParticipantId,
                         Name = uForum.Participant.UserName,
-                        // RoleUser = uForum.CargoUser.RoleName
+                        RoleUser = uForum.Role.RoleName
                     });
 
+        foreach (var item in users)
+        {
+            Console.WriteLine(item.Name);
+            Console.WriteLine('a');
+        }
 
         var listUsers = users.ToListAsync();
 
