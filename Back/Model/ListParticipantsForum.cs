@@ -11,6 +11,10 @@ public partial class ListParticipantsForum
 
     public int? Participant { get; set; }
 
+    public int? CargoUser { get; set; }
+
+    public virtual Role? CargoUserNavigation { get; set; }
+
     public virtual Forum? ForumNavigation { get; set; }
 
     public virtual UserBaddit? ParticipantNavigation { get; set; }

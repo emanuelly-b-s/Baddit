@@ -45,7 +45,7 @@ public partial class BadditContext : DbContext
     {
         modelBuilder.Entity<Comment>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Comment__3214EC07B1751572");
+            entity.HasKey(e => e.Id).HasName("PK__Comment__3214EC077B554CC8");
 
             entity.ToTable("Comment");
 
@@ -53,20 +53,20 @@ public partial class BadditContext : DbContext
 
             entity.HasOne(d => d.ParticipantNavigation).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.Participant)
-                .HasConstraintName("FK__Comment__Partici__3D5E1FD2");
+                .HasConstraintName("FK__Comment__Partici__3C69FB99");
 
             entity.HasOne(d => d.PostCommentNavigation).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.PostComment)
-                .HasConstraintName("FK__Comment__PostCom__3E52440B");
+                .HasConstraintName("FK__Comment__PostCom__3D5E1FD2");
         });
 
         modelBuilder.Entity<Forum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Forum__3214EC07BE939571");
+            entity.HasKey(e => e.Id).HasName("PK__Forum__3214EC0742B92F0B");
 
             entity.ToTable("Forum");
 
-            entity.HasIndex(e => e.ForumName, "UQ__Forum__F372648AF2300192").IsUnique();
+            entity.HasIndex(e => e.ForumName, "UQ__Forum__F372648AA3B675CA").IsUnique();
 
             entity.Property(e => e.DescriptionForum)
                 .HasMaxLength(255)
@@ -82,29 +82,33 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<ImageDatum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ImageDat__3214EC27F1FD6E5E");
+            entity.HasKey(e => e.Id).HasName("PK__ImageDat__3214EC275FA42DF8");
 
             entity.Property(e => e.Id).HasColumnName("ID");
         });
 
         modelBuilder.Entity<ListParticipantsForum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ListPart__3214EC071AB49C5C");
+            entity.HasKey(e => e.Id).HasName("PK__ListPart__3214EC07A10A792F");
 
             entity.ToTable("ListParticipantsForum");
 
+            entity.HasOne(d => d.CargoUserNavigation).WithMany(p => p.ListParticipantsForums)
+                .HasForeignKey(d => d.CargoUser)
+                .HasConstraintName("FK__ListParti__Cargo__48CFD27E");
+
             entity.HasOne(d => d.ForumNavigation).WithMany(p => p.ListParticipantsForums)
                 .HasForeignKey(d => d.Forum)
-                .HasConstraintName("FK__ListParti__Forum__35BCFE0A");
+                .HasConstraintName("FK__ListParti__Forum__34C8D9D1");
 
             entity.HasOne(d => d.ParticipantNavigation).WithMany(p => p.ListParticipantsForums)
                 .HasForeignKey(d => d.Participant)
-                .HasConstraintName("FK__ListParti__Parti__36B12243");
+                .HasConstraintName("FK__ListParti__Parti__35BCFE0A");
         });
 
         modelBuilder.Entity<LocationPhoto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Location__3214EC2722C243D3");
+            entity.HasKey(e => e.Id).HasName("PK__Location__3214EC277C475FEE");
 
             entity.ToTable("LocationPhoto");
 
@@ -115,16 +119,16 @@ public partial class BadditContext : DbContext
 
             entity.HasOne(d => d.ParticipantNavigation).WithMany(p => p.LocationPhotos)
                 .HasForeignKey(d => d.Participant)
-                .HasConstraintName("FK__LocationP__Parti__47DBAE45");
+                .HasConstraintName("FK__LocationP__Parti__46E78A0C");
 
             entity.HasOne(d => d.PhotoNavigation).WithMany(p => p.LocationPhotos)
                 .HasForeignKey(d => d.Photo)
-                .HasConstraintName("FK__LocationP__Photo__46E78A0C");
+                .HasConstraintName("FK__LocationP__Photo__45F365D3");
         });
 
         modelBuilder.Entity<Permission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Permissi__3214EC279B2CD80E");
+            entity.HasKey(e => e.Id).HasName("PK__Permissi__3214EC275545EE5E");
 
             entity.ToTable("Permission");
 
@@ -136,7 +140,7 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Post__3214EC277B161005");
+            entity.HasKey(e => e.Id).HasName("PK__Post__3214EC27650D544D");
 
             entity.ToTable("Post");
 
@@ -149,16 +153,16 @@ public partial class BadditContext : DbContext
 
             entity.HasOne(d => d.ForumNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.Forum)
-                .HasConstraintName("FK__Post__Forum__398D8EEE");
+                .HasConstraintName("FK__Post__Forum__38996AB5");
 
             entity.HasOne(d => d.ParticipantNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.Participant)
-                .HasConstraintName("FK__Post__Participan__3A81B327");
+                .HasConstraintName("FK__Post__Participan__398D8EEE");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC274E844947");
+            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC27074BA9A5");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.RoleName)
@@ -172,22 +176,22 @@ public partial class BadditContext : DbContext
 
         modelBuilder.Entity<RolePermission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__RolePerm__3214EC277EF029CF");
+            entity.HasKey(e => e.Id).HasName("PK__RolePerm__3214EC276869F4B6");
 
             entity.Property(e => e.Id).HasColumnName("ID");
 
             entity.HasOne(d => d.Permission).WithMany(p => p.RolePermissions)
                 .HasForeignKey(d => d.PermissionId)
-                .HasConstraintName("FK__RolePermi__Permi__32E0915F");
+                .HasConstraintName("FK__RolePermi__Permi__31EC6D26");
 
             entity.HasOne(d => d.Role).WithMany(p => p.RolePermissions)
                 .HasForeignKey(d => d.RoleId)
-                .HasConstraintName("FK__RolePermi__RoleI__31EC6D26");
+                .HasConstraintName("FK__RolePermi__RoleI__30F848ED");
         });
 
         modelBuilder.Entity<UpvoteDownvote>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__UpvoteDo__3214EC27A06E37F3");
+            entity.HasKey(e => e.Id).HasName("PK__UpvoteDo__3214EC276FF03EDF");
 
             entity.ToTable("UpvoteDownvote");
 
@@ -195,22 +199,22 @@ public partial class BadditContext : DbContext
 
             entity.HasOne(d => d.ParticipantNavigation).WithMany(p => p.UpvoteDownvotes)
                 .HasForeignKey(d => d.Participant)
-                .HasConstraintName("FK__UpvoteDow__Parti__412EB0B6");
+                .HasConstraintName("FK__UpvoteDow__Parti__403A8C7D");
 
             entity.HasOne(d => d.PostNavigation).WithMany(p => p.UpvoteDownvotes)
                 .HasForeignKey(d => d.Post)
-                .HasConstraintName("FK__UpvoteDown__Post__4222D4EF");
+                .HasConstraintName("FK__UpvoteDown__Post__412EB0B6");
         });
 
         modelBuilder.Entity<UserBaddit>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__User_Bad__3214EC07F0AA70A9");
+            entity.HasKey(e => e.Id).HasName("PK__User_Bad__3214EC07452A0840");
 
             entity.ToTable("User_Baddit");
 
-            entity.HasIndex(e => e.NickUser, "UQ__User_Bad__7B84F30D184F3993").IsUnique();
+            entity.HasIndex(e => e.NickUser, "UQ__User_Bad__7B84F30D1449166A").IsUnique();
 
-            entity.HasIndex(e => e.Email, "UQ__User_Bad__A9D105343588A481").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__User_Bad__A9D105345648BDE5").IsUnique();
 
             entity.Property(e => e.DateBirth).HasColumnType("date");
             entity.Property(e => e.Email)
@@ -230,7 +234,7 @@ public partial class BadditContext : DbContext
 
             entity.HasOne(d => d.UserPhotoNavigation).WithMany(p => p.UserBaddits)
                 .HasForeignKey(d => d.UserPhoto)
-                .HasConstraintName("FK__User_Badd__UserP__48CFD27E");
+                .HasConstraintName("FK__User_Badd__UserP__47DBAE45");
         });
 
         OnModelCreatingPartial(modelBuilder);

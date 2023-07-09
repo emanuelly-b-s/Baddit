@@ -13,5 +13,7 @@ public partial class Role
 
     public virtual Forum? ForumNavigation { get; set; }
 
+    public virtual ICollection<ListParticipantsForum> ListParticipantsForums { get; set; } = new List<ListParticipantsForum>();
+
     public virtual ICollection<RolePermission> RolePermissions { get; set; } = new List<RolePermission>();
 }

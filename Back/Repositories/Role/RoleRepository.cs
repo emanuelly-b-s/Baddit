@@ -18,7 +18,7 @@ public class RoleRepository : IRoleRepository
         await ctx.SaveChangesAsync();
     }
 
-     public async Task AddRole(Role role, List<int> permissions)
+    public async Task AddRole(Role role, List<int> permissions)
     {
         ctx.Roles.Add(role);
         await ctx.SaveChangesAsync();
@@ -58,18 +58,36 @@ public class RoleRepository : IRoleRepository
 
     public async Task<bool> HasPermission(UserBaddit user, Forum forum, Permissions permission)
     {
-        var role = this.ctx.ListParticipantsForums
-                        .First(userForum => userForum.Forum == forum.Id 
-                                && userForum.Participant == user.Id);
+        var role = ctx.ListParticipantsForums
+                        .First(userForum => userForum.Forum == forum.Id
+                                && userForum.Participant == user.Id)
+                                .CargoUser;
 
-        var perms = await this.ctx.RolePermissions
-            // .Where(rp => rp.RoleId == role)
+        var permissions = await ctx.RolePermissions
+            .Where(idRolePerm => idRolePerm.RoleId == role)
             .Select(r => r.Permission.Id)
             .ToListAsync();
 
-        var hasPerm = perms.Contains((int)permission);
+        var hasPerm = permissions
+                    .Contains((int)permission);
 
         return hasPerm;
     }
+
+    // public async Task<List<Permissions>> GetUserPermissions(UserBaddit user, Forum forum)
+    // {
+    //     var query = await ctx.ListParticipantsForums
+                        
+
+
+
+    //         .Include(userForum => userForum.CargoUser)
+    //         .Where(userForum => userForum.Forum == forum.Id && userForum.Participant == user.Id)
+    //         .FirstAsync();
+
+    //     // var result = query.Select(rp => (PermissionEnum)rp.PermissionId).ToList();
+
+    //     return result;
+    // }
 
 }
