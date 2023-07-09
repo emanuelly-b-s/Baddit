@@ -13,41 +13,41 @@
         <label>Name</label>
         <input type="text" class="form-control" placeholder="Adm" formControlName="roleName" />
       </div>
-      <label class="perms">Permissões</label>
-      <div class="form-check">
+      <label>Permissões</label>
+      <div class="form checkbox">
         <label class="form-check-label" for="postAdd">Criar posts</label>
-        <input (change)="onInputChange($event, addPost)" [(ngModel)]="addPost" type="checkbox" class="form-check-input"
+        <input (change)="onInputChange($event)" [(ngModel)]="addPost" type="checkbox" class="checkbox-round   "
           value="1" id="postAdd" />
       </div>
 
-      <div class="form-check">
+      <div class="form checkbox">
         <label class="form-check-label" for="deletePosts">Deletar posts</label>
-        <input (change)="onInputChange($event, deletePost)" [(ngModel)]="deletePost" type="checkbox"
-          class="form-check-input" value="2" id="deletePosts" />
+        <input (change)="onInputChange($event)" [(ngModel)]="deletePost" type="checkbox"
+          class="checkbox-round" value="2" id="deletePosts" />
       </div>
 
-      <div class="form-check">
+      <div class="form checkbox">
         <label class="form-check-label" for="edit">Editar posts</label>
-        <input (change)="onInputChange($event, editPost)" [(ngModel)]="editPost" type="checkbox"
-          class="form-check-input" value="3" id="edit" />
+        <input (change)="onInputChange($event)" [(ngModel)]="editPost" type="checkbox"
+          class="checkbox-round" value="3" id="edit" />
       </div>
 
-      <div class="form-check">
+      <div class="form checkbox">
         <label class="form-check-label" for="manage">Gerenciar cargos</label>
-        <input (change)="onInputChange($event, manageRole)" [(ngModel)]="manageRole" type="checkbox"
-          class="form-check-input" value="4" id="manage" />
+        <input (change)="onInputChange($event)" [(ngModel)]="manageRole" type="checkbox"
+          class="checkbox-round" value="4" id="manage" />
       </div>
 
-      <div class="form-check">
+      <div class="form checkbox">
         <label class="form-check-label" for="removeUser">Remover membros</label>
-        <input (change)="onInputChange($event, dropUser)" [(ngModel)]="dropUser" type="checkbox"
-          class="form-check-input" value="5" id="removeUser" />
+        <input (change)="onInputChange($event)" [(ngModel)]="dropUser" type="checkbox"
+          class="checkbox-round" value="5" id="removeUser" />
       </div>
 
-      <div class="form-check">
+      <div class="form checkbox">
         <label class="form-check-label" for="removeForum">Remover forums</label>
-        <input (change)="onInputChange($event, dropForum)" [(ngModel)]="dropForum" type="checkbox"
-          class="form-check-input" value="6" id="removeForum" />
+        <input (change)="onInputChange($event)" [(ngModel)]="dropForum" type="checkbox"
+        class="checkbox-round" value="6" id="removeForum" />
       </div>
       <div class="form-group" style="
           display: flex;

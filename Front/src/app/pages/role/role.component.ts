@@ -59,12 +59,12 @@ export class RoleComponent {
     roleName: '',
     forum: 0,
     permissions: [],
-  }
+  };
 
-  onInputChange(event: any, check: boolean) {
+  onInputChange(event: any) {
     let value: number = event.target.value;
+
     console.log(event.target.checked)
-    console.log(value);
 
     if (event.target.checked) this.permissionsList.push(value);
     else
