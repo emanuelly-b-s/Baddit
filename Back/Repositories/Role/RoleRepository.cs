@@ -56,4 +56,20 @@ public class RoleRepository : IRoleRepository
         throw new NotImplementedException();
     }
 
+    public async Task<bool> HasPermission(UserBaddit user, Forum forum, Permissions permission)
+    {
+        var role = this.ctx.ListParticipantsForums
+                        .First(userForum => userForum.Forum == forum.Id 
+                                && userForum.Participant == user.Id);
+
+        var perms = await this.ctx.RolePermissions
+            // .Where(rp => rp.RoleId == role)
+            .Select(r => r.Permission.Id)
+            .ToListAsync();
+
+        var hasPerm = perms.Contains((int)permission);
+
+        return hasPerm;
+    }
+
 }
