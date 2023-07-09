@@ -48,11 +48,11 @@ public class PostRepository : IPostRepository
 
         var userOnForum = ctx.UserBaddits.Join(ctx.ListParticipantsForums,
                                         user => user.Id,
-                                        userList => userList.Participant,
+                                        userList => userList.ParticipantId,
                                         (user, forumList) => new
                                         {
-                                            forums = forumList.Forum,
-                                            userId = forumList.Participant
+                                            forums = forumList.ForumId,
+                                            userId = forumList.ParticipantId
                                         })
                                         .Where(u => u.userId == idUser);
 

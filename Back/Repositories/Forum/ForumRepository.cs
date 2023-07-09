@@ -65,8 +65,7 @@ public class ForumRepository : IForumRepository
 
     public async Task<bool> IsMember(int user, int forum)
     {
-        bool isMember = await ctx.ListParticipantsForums
-                                    .AnyAsync(f => f.Participant == user && f.Forum == forum);
+        bool isMember = await ctx.ListParticipantsForums.AnyAsync(f => f.ParticipantId == user && f.ForumId == forum);
         return isMember;
     }
 

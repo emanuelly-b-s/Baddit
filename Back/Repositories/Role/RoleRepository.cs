@@ -60,12 +60,12 @@ public class RoleRepository : IRoleRepository
     public async Task<bool> HasPermission(UserBaddit user, Forum forum, Permissions permission)
     {
         var role = ctx.ListParticipantsForums
-                        .First(userForum => userForum.Forum == forum.Id
-                                && userForum.Participant == user.Id)
-                                .CargoUser;
+                        .First(userForum => userForum.ForumId == forum.Id
+                                && userForum.ParticipantId == user.Id);
+                                // .CargoUser;
 
         var permissions = await ctx.RolePermissions
-            .Where(idRolePerm => idRolePerm.RoleId == role)
+            // .Where(idRolePerm => idRolePerm.Role == role)
             .Select(r => r.Permission.Id)
             .ToListAsync();
 
@@ -75,13 +75,35 @@ public class RoleRepository : IRoleRepository
         return hasPerm;
     }
 
-    public async Task<List<ListParticipantsForum>> GetUserForum(InfoForum forum)
+    public void GetUserForum(InfoForum forum)
     {
-        // var userForum = await ctx.Forums
-        //                 .Include(l => l.ListParticipantsForums.Where(f => f.Forum == forum.ID))
-        //                 .ToListAsync(); 
+        var userForum = ctx.UserBaddits
+                        .Include(l => l.ListParticipantsForums)
+                        .ToListAsync();
 
-        // return userForum;
+
+        Console.WriteLine(userForum);
     }
+
+
+    public async Task<List<ParticipantForum>> GetGroupMembers(InfoForum forum)
+    {
+        var users = ctx.ListParticipantsForums
+                    .Include(uForum => uForum.Participant)
+                    // .Include(uForum => uForum.CargoUser)
+                    .Where(uForum => uForum.ForumId == forum.ID)
+                    .Select(uForum => new ParticipantForum
+                    {
+                        Id = (int)uForum.ParticipantId,
+                        Name = uForum.Participant.UserName,
+                        // RoleUser = uForum.CargoUser.RoleName
+                    });
+
+
+        var listUsers = users.ToListAsync();
+
+        return await listUsers;
+    }
+
 
 }

@@ -60,11 +60,11 @@ public class UserRepository : IUserRepository
     {
         var groups = ctx.UserBaddits.Join(ctx.ListParticipantsForums,
             u => u.Id,
-            listGroups => listGroups.Participant,
+            listGroups => listGroups.ParticipantId,
             (u, listGroups) => new
             {
                 idUser = u.Id,
-                listGroupsId = listGroups.Forum
+                listGroupsId = listGroups.ForumId
             })
             .Where(x => x.idUser == id)
             .Join(ctx.Forums,

@@ -5,6 +5,7 @@ public class InfoUser {
     public required string Username { get; set; }
     public string NickUser { get; set; }
     public required string Email { get; set; }
+    public int CargoUser { get; set; }
     public  int? PhotoUser { get; set; }
    
 }

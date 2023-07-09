@@ -86,8 +86,8 @@ public class ForumController : ControllerBase
 
         ListParticipantsForum newUser = new()
         {
-            Participant = data.Participant,
-            Forum = data.Forum,
+            ParticipantId = data.Participant,
+            ForumId = data.Forum,
         };
 
         await forumRep.AddUser(newUser);
@@ -132,17 +132,20 @@ public class ForumController : ControllerBase
         return Ok(forums);
     }
 
-    [HttpPost("teste")]
+    [HttpPost("getAllMembers")]
     [EnableCors("MainPolicy")]
-    public async Task<ActionResult<List<ListParticipantsForum>>> GetUserForum(
-        [FromServices] IRoleRepository forumRepo,
+    public async Task<ActionResult<List<ParticipantForum>>> GetGroupMembers(
+        [FromServices] IRoleRepository roleRepo,
         [FromBody] InfoForum forum
     )
     {
+        var users = await roleRepo.GetGroupMembers(forum);
 
-        return Ok(await forumRepo.GetUserForum(forum));
+        return Ok(users);
     }
 
 
 }
+
+
 
