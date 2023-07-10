@@ -17,25 +17,26 @@
       <div class="row">
         <!-- <button class="btn btn-primary" (click)="addUser()">add user</button> -->
         <h5>
-          {{ forum.forumName }}
+          {{ forumData.forumName }}
         </h5>
       </div>
     </div>
     <div class="container-description">
       <div class="row">
         <h5>
-          {{ forum.descriptionForum }}
+          {{ forumData.descriptionForum }}
         </h5>
       </div>
     </div>
     <div class="row">
       <!-- se for adm -->
     </div>
-    <div *ngIf="forum.creator == user.userId">
-      {{ forum.creator }} -- {{ user.userId }}
+    <div *ngIf="forumData.creator == user.userId">
+      {{ forumData.creator }} -- {{ user.userId }}
       <app-role></app-role>
     </div>
     <app-post></app-post>
     <app-cards></app-cards>
+    <app-list-users></app-list-users>
   </div>
 </mat-drawer-container>

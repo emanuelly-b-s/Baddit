@@ -44,6 +44,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RoleComponent } from './pages/role/role.component';
 import { CardComponent } from './pages/card/card.component';
 import { CardsFeedComponent } from './pages/cards-feed/cards-feed.component';
+import { ListUsersComponent } from './pages/list-users/list-users.component';
 
 
 
@@ -72,7 +73,8 @@ import { CardsFeedComponent } from './pages/cards-feed/cards-feed.component';
     SideNavHomePagComponent,
     RoleComponent,
     CardComponent,
-    CardsFeedComponent
+    CardsFeedComponent,
+    ListUsersComponent
 
   ],
 

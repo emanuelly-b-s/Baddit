@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'forum-register', component : ForumRegisterComponent },
   { path: 'profile-user', component : ProfileComponent },
   { path: "forum-home/:id", component: ForumPageComponent },
-  { path: "new-role", component: RoleComponent}
+  { path: "new-role", component: RoleComponent},
+  
 
 ];
 

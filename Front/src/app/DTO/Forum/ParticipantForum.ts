@@ -12,6 +12,6 @@ export interface InfoParticipant {
 }
 
 export interface RoleParticipant {
-  name: number;
-  roleUser: number;
+  name: string;
+  roleUser: string;
 }

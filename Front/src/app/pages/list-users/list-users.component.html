@@ -1,0 +1,20 @@
+    <label>Lista de membros</label>
+    <hr />
+    <div>
+        <table class="table table-bordered w-50">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cargo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of listUser">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.roleUser }}</td>
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+

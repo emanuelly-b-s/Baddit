@@ -5,7 +5,6 @@ import { User } from 'src/app/DTO/User/User';
 import { UserService } from 'src/app/services/users.service';
 import { ForumService } from 'src/app/services/forum.service';
 import { ListParticipantsForum } from 'src/app/DTO/Forum/ParticipantForum';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-forum-page',
@@ -22,12 +21,6 @@ export class ForumPageComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  forum: InfoForum = {
-    id: 0,
-    creator: 0,
-    forumName: '',
-    descriptionForum: '',
-  };
 
   authenticated: boolean = true;
 
@@ -81,13 +74,12 @@ export class ForumPageComponent implements OnInit {
     this.participanteForum.forum = this.forumData.id;
 
     this.forumService.removeUser(this.participanteForum).subscribe((res) => {
-      console.log(res);
     });
   }
 
   ngOnInit(): void {
     this.subscription = this.route.params.subscribe((params) => {
-      this.forum.id = params['id'];
+      this.forumData.id = params['id'];
     });
 
     let jwt = sessionStorage.getItem('jwtSession') ?? '';
@@ -102,8 +94,9 @@ export class ForumPageComponent implements OnInit {
       },
     });
 
-        this.forumService.getForumByID(this.forum).subscribe((res) => {
-          this.forum = res;
+        this.forumService.getForumByID(this.forumData).subscribe((res) => {
+          this.forumData = res;
+          
         });
   }
 
