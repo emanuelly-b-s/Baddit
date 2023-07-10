@@ -135,11 +135,11 @@ public class ForumController : ControllerBase
     [HttpPost("getAllMembers")]
     [EnableCors("MainPolicy")]
     public async Task<ActionResult<List<ParticipantForum>>> GetGroupMembers(
-        [FromServices] IRoleRepository roleRepo,
+        [FromServices] IForumRepository forumRepo,
         [FromBody] InfoForum forum
     )
     {
-        var users = await roleRepo.GetGroupMembers(forum);
+        var users = await forumRepo.GetGroupMembers(forum);
 
         return Ok(users);
     }
