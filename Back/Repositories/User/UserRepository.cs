@@ -78,5 +78,12 @@ public class UserRepository : IUserRepository
         return forums;
     }
 
+    public async Task<UserBaddit> Find(int id)
+    {
+        var user = await ctx.UserBaddits.FindAsync(id);
+        return user;
+    }
+
+
 }
 

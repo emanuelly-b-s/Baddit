@@ -100,8 +100,47 @@ public class ForumRepository : IForumRepository
         return listForumsSearch;
     }
 
-    public Task<IEnumerable<InfoUser>> GetParticipants(int id)
+    public async Task<Forum> FindForum(int id)
     {
-        throw new NotImplementedException();
+        var forum = await ctx.Forums.FindAsync(id);
+        return forum;
+    }
+
+
+    public async Task<List<ParticipantForum>> GetGroupMembers(InfoForum forum)
+    {
+
+        Console.WriteLine('a');
+        var users = ctx.ListParticipantsForums
+                    .Include(uForum => uForum.Participant)
+                    .Include(uForum => uForum.Role)
+                    .Where(uForum => uForum.ForumId == forum.ID)
+                    .Select(uForum => new ParticipantForum
+                    {
+                        Id = (int)uForum.ParticipantId,
+                        Name = uForum.Participant.UserName,
+                        RoleUser = uForum.Role.RoleName
+                    });
+
+        foreach (var item in users)
+        {
+            Console.WriteLine(item.Name);
+            Console.WriteLine('a');
+        }
+
+        var listUsers = users.ToListAsync();
+
+        return await listUsers;
+    }
+
+    public async Task RoleUserPromoter(Forum forum, UserBaddit user, Role role)
+    {
+        var userforum = await ctx.ListParticipantsForums
+                            .FirstAsync(uF => uF.ParticipantId == user.Id && uF.ForumId == forum.Id);
+
+        userforum.RoleId = role.Id;
+
+        ctx.ListParticipantsForums.Update(userforum);
+        await ctx.SaveChangesAsync();
     }
 }

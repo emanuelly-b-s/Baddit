@@ -1,4 +1,3 @@
-
 namespace Back.Repositories;
 public enum Permissions
 {

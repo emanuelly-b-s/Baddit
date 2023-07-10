@@ -85,31 +85,13 @@ public class RoleRepository : IRoleRepository
         Console.WriteLine(userForum);
     }
 
+  
 
-    public async Task<List<ParticipantForum>> GetGroupMembers(InfoForum forum)
+    public async Task<Role> Find(int id)
     {
-
-        Console.WriteLine('a');
-        var users = ctx.ListParticipantsForums
-                    .Include(uForum => uForum.Participant)
-                    .Include(uForum => uForum.Role)
-                    .Where(uForum => uForum.ForumId == forum.ID)
-                    .Select(uForum => new ParticipantForum
-                    {
-                        Id = (int)uForum.ParticipantId,
-                        Name = uForum.Participant.UserName,
-                        RoleUser = uForum.Role.RoleName
-                    });
-
-        foreach (var item in users)
-        {
-            Console.WriteLine(item.Name);
-            Console.WriteLine('a');
-        }
-
-        var listUsers = users.ToListAsync();
-
-        return await listUsers;
+        var role = await this.ctx.Roles.Include(r => r.Forum)
+                                       .FirstAsync(r => r.Id == id);
+        return role;
     }
 
 

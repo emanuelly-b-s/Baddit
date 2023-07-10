@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Back.Model;
 using Back.Repositories;
+using Back.Repositories.ForumRep;
+using Back.Repositories.User;
 using DTO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +37,34 @@ public class RoleController : ControllerBase
         return Ok();
     }
 
-    
-    
+    [HttpPost("roleMember")]
+    public async Task<ActionResult> PromoteRole(
+                    [FromBody] ParticipantForum userData,
+                    [FromServices] IForumRepository forumRepo,
+                    [FromServices] IRoleRepository roleRepo,
+                    [FromServices] IUserRepository userRepo
+    )
+    {
+        Forum forum = await forumRepo.FindForum(userData.IdForum);
+
+        if (forum is null)
+            return BadRequest();
+
+        var role = await roleRepo.Find(userData.IdRole);
+
+        if (role is null)
+            return NotFound("n existe");
+
+        var user = await userRepo.Find(userData.Id);
+
+        if (user is null)
+            return NotFound("n existe");
+
+        await forumRepo.RoleUserPromoter(forum, user, role);
+
+        return Ok();
+    }
+
+
 
 }
