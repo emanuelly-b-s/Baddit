@@ -27,19 +27,6 @@ public class PostRepository : IPostRepository
         await ctx.SaveChangesAsync();
     }
 
-    public async Task<List<Post>> GetAllPostForum(int idForum)
-    {
-        var post = ctx.Posts
-            .Where(postForum => postForum.Forum == idForum);
-
-
-        var getPosts = await post.Take(10)
-                                 .ToListAsync();
-
-        return getPosts;
-    }
-
-
 
     public async Task<IEnumerable<Post>> GetPostsForUser(int idUser)
     {
@@ -68,21 +55,6 @@ public class PostRepository : IPostRepository
 
         return listPosts;
     }
-
-    public Task UpdateUpDown(InfoPostDTO post)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int CountUpvote(InfoPostDTO post)
-    {
-        var posts = ctx.UpvoteDownvotes
-                    .Where(up => up.Post == post.Id)
-                    .Count();
-
-        return posts;
-    }
-
     public Task<List<Post>> Filter(Expression<Func<Post, bool>> condition)
     {
         throw new NotImplementedException();
@@ -102,9 +74,49 @@ public class PostRepository : IPostRepository
 
     public async Task<List<Post>> GetPostsFeed()
     {
-        var posts = ctx.Posts.Take(20);
-        var listPosts = await posts.ToListAsync();
+        var upDown = ctx.UpvoteDownvotes.Include(p => p.Post)
+                                        .Select(posts => new Post
+                                        {
+                                            Id = posts.Post.Id,
+                                            Tittle = posts.Post.Tittle,
+                                            PostDate = posts.Post.PostDate,
+                                            Forum = posts.Post.Forum,
+                                            Participant = posts.Post.Participant,
+                                            PostText = posts.Post.PostText,
+                                            Upvote = ctx.UpvoteDownvotes
+                                                        .Where(p => p.PostId == posts.Post.Id)
+                                                        .Count()
+                                        }
+
+                                        );
+
+        var listPosts = await upDown.ToListAsync();
 
         return listPosts;
+    }
+
+    public async Task<List<Post>> GetAllPostForum(int idForum)
+    {
+        var post = ctx.UpvoteDownvotes.Include(p => p.Post)
+                                        .Where(post => post.Post.Forum == idForum)
+                                        .Select(posts => new Post
+                                        {
+                                            Id = posts.Post.Id,
+                                            Tittle = posts.Post.Tittle,
+                                            PostDate = posts.Post.PostDate,
+                                            Forum = posts.Post.Forum,
+                                            Participant = posts.Post.Participant,
+                                            PostText = posts.Post.PostText,
+                                            Upvote = ctx.UpvoteDownvotes
+                                                        .Where(p => p.PostId == posts.Post.Id)
+                                                        .Count()
+                                        })
+                                        ;
+
+
+        var getPosts = await post.Take(10)
+                                 .ToListAsync();
+
+        return getPosts;
     }
 }

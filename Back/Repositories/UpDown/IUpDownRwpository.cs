@@ -10,5 +10,5 @@ namespace Back.Repositories;
 public interface IUpDownRepository : IRepository<UpvoteDownvote>
 {
     Task Add(UpvoteDownvote obj);
-    int CountUpvote(InfoPostDTO post);
+    int CountUpvote();
 }

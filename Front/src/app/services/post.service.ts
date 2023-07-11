@@ -14,6 +14,7 @@ export class PostService {
   back = this.config.backEnd;
 
   addPost(newPost: Post) {
+    console.log(newPost)
     return this.http.post(this.back + '/forum/post/new-post', newPost);
   }
 
@@ -30,4 +31,5 @@ export class PostService {
   {
     return this.http.get<Post[]>(this.back + '/forum/post/getPostsFeed');
   }
+
 }

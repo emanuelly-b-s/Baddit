@@ -197,12 +197,12 @@ public partial class BadditContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("ID");
 
-            entity.HasOne(d => d.ParticipantNavigation).WithMany(p => p.UpvoteDownvotes)
-                .HasForeignKey(d => d.Participant)
+            entity.HasOne(d => d.Participant).WithMany(p => p.UpvoteDownvotes)
+                .HasForeignKey(d => d.ParticipantId)
                 .HasConstraintName("FK__UpvoteDow__Parti__412EB0B6");
 
-            entity.HasOne(d => d.PostNavigation).WithMany(p => p.UpvoteDownvotes)
-                .HasForeignKey(d => d.Post)
+            entity.HasOne(d => d.Post).WithMany(p => p.UpvoteDownvotes)
+                .HasForeignKey(d => d.PostId)
                 .HasConstraintName("FK__UpvoteDown__Post__4222D4EF");
         });
 

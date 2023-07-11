@@ -11,7 +11,6 @@ public interface IPostRepository: IRepository<Post>
     Task Add(Post obj);
     Task<List<Post>> GetAllPostForum(int idForum);
     Task<IEnumerable<Post>> GetPostsForUser(int idUser);
-
     Task<List<Post>> GetPostsFeed();
 
 }

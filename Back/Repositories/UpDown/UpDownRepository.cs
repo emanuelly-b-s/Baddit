@@ -26,10 +26,10 @@ public class UpDownRepository : IUpDownRepository
         await ctx.SaveChangesAsync();
     }
 
-    public int CountUpvote(InfoPostDTO post)
+    public int CountUpvote()
     {
         var posts = ctx.UpvoteDownvotes
-                    .Where(up => up.Post == post.Id)
+                    // .Where(up => up.Post == post.Id)
                     .Count();
 
         return posts;

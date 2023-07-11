@@ -24,8 +24,8 @@ public class UpDownController : ControllerBase
 
         UpvoteDownvote upDown = new()
         {
-            Participant = up.Participant,
-            Post = up.Post
+            ParticipantId = up.Participant,
+            PostId = up.Post
         };
 
         await upDownRepo.Add(upDown);
@@ -41,7 +41,7 @@ public class UpDownController : ControllerBase
         [FromBody] InfoPostDTO up
     )
     {
-        var qtdUpvote = upDownRepo.CountUpvote(up);
+        var qtdUpvote = upDownRepo.CountUpvote();
 
         return qtdUpvote;
     }
