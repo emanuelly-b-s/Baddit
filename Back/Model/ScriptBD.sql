@@ -13,22 +13,22 @@
 
 	CREATE TABLE User_Baddit
 	(
-		ID INT PRIMARY KEY IDENTITY,
+		Id INT PRIMARY KEY IDENTITY,
 		Email VARCHAR(100) UNIQUE NOT NULL, 
 		UserName VARCHAR(55) NOT NULL, 
 		LastName VARCHAR(55) NOT NULL,
 		DateBirth DATE NOT NULL,
 		NickUser VARCHAR(25) UNIQUE NOT NULL,
-		PasswordUser VARBINARY(MAX) NOT NULL,
-		SaldPassword VARCHAR(MAX) NOT NULL,
-		UserPhoto VARBINARY(MAX) NOT NULL
+		PasswordUser VARCHAR(MAX) NOT NULL,
+		SaltPassword VARCHAR(MAX) NOT NULL,
+		UserPhoto int
 	);
 	GO 
 
 	CREATE TABLE Forum
 	(
-		ID INT IDENTITY PRIMARY KEY,
-		Creator VARCHAR(100) FOREIGN KEY REFERENCES User_Baddit(Email),
+		Id INT IDENTITY PRIMARY KEY,
+		Creator INT FOREIGN KEY REFERENCES User_Baddit(ID),
 		ForumName VARCHAR(55) UNIQUE NOT NULL,
 		DescriptionForum VARCHAR(255) NOT NULL
 	);
@@ -58,11 +58,11 @@
 	);
 	GO
 
-	CREATE TABLE ParticipantForum
+	CREATE TABLE ListParticipantsForum
 	(
-		ID INT IDENTITY PRIMARY KEY,
+		Id INT IDENTITY PRIMARY KEY,
 		Forum INT FOREIGN KEY REFERENCES Forum(ID), 
-		ParticipantForum INT FOREIGN KEY REFERENCES User_Baddit(ID)
+		Participant INT FOREIGN KEY REFERENCES User_Baddit(ID)
 	);
 	GO
 
@@ -72,6 +72,8 @@
 		Tittle VARCHAR(100) NOT NULL,
 		PostText VARCHAR(MAX) NOT NULL,
 		PostDate DATE NOT NULL,
+		Upvote INT, 
+		Downvote INT,
 		Forum INT FOREIGN KEY REFERENCES Forum(ID), 
 		Participant INT FOREIGN KEY REFERENCES User_Baddit(ID)
 	);
@@ -80,7 +82,7 @@
 
 	CREATE TABLE Comment 
 	(
-		ID INT IDENTITY PRIMARY KEY,
+		Id INT IDENTITY PRIMARY KEY,
 		Participant INT FOREIGN KEY REFERENCES User_Baddit(ID),
 		PostComment INT FOREIGN KEY REFERENCES Post(ID),
 		CommentText VARCHAR(MAX) NOT NULL
@@ -108,3 +110,23 @@
 		Participant INT FOREIGN KEY REFERENCES User_Baddit(ID)
 	);
 	GO
+
+	select * from User_Baddit
+	select * from Forum
+	select * from ListParticipantsForum
+	select * from Post
+
+	insert into ListParticipantsForum values (1,2)
+
+
+	alter table user_baddit drop column UserPhoto
+
+	alter table user_baddit add UserPhoto int foreign key references imageData(ID)
+
+	select u.nickuser, f.ForumName
+	from User_Baddit as u 
+	join ListParticipantsForum as l
+	on u.Id  = l.participant
+	join Forum as f on f.ID = l.Forum
+
+	
