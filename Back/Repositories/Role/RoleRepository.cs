@@ -57,23 +57,6 @@ public class RoleRepository : IRoleRepository
         throw new NotImplementedException();
     }
 
-    public async Task<bool> HasPermission(UserBaddit user, Forum forum, Permissions permission)
-    {
-        var role = ctx.ListParticipantsForums
-                        .First(userForum => userForum.ForumId == forum.Id
-                                && userForum.ParticipantId == user.Id)
-                                .RoleId;
-
-        var permissions = await ctx.RolePermissions
-            .Where(idRolePerm => idRolePerm.RoleId == role)
-            .Select(r => r.Permission.Id)
-            .ToListAsync();
-
-        var hasPerm = permissions
-                    .Contains((int)permission);
-
-        return hasPerm;
-    }
 
     public void GetUserForum(InfoForum forum)
     {
@@ -89,7 +72,7 @@ public class RoleRepository : IRoleRepository
 
     public async Task<Role> Find(int id)
     {
-        var role = await this.ctx.Roles.Include(r => r.Forum)
+        var role = await ctx.Roles.Include(r => r.Forum)
                                        .FirstAsync(r => r.Id == id);
         return role;
     }

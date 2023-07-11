@@ -97,22 +97,28 @@ public class PostRepository : IPostRepository
 
     public async Task<List<Post>> GetAllPostForum(int idForum)
     {
-        var post = ctx.UpvoteDownvotes.Include(p => p.Post)
-                                        .Where(post => post.Post.Forum == idForum)
-                                        .Select(posts => new Post
-                                        {
-                                            Id = posts.Post.Id,
-                                            Tittle = posts.Post.Tittle,
-                                            PostDate = posts.Post.PostDate,
-                                            Forum = posts.Post.Forum,
-                                            Participant = posts.Post.Participant,
-                                            PostText = posts.Post.PostText,
-                                            Upvote = ctx.UpvoteDownvotes
-                                                        .Where(p => p.PostId == posts.Post.Id)
-                                                        .Count()
-                                        })
-                                        ;
+        var post = ctx.Posts.Include(p => p.UpvoteDownvotes)
+                            .Select(post => new Post
+                            {
+                                Tittle = post.Tittle,
+                                PostText= post.PostText,
+                                PostDate = post.PostDate,
+                                Forum = post.Forum,
+                                Upvote = post.UpvoteDownvotes.Count()
+                            })
+                            .Where(f => f.Forum == idForum);
 
+        // .Select(posts => new Post
+        // {
+        //     Tittle = posts.Post.Tittle,
+        //     PostDate = posts.Post.PostDate,
+        //     Forum = posts.Post.Forum,
+        //     Participant = posts.Post.Participant,
+        //     PostText = posts.Post.PostText,
+        //     Upvote = ctx.UpvoteDownvotes
+        //                 .Where(p => p.PostId == posts.Post.Id)
+        //                 .Count()
+        // });
 
         var getPosts = await post.Take(10)
                                  .ToListAsync();

@@ -11,7 +11,6 @@ public interface IRoleRepository
 {
     Task<bool> ExistingRole(string nameRole);
     Task AddRole(Role role, List<int> permissions);
-    Task<bool> HasPermission(UserBaddit user, Forum forum, Permissions permission);
     Task<Role> Find(int id);
     
 }
