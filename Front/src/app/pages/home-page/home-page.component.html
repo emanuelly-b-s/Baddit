@@ -2,14 +2,12 @@
 <div  >
   <mat-drawer mode="side" opened>
     Seus forums
-    <mat-list role="list">
       <div *ngFor="let forum of forums">
-        <mat-list-item role="listitem"
-          ><a href="{{ '/forum-home/' + forum.id }}">
+          <a href="{{ '/forum-home/' + forum.id }}">
             {{ forum.forumName }}</a>
-        </mat-list-item>
       </div>
-    </mat-list>
+    Todos os forums
+    <app-list-forums></app-list-forums>
   </mat-drawer>
   <app-cards-feed></app-cards-feed>
 

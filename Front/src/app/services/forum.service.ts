@@ -40,7 +40,7 @@ export class ForumService {
   }
 
   allForums() {
-    return this.http.get<InfoForum[]>(this.back + '/forum/searchForum');
+    return this.http.get<InfoForum[]>(this.back + '/forum/allForums');
   }
 
   searchForum(forumSearch: string) {

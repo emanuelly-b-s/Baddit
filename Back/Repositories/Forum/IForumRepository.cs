@@ -11,7 +11,7 @@ public interface IForumRepository : IRepository<Forum>
     Task AddUser(ListParticipantsForum participant);
     Task RemoveUser(ListParticipantsForum participant);
     Task<bool> ExistingUserOnForum(int userID, int forumId);
-    Task<IEnumerable<Forum>> GetAllForums();
+    Task<List<Forum>> GetAllForums();
     Task<bool> IsMember(int user, int forum);
     Task<List<Forum>> Search(string forum);
     Task<Forum> FindForum(int id);

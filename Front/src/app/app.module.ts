@@ -45,6 +45,7 @@ import { RoleComponent } from './pages/role/role.component';
 import { CardComponent } from './pages/card/card.component';
 import { CardsFeedComponent } from './pages/cards-feed/cards-feed.component';
 import { ListUsersComponent } from './pages/list-users/list-users.component';
+import { ListForumsComponent } from './pages/list-forums/list-forums.component';
 
 
 
@@ -74,7 +75,8 @@ import { ListUsersComponent } from './pages/list-users/list-users.component';
     RoleComponent,
     CardComponent,
     CardsFeedComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    ListForumsComponent
 
   ],
 

@@ -35,6 +35,17 @@ public class ForumController : ControllerBase
 
     }
 
+    [HttpGet("allForums")]
+    [EnableCors("MainPolicy")]
+    public async Task<List<Forum>> GetAll( 
+        [FromServices] IForumRepository forumRepo
+    )
+    {
+        var allForums = await forumRepo.GetAllForums();
+
+        return allForums;
+    }
+
 
     [HttpPost("get-forum")]
     [EnableCors("MainPolicy")]
@@ -61,15 +72,6 @@ public class ForumController : ControllerBase
 
     }
 
-    [HttpGet]
-    [EnableCors("MainPolicy")]
-    public async Task<ActionResult<List<Forum>>> GetAll(
-        [FromServices] IForumRepository forumRepo
-    )
-    {
-        var query = await forumRepo.Filter(f => true);
-        return query;
-    }
 
     [HttpPost("addUser")]
     [EnableCors("MainPolicy")]

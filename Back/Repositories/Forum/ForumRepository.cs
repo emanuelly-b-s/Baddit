@@ -3,6 +3,7 @@ using Back.Model;
 using Microsoft.EntityFrameworkCore;
 using Back.Repositories;
 using DTO;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Back.Repositories.ForumRep;
 
@@ -65,11 +66,12 @@ public class ForumRepository : IForumRepository
 
     public async Task<bool> IsMember(int user, int forum)
     {
-        bool isMember = await ctx.ListParticipantsForums.AnyAsync(f => f.ParticipantId == user && f.ForumId == forum);
+        bool isMember = await ctx.ListParticipantsForums
+                            .AnyAsync(f => f.ParticipantId == user && f.ForumId == forum);
         return isMember;
     }
 
-    public async Task<IEnumerable<Forum>> GetAllForums()
+    public async Task<List<Forum>> GetAllForums()
     {
         var forumsTake = ctx.Forums.Take(20);
 
@@ -87,13 +89,7 @@ public class ForumRepository : IForumRepository
     {
         var forumsSearch = ctx.Forums
                             .Where(f => f.ForumName
-                            .Contains(forum) || f.ForumName
-                            .Contains(forum
-                            .Substring(forum.Length - 3))
-                            || f.ForumName
-                            .Contains(forum
-                            .Substring(0, (forum.Length - 2))
-                            ));
+                            .Contains(forum));
 
         var listForumsSearch = await forumsSearch.ToListAsync();
 
@@ -110,7 +106,6 @@ public class ForumRepository : IForumRepository
     public async Task<List<ParticipantForum>> GetGroupMembers(InfoForum forum)
     {
 
-        Console.WriteLine('a');
         var users = ctx.ListParticipantsForums
                     .Include(uForum => uForum.Participant)
                     .Include(uForum => uForum.Role)
@@ -121,12 +116,6 @@ public class ForumRepository : IForumRepository
                         Name = uForum.Participant.UserName,
                         RoleUser = uForum.Role.RoleName
                     });
-
-        foreach (var item in users)
-        {
-            Console.WriteLine(item.Name);
-            Console.WriteLine('a');
-        }
 
         var listUsers = users.ToListAsync();
 
